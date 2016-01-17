@@ -11,7 +11,7 @@ There will be three types of users in this system:
   * Has the ability to compare performance between the portfolios of his clients
 * The investor, who will be able to check the performance of his/her portfolio (managed by his/her advisor)
   * Can view the holdings and performance of his/her portfolio
-* The self-directed investor, who has his/her own portfolio
+* The self-directed investor, who manages his/her own portfolio
   * Can add and remove assets from his/her own portfolio
   * Can view the holdings and performance of his/her portfolio
 
