@@ -7,15 +7,17 @@
 
 \section*{Group Members}
 \begin{tabular}{l l l l}
-	\textbf{Name} & \textbf{Student No.} & \textbf{Unix ID} & \textbf{Email} \\ \hline
+	\hline\hline\noalign{\vskip 1ex}
+	\textbf{Name} & \textbf{Student No.} & \textbf{Unix ID} & \textbf{Email} \\ \noalign{\vskip .4ex}\hline\noalign{\vskip .8ex}
 	Albert Xing & 40640104 & z6k8 & albert.xing@alumni.ubc.ca \\
 	Calvin Cheng & 36090132 & o7x8 & calvin.cheng@alumni.ubc.ca \\
-	Kyle Stadnyk & 52749025 & b5p5 & b5p5@ugrad.cs.ubc.ca
+	Kyle Stadnyk & 52749025 & b5p5 & b5p5@ugrad.cs.ubc.ca \\
+	\noalign{\vskip 1ex}\hline
 \end{tabular}
 
 By typing our names and student numbers in the above table, we certify that the work in the attached assignment was performed solely by those whose names and student IDs are included above.
 
-In addition, we indicate that we are fully aware of the rules and consequences of plagiarism, as set forth by the Department of Computer Science and the University of British Columbia.
+In addition, we indicate that we are fully aware of the hrules and consequences of plagiarism, as set forth by the Department of Computer Science and the University of British Columbia.
 
 \section*{ER Diagram}
 Please find the ER diagram in a separate folder {\sffamily ER-Diagram}.
@@ -29,12 +31,12 @@ Functional dependencies: $symbol, exchange \to name$ \\\\
 The {\sffamily Stock} entity represents a single stock, identified by a symbol and the exchange it is traded in. The given FD asserts that a unique symbol and exchange implies the name of the stock.
 
 \hangindent .25in
-{\sffamily Holding(\underline{holding\_id}: INT, \underline{portfolio\_id}: INT, symbol: CHAR(6), exchange: CHAR(6), date: DATE, time: TIME, price: INT)} \\
-Primary key: {\sffamily (holding\_id, portfolio\_id} \\
+{\sffamily Holding(\underline{holding\_id}: INT, \underline{portfolio\_id}: INT, symbol: CHAR(6), exchange: CHAR(6), num\_shares: INT, date: DATE, time: TIME, price: INT)} \\
+Primary key: {\sffamily (holding\_id, portfolio\_id)} \\
 Foreign key: {\sffamily portfolio\_id} references {\sffamily Portfolio} \\
 Foreign key: {\sffamily (symbol, exchange)} references {\sffamily Stock} \\
 Functional dependencies: $holding\_id, portfolio\_id \to symbol, exchange, date, time, price$ \\\\
-A {\sffamily Holding} is a particular instance of a stock inside a portfolio, with the date, time, and price it was bought for. The FD states that a holding can be uniquely identified by a {\sffamily holding\_id} and the ID of the portfolio in which it belongs.
+A {\sffamily Holding} is a number of shares of a stock inside a portfolio, with the date, time, and price the shares were bought for. The FD states that a holding can be uniquely identified by a {\sffamily holding\_id} and the ID of the portfolio in which it belongs.
 
 \hangindent .25in
 {\sffamily Portfolio(\underline{id}: INT, purpose: VARCHAR(64), creation\_date: DATE, principal: INT, cash: INT, owner\_id: INT, manager\_id: INT)} \\
@@ -50,7 +52,7 @@ A {\sffamily Portfolio} is a collection of stock holdings for a particular purpo
 Primary key: {\sffamily id} \\
 Foreign key: {\sffamily address\_id} references {\sffamily Address} \\
 Functional dependencies: $id \to name, email, phone, password, address\_id$ \\\\
-{\sffamily User}s are either investors (who provide principal), advisors (who trade on behalf of investors), or self-directed investors (who assume both roles). Each user has a unique ID, as the FD states, through which they can be identified.
+{\sffamily User}s are either investors (who provide principal), advisors (who trade on behalf of investors), or self-directed investors (who assume both roles). Each user has a unique ID, as the FD states, through which they can be identified. We decided not to include \textsf{email} as a candidate key because it may be the case that a single individual would wish to open multiple accounts, for example a financial advisor who wants to open a separate individual account for their own use.
 
 \hangindent .25in
 {\sffamily Address(\underline{id}: INT, number: CHAR(5), street: VARCHAR(32), city: VARCHAR(32), country: VARCHAR(32), postal\_code: CHAR(6))}\\
@@ -76,9 +78,10 @@ CREATE TABLE User (
 
 CREATE TABLE Holding (
     Holding_Id INT,
-    Portfolio_Id INT REFERENCES Portfolio,
+    Portfolio_Id INT REFERENCES Portfolio ON DELETE RESTRICT,
     Symbol CHAR(6),
     Exchange CHAR(6),
+    Num_Shares INT,
     Date DATE,
     Time TIME,
     Price INT,
@@ -113,64 +116,77 @@ CREATE TABLE Address (
 )
 \end{verbatim}
 
+Note the {\tt ON DELETE RESTRICT} clause in \textsf{Holding}. This prevents a portfolio from being removed from the table while it still contains active holdings - the investor should sell all assets before closing a portfolio.
+
 \section*{Tables}
 \textsf{Stock}
-\begin{table}[h]
+\begin{table}[h!]
 	\begin{tabular}{lll}
-		\textbf{symbol} & \textbf{exchange} & \textbf{name} \\ \hline
+		\hline\hline\noalign{\vskip 1ex}
+		{\textsf{symbol}} & {\textsf{exchange}} & {\textsf{name}} \\ \noalign{\vskip .4ex}\hline\noalign{\vskip .8ex}
 		FB & NASDAQ & Facebook Inc \\
 		AAPL & NASDAQ & Apple Inc \\
 		MSFT & NASDAQ & Microsoft Corporation \\
 		GOOGL & NASDAQ & Alphabet Inc \\
 		300431 & SHE & Beijing Baofeng Technology Co Ltd \\
+		\noalign{\vskip 1ex}\hline
 	\end{tabular}
 \end{table}
 
+\pagebreak
 \textsf{Holding}
-\begin{table}[h]
-	\begin{tabular}{lllllll}
-		\textbf{holding\_id} & \textbf{portfolio\_id} & \textbf{symbol} & \textbf{exchange} & \textbf{date} & \textbf{time} & \textbf{price} \\ \hline
-		1 & 1 & FB & NASDAQ & 02/01/2016 & 13:23 & 98.63 \\
-		2 & 1 & AAPL & NASDAQ & 13/06/2011 & 20:34 & 46.56 \\
-		1 & 2 & MSFT & NASDAQ & 27/03/2009 & 12:13 & 18.13 \\
-		2 & 3 & GOOGL & NASDAQ & 25/06/2010 & 13:08 & 236.57 \\
-		3 & 5 & 300431 & SHE & 27/03/2015 & 09:03 & 6.22 \\
+\begin{table}[h!]
+	\begin{tabular}{llllllll}
+		\hline\hline\noalign{\vskip 1ex}
+		{\textsf{holding\_id}} & {\textsf{portfolio\_id}} & {\textsf{num\_shares}} & {\textsf{symbol}} & {\textsf{exchange}} & {\textsf{date}} & {\textsf{time}} & {\textsf{price}} \\ \noalign{\vskip .4ex}\hline\noalign{\vskip .8ex}
+		1 & 1 & FB & NASDAQ & 300 & 02/01/2016 & 13:23 & 98.63 \\
+		2 & 1 & AAPL & NASDAQ & 8000 & 13/06/2011 & 20:34 & 46.56 \\
+		1 & 2 & MSFT & NASDAQ & 232 & 27/03/2009 & 12:13 & 18.13 \\
+		2 & 3 & GOOGL & NASDAQ & 2938 & 25/06/2010 & 13:08 & 236.57 \\
+		3 & 5 & 300431 & SHE & 97832 & 27/03/2015 & 09:03 & 6.22 \\
+		\noalign{\vskip 1ex}\hline
 	\end{tabular}
 \end{table}
 
 \textsf{Portfolio}
-\begin{table}[h]
+\begin{table}[h!]
 	\begin{tabular}{lllllll}
-		\textbf{id} & \textbf{purpose} & \textbf{creation\_date} & \textbf{principal} & \textbf{cash} & \textbf{owner\_id} & \textbf{manager\_id} \\ \hline
+		\hline\hline\noalign{\vskip 1ex}
+		{\textsf{id}} & {\textsf{purpose}} & {\textsf{creation\_date}} & {\textsf{principal}} & {\textsf{cash}} & {\textsf{owner\_id}} & {\textsf{manager\_id}} \\ \noalign{\vskip .4ex}\hline\noalign{\vskip .8ex}
 		1 & investing & 03/01/2015 & 10230 & 124 & 5 & 3 \\
 		2 & investing & 08/13/2012 & 400000 & 3728 & 4 & 3 \\
 		3 & trading & 10/04/2008 & 23000 & 12039 & 4 & 4 \\
 		4 & retirement & 03/29/2007 & 340000 & 28377 & 5 & 2 \\
 		5 & bored & 12/25/2004 & 4932000 & 0 & 1 & 1 \\
+		\noalign{\vskip 1ex}\hline
 	\end{tabular}
 \end{table}
 
 \textsf{User}
-\begin{table}[h]
+\begin{table}[h!]
 	\begin{tabular}{lllll}
-		\textbf{id} & \textbf{name} & \textbf{email} & \textbf{phone} & \textbf{address} \\ \hline
+		\hline\hline\noalign{\vskip 1ex}
+		{\textsf{id}} & {\textsf{name}} & {\textsf{email}} & {\textsf{phone}} & {\textsf{address}} \\ \noalign{\vskip .4ex}\hline\noalign{\vskip .8ex}
 		1 & George Preece & gkp@example.com & 6392840427 & 6271 \\
 		2 & Erik Combs & ecombs@example.com & 4382719285 & 3827 \\
 		3 & Natalie Bolduc & natalie@example.com & 5837163859 & 285 \\
 		4 & Madeleine Nilsen & mnilsen@example.com & 5829774637 & 6834 \\
 		5 & Patrik Larsson & patrik@example.com & 7947252898 & 982 \\
+		\noalign{\vskip 1ex}\hline
 	\end{tabular}
 \end{table}
 
 \textsf{Address}
-\begin{table}[h]
+\begin{table}[h!]
 	\begin{tabular}{llllll}
-		\textbf{id} & \textbf{number} & \textbf{street} & \textbf{city} & \textbf{country} & \textbf{postal\_code} \\ \hline
+		\hline\hline\noalign{\vskip 1ex}
+		{\textsf{id}} & {\textsf{number}} & {\textsf{street}} & {\textsf{city}} & {\textsf{country}} & {\textsf{postal\_code}} \\ \noalign{\vskip .4ex}\hline\noalign{\vskip .8ex}
 		6271 & 6271 & 32nd St. & New York & US & 10001 \\
 		3827 & 3827 & Main St. N & North Royalton & US & 44133 \\
 		285 & 285 & Dewhurst Blvd. & Toronto & CA & M4J3J7 \\
 		6834 & 6834 & Burrard St. & Vancouver & CA & V6C2E8 \\
 		982 & 982 & De Castro St & Road Town & VGB & ~ \\
+		\noalign{\vskip 1ex}\hline
 	\end{tabular}
 \end{table}
 
