@@ -36,7 +36,7 @@ Primary key: {\sffamily (holding\_id, portfolio\_id)} \\
 Foreign key: {\sffamily portfolio\_id} references {\sffamily Portfolio} \\
 Foreign key: {\sffamily (symbol, exchange)} references {\sffamily Stock} \\
 Functional dependencies: $holding\_id, portfolio\_id \to symbol, exchange, date, time, price$ \\\\
-A {\sffamily Holding} is a number of shares of a stock inside a portfolio, with the date, time, and price the shares were bought for. The FD states that a holding can be uniquely identified by a {\sffamily holding\_id} and the ID of the portfolio in which it belongs.
+A {\sffamily Holding} is a number of shares of a stock inside a portfolio, with the date, time, and price (in USD) the shares were bought for. The FD states that a holding can be uniquely identified by a {\sffamily holding\_id} and the ID of the portfolio in which it belongs.
 
 \hangindent .25in
 {\sffamily Portfolio(\underline{id}: INT, purpose: VARCHAR(64), creation\_date: DATE, principal: INT, cash: INT, owner\_id: INT, manager\_id: INT)} \\
