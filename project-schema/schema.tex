@@ -69,10 +69,10 @@ Also note that there are no candidate keys other than the primary keys already g
 \begin{verbatim}
 CREATE TABLE User (
     Id INT PRIMARY KEY,
-    Name VARCHAR(64),
-    Email VARCHAR(64),
+    Name VARCHAR(64) NOT NULL,
+    Email VARCHAR(64) NOT NULL,
     Phone CHAR(10),
-    Password BINARY(60),
+    Password BINARY(60) NOT NULL,
     Address_Id INT
 )
 
@@ -81,10 +81,10 @@ CREATE TABLE Holding (
     Portfolio_Id INT REFERENCES Portfolio ON DELETE RESTRICT,
     Symbol CHAR(6),
     Exchange CHAR(6),
-    Num_Shares INT,
-    Date DATE,
-    Time TIME,
-    Price INT,
+    Num_Shares INT NOT NULL,
+    Date DATE NOT NULL,
+    Time TIME NOT NULL,
+    Price INT NOT NULL,
     PRIMARY KEY (Holding_Id, Portfolio_Id),
     FOREIGN KEY (Symbol, Exchange) REFERENCES Stock
 )
@@ -92,7 +92,7 @@ CREATE TABLE Holding (
 CREATE TABLE Stock (
     Symbol CHAR(6),
     Exchange CHAR(6),
-    Name VARCHAR(64),
+    Name VARCHAR(64) NOT NULL,
     PRIMARY KEY (Symbol, Exchange)
 )
 
@@ -100,8 +100,8 @@ CREATE TABLE Portfolio (
     Id INT PRIMARY KEY,
     Purpose VARCHAR(64),
     Creation_Date DATE,
-    Principal INT,
-    Cash INT,
+    Principal INT NOT NULL,
+    Cash INT NOT NULL,
     Owner_Id INT REFERENCES User,
     Manager_Id INT REFERENCES User
 )
@@ -110,8 +110,8 @@ CREATE TABLE Address (
     Id INT PRIMARY KEY,
     Number CHAR(5),
     Street VARCHAR(32),
-    City VARCHAR(32),
-    Country VARCHAR(32),
+    City VARCHAR(32) NOT NULL,
+    Country VARCHAR(32) NOT NULL,
     Postal_Code CHAR(6)
 )
 \end{verbatim}
