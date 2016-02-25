@@ -37,8 +37,76 @@ There will be three user groups that will have different roles in the applicatio
 	\item[Administrators] System administrators will have complete read and write access to all information in the system.
 \end{description}
 
-Specifically, updates to portolios will be executed as {\em transactions}. Each transaction is either a {\em buy} or {\em sell}. Transactions will affect the holdings in the portfolio - either by adding a new holding, or updating an existing holding. Other updates to portfolios include adding or withdrawing cash.
+Specifically, updates to portolios will be executed as {\em transactions}. Each transaction is either a {\em buy} or {\em sell}. Transactions will affect the holdings in the portfolio - either by adding or removing a holding, or updating an existing holding. Other updates to portfolios include adding or withdrawing cash.
 
-When an investor or advisor wishes to view a portfolio, multiple database queries are needed. The first query must retrieve all portfolios associated with an investor. For example, to list portfolios owned by investor `1234': \verb|SELECT * FROM Portfolio WHERE owner_id = '1234';|
+When an investor or advisor wishes to view holdings in a portfolio, multiple database queries are needed. The first query must retrieve all portfolios associated with an investor. For example, to list portfolios owned by investor `1234':
+
+\verb|    SELECT * FROM Portfolio WHERE owner_id = 1234;|
+
+Then, to list the holdings for a given porfolio ID (e.g. 4321):
+
+\verb|    SELECT * FROM Holding WHERE portfolio_id = 4321;|
+
+Each holding contains infomation about the stock associated with the holding, as well as the number of shares owned. The price of the stock is queried using an external API given the symbol. Then we can calculate the value of the holding by multiplying the stock price and the number of shared owned. The total value of a portfolio is the sum of the values of its holdings.
+
+Queries can also be used to search for contact information of an investor given their name - for example, to find the email of users named ``John Doe'', we use the query:
+
+\verb|    SELECT email FROM User WHERE name = 'John Doe';|
+
+We can distinguish between investors and advisors by whether or not they are owners of some portfolio - advisors would never own a portfolio. Alternatively in implementation we can assign each user a type field that would eliminate the need for such a complex query.
+
+General performance metrics for portfolios, investors, and advisors would require more complicated queries and analysis. For example, we might want to find the percentage return for a given portfolio. This can be calculated by dividing the current value of the portfolio by the initial principal invested. Similarly, the average return for an investor or advisor can be found by dividing the total value of all portfolios owned or managed, by the total of all princial investments for these portfolios.
+
+\section*{Data}
+
+The main entities represented are {\sf User}s, and {\sf Portfolio}s. Each {\sf User} contains contact details as attributes, as well as an {\sf Address}. {\sf Portfolio}s contain {\sf Holding}s for a particular {\sf Stock}. For more details, please reference our {\tt project-schema}; an excerpt containing the database schemas is given below.
+
+\subsection*{Database Schemas}
+
+\hangindent .25in
+{\sffamily Stock(\underline{symbol}: CHAR(6), \underline{exchange}: CHAR(6), name: VARCHAR(64))} \\
+Primary key: {\sffamily (symbol, exchange)} \\
+Functional dependencies: $symbol, exchange \to name$ \\\\
+The {\sffamily Stock} entity represents a single stock, identified by a symbol and the exchange it is traded in. The given FD asserts that a unique symbol and exchange implies the name of the stock.
+
+\hangindent .25in
+{\sffamily Holding(\underline{holding\_id}: INT, \underline{portfolio\_id}: INT, symbol: CHAR(6), exchange: CHAR(6), num\_shares: INT, date: DATE, time: TIME, price: INT)} \\
+Primary key: {\sffamily (holding\_id, portfolio\_id)} \\
+Foreign key: {\sffamily portfolio\_id} references {\sffamily Portfolio} \\
+Foreign key: {\sffamily (symbol, exchange)} references {\sffamily Stock} \\
+Functional dependencies: $holding\_id, portfolio\_id \to symbol, exchange, date, time, price$ \\\\
+A {\sffamily Holding} is a number of shares of a stock inside a portfolio, with the date, time, and price (in USD) the shares were bought for. The FD states that a holding can be uniquely identified by a {\sffamily holding\_id} and the ID of the portfolio in which it belongs.
+
+\hangindent .25in
+{\sffamily Portfolio(\underline{id}: INT, purpose: VARCHAR(64), creation\_date: DATE, principal: INT, cash: INT, owner\_id: INT, manager\_id: INT)} \\
+Primary key: {\sffamily id} \\
+Foreign key: {\sffamily owner\_id} references {\sffamily User} \\
+Foreign key: {\sffamily manager\_id} references {\sffamily User} \\
+Functional dependencies: $id \to purpose, creation\_date, principal, cash, owner\_id, manager\_id$ \\\\
+A {\sffamily Portfolio} is a collection of stock holdings for a particular purpose. The FD states that a portfolio can be identified by its unique ID. Also note that portfolios for self-directed investors are both owned and managed by the same investor, while managed portfolios are owned by an investor and managed by an advisor.
+
+
+\hangindent .25in
+{\sffamily User(\underline{id}: INT, name: VARCHAR(64), email: VARCHAR(64), phone: CHAR(10), password: BINARY(60), address\_id: INT)}\\
+Primary key: {\sffamily id} \\
+Foreign key: {\sffamily address\_id} references {\sffamily Address} \\
+Functional dependencies: $id \to name, email, phone, password, address\_id$ \\\\
+{\sffamily User}s are either investors (who provide principal), advisors (who trade on behalf of investors), or self-directed investors (who assume both roles). Each user has a unique ID, as the FD states, through which they can be identified. We decided not to include \textsf{email} as a candidate key because it may be the case that a single individual would wish to open multiple accounts, for example a financial advisor who wants to open a separate individual account for their own use.
+
+\hangindent .25in
+{\sffamily Address(\underline{id}: INT, number: CHAR(5), street: VARCHAR(32), city: VARCHAR(32), country: VARCHAR(32), postal\_code: CHAR(6))}\\
+Primary key: {\sffamily id} \\
+Functional dependencies: $id \to number, street, city, country, postal\_code$ \\\\
+An {\sffamily Address} represents a particular mailing address with a street number, street, city, country, and postal code. For a more efficient implementation, a unique ID is assigned to each address which allows for faster queries through a single column instead of multiple columns. Note that although postal codes often uniquely identify cities, this is not generally the case especially internationally. We decided not to include the FDs $postal\_code \to city$ and $number, street, city \to postal\_code$ on this basis.
+
+\section*{Division of Responsibilities}
+A rough division of duties is as follows:
+\begin{description}
+	\item[Albert] will be responsible for frontend development, including but not limited to interface design and development, user-facing forms, client-side API calls, and client-side analytics.
+	\item[Calvin] will be responsible for backend logic, including but not limited to server API handlers, Rails setup, maintenance, and deployment, and server-side markup and data generation.
+	\item[Kyle] will be responsible for data management, including but not limited to database interactions, database queries, and database maintenance.
+\end{description}
+
+The division of labour is not final, but may change as the project progesses.
 
 \end{document}
