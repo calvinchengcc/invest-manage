@@ -37,11 +37,8 @@ There will be three user groups that will have different roles in the applicatio
 	\item[Administrators] System administrators will have complete read and write access to all information in the system.
 \end{description}
 
-Specifically, updates to portolios will be executed as {\em transactions}. Each transaction is either a {\em buy} or {\em sell}.
+Specifically, updates to portolios will be executed as {\em transactions}. Each transaction is either a {\em buy} or {\em sell}. Transactions will affect the holdings in the portfolio - either by adding a new holding, or updating an existing holding. Other updates to portfolios include adding or withdrawing cash.
 
-When an investor or advisor wishes to view a portfolio, multiple database queries are needed. The first query must retrieve all portfolios associated with an investor. For example, to list portfolios owned by investor `1234':
-\begin{verbatim}
-select * from Portfolio where owner_id = '1234';
-\end{verbatim}
+When an investor or advisor wishes to view a portfolio, multiple database queries are needed. The first query must retrieve all portfolios associated with an investor. For example, to list portfolios owned by investor `1234': \verb|SELECT * FROM Portfolio WHERE owner_id = '1234';|
 
 \end{document}
