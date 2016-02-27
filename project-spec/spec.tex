@@ -17,12 +17,12 @@
 
 By typing our names and student numbers in the above table, we certify that the work in the attached assignment was performed solely by those whose names and student IDs are included above.
 
-In addition, we indicate that we are fully aware of the hrules and consequences of plagiarism, as set forth by the Department of Computer Science and the University of British Columbia.
+In addition, we indicate that we are fully aware of the rules and consequences of plagiarism, as set forth by the Department of Computer Science and the University of British Columbia.
 
 {\bf We realize that in using a platform unsupported by the course and course staff we assume full responsibilities for all technical issues that may arise due to our choice of platform.}
 
 \section*{Background}
-We are building a financial portfolio managment application. In general, this application will help investors and financial advisors track and manage their portfolios.
+We are building a financial portfolio management application. In general, this application will help investors and financial advisors track and manage their portfolios.
 Specifically, each portfolio is composed of any number of stock holdings.
 
 \section*{Platform}
@@ -37,17 +37,17 @@ There will be three user groups that will have different roles in the applicatio
 	\item[Administrators] System administrators will have complete read and write access to all information in the system.
 \end{description}
 
-Specifically, updates to portolios will be executed as {\em transactions}. Each transaction is either a {\em buy} or {\em sell}. Transactions will affect the holdings in the portfolio - either by adding or removing a holding, or updating an existing holding. Other updates to portfolios include adding or withdrawing cash.
+Specifically, updates to portfolios will be executed as {\em transactions}. Each transaction is either a {\em buy} or {\em sell}. Transactions will affect the holdings in the portfolio - either by adding or removing a holding, or updating an existing holding. Other updates to portfolios include adding or withdrawing cash.
 
 When an investor or advisor wishes to view holdings in a portfolio, multiple database queries are needed. The first query must retrieve all portfolios associated with an investor. For example, to list portfolios owned by investor `1234':
 
 \verb|    SELECT * FROM Portfolio WHERE owner_id = 1234;|
 
-Then, to list the holdings for a given porfolio ID (e.g. 4321):
+Then, to list the holdings for a given portfolio ID (e.g. 4321):
 
 \verb|    SELECT * FROM Holding WHERE portfolio_id = 4321;|
 
-Each holding contains infomation about the stock associated with the holding, as well as the number of shares owned. The price of the stock is queried using an external API given the symbol. Then we can calculate the value of the holding by multiplying the stock price and the number of shared owned. The total value of a portfolio is the sum of the values of its holdings.
+Each holding contains information about the stock associated with the holding, as well as the number of shares owned. The price of the stock is queried using an external API given the symbol. Then we can calculate the value of the holding by multiplying the stock price and the number of shared owned. The total value of a portfolio is the sum of the values of its holdings.
 
 Queries can also be used to search for contact information of an investor given their name - for example, to find the email of users named ``John Doe'', we use the query:
 
@@ -55,7 +55,7 @@ Queries can also be used to search for contact information of an investor given 
 
 We can distinguish between investors and advisors by whether or not they are owners of some portfolio - advisors would never own a portfolio. Alternatively in implementation we can assign each user a type field that would eliminate the need for such a complex query.
 
-General performance metrics for portfolios, investors, and advisors would require more complicated queries and analysis. For example, we might want to find the percentage return for a given portfolio. This can be calculated by dividing the current value of the portfolio by the initial principal invested. Similarly, the average return for an investor or advisor can be found by dividing the total value of all portfolios owned or managed, by the total of all princial investments for these portfolios.
+General performance metrics for portfolios, investors, and advisors would require more complicated queries and analysis. For example, we might want to find the percentage return for a given portfolio. This can be calculated by dividing the current value of the portfolio by the initial principal invested. Similarly, the average return for an investor or advisor can be found by dividing the total value of all portfolios owned or managed, by the total of all principal investments for these portfolios.
 
 \section*{Data}
 
@@ -107,6 +107,6 @@ A rough division of duties is as follows:
 	\item[Kyle] will be responsible for data management, including but not limited to database interactions, database queries, and database maintenance.
 \end{description}
 
-The division of labour is not final, but may change as the project progesses.
+The division of labour is not final, and may change as the project progresses.
 
 \end{document}

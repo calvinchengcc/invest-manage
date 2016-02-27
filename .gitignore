@@ -126,3 +126,4 @@ bower.json
 # LaTeX
 *.aux
 *.log
+*.synctex.gz
