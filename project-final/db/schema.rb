@@ -11,7 +11,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307065118) do
+ActiveRecord::Schema.define(version: 20160307214325) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "number"
+    t.string   "street"
+    t.string   "city",        null: false
+    t.string   "country",     null: false
+    t.string   "postal_code"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "holdings", force: :cascade do |t|
+    t.integer  "portfolio_id", null: false
+    t.integer  "stock_id",     null: false
+    t.integer  "num_shares",   null: false
+    t.datetime "datetime",     null: false
+    t.decimal  "price",        null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "portfolios", force: :cascade do |t|
+    t.string   "purpose"
+    t.date     "creation_date"
+    t.decimal  "principal",     default: 0.0, null: false
+    t.decimal  "cash",          default: 0.0, null: false
+    t.integer  "owner_id",                    null: false
+    t.integer  "manager_id",                  null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.string   "symbol",     null: false
+    t.string   "exchange",   null: false
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -24,10 +63,12 @@ ActiveRecord::Schema.define(version: 20160307065118) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "name",                                null: false
+    t.integer  "role",                                null: false
+    t.string   "phone"
+    t.integer  "address_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "name"
-    t.integer  "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

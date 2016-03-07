@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  holding_id: 1
+  portfolio_id: 1
+  symbol: MyString
+  exchange: MyString
+  num_shares: 1
+  datetime: 2016-03-07 12:51:07
+  price: 9.99
+
+two:
+  holding_id: 1
+  portfolio_id: 1
+  symbol: MyString
+  exchange: MyString
+  num_shares: 1
+  datetime: 2016-03-07 12:51:07
+  price: 9.99

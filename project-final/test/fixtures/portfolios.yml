@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  purpose: 
+  creation_date: 2016-03-07
+  principal: 9.99
+  cash: 9.99
+  owner_id: 1
+  manager_id: 1
+
+two:
+  purpose: 
+  creation_date: 2016-03-07
+  principal: 9.99
+  cash: 9.99
+  owner_id: 1
+  manager_id: 1

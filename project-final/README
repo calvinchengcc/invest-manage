@@ -39,7 +39,7 @@ choose  Enter your selection: [roles]
 option  Use a form builder gem?
 choose  Enter your selection: [none]
 option  Add pages?
-choose  Enter your selection: [about+users]
+choose  Enter your selection: [home]
 option  Set a locale?
 choose  Enter your selection: [none]
 option  Install page-view analytics?

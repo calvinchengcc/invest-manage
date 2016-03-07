@@ -50,15 +50,15 @@ Temporary Items
 ### Ruby ###
 *.gem
 *.rbc
-/.config
-/coverage/
-/InstalledFiles
-/pkg/
-/spec/reports/
-/spec/examples.txt
-/test/tmp/
-/test/version_tmp/
-/tmp/
+/project-final/.config
+/project-final/coverage/
+/project-final/InstalledFiles
+/project-final/pkg/
+/project-final/spec/reports/
+/project-final/spec/examples.txt
+/project-final/test/tmp/
+/project-final/test/version_tmp/
+/project-final/tmp/
 
 ## Specific to RubyMotion:
 .dat*
@@ -66,15 +66,15 @@ Temporary Items
 build/
 
 ## Documentation cache and generated files:
-/.yardoc/
-/_yardoc/
-/doc/
-/rdoc/
+/project-final/.yardoc/
+/project-final/_yardoc/
+/project-final/doc/
+/project-final/rdoc/
 
 ## Environment normalization:
-/.bundle/
-/vendor/bundle
-/lib/bundler/man/
+/project-final/.bundle/
+/project-final/vendor/bundle
+/project-final/lib/bundler/man/
 
 # for a library or gem, you might want to ignore these files since the code is
 # intended to run in multiple environments; otherwise, check them in:
@@ -90,24 +90,24 @@ build/
 *.rbc
 capybara-*.html
 .rspec
-/log
-/tmp
-/db/*.sqlite3
-/db/*.sqlite3-journal
-/public/system
-/coverage/
-/spec/tmp
+/project-final/log
+/project-final/tmp
+/project-final/db/*.sqlite3
+/project-final/db/*.sqlite3-journal
+/project-final/public/system
+/project-final/coverage/
+/project-final/spec/tmp
 **.orig
 rerun.txt
 pickle-email-*.html
 
 # TODO Comment out these rules if you are OK with secrets being uploaded to the repo
-config/initializers/secret_token.rb
-config/secrets.yml
+# config/initializers/secret_token.rb
+# config/secrets.yml
 
 ## Environment normalization:
-/.bundle
-/vendor/bundle
+/project-final/.bundle
+/project-final/vendor/bundle
 
 # these should all be checked in to normalize the environment:
 # Gemfile.lock, .ruby-version, .ruby-gemset

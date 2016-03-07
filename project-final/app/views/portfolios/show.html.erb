@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Purpose:</strong>
+  <%= @portfolio.purpose %>
+</p>
+
+<p>
+  <strong>Creation date:</strong>
+  <%= @portfolio.creation_date %>
+</p>
+
+<p>
+  <strong>Principal:</strong>
+  <%= @portfolio.principal %>
+</p>
+
+<p>
+  <strong>Cash:</strong>
+  <%= @portfolio.cash %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @portfolio.owner_id %>
+</p>
+
+<p>
+  <strong>Manager:</strong>
+  <%= @portfolio.manager_id %>
+</p>
+
+<%= link_to 'Edit', edit_portfolio_path(@portfolio) %> |
+<%= link_to 'Back', portfolios_path %>

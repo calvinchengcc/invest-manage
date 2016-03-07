@@ -28,7 +28,6 @@
     <orderEntry type="library" scope="PROVIDED" name="activerecord (v4.2.5.1, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="activesupport (v4.2.5.1, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="arel (v6.0.3, ruby-2.2.3-p173) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="ast (v2.2.0, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="bcrypt (v3.1.11, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="binding_of_caller (v0.7.2, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="builder (v3.2.2, ruby-2.2.3-p173) [gem]" level="application" />
@@ -37,16 +36,17 @@
     <orderEntry type="library" scope="PROVIDED" name="coffee-rails (v4.1.1, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coffee-script (v2.4.1, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="coffee-script-source (v1.10.0, ruby-2.2.3-p173) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="composite_primary_keys (v8.1.2, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="concurrent-ruby (v1.0.1, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="debug_inspector (v0.0.2, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="devise (v3.5.6, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="erubis (v2.7.0, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="execjs (v2.6.0, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="globalid (v0.3.6, ruby-2.2.3-p173) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="high_voltage (v2.4.0, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="i18n (v0.7.0, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jbuilder (v2.4.1, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="jquery-rails (v4.1.0, ruby-2.2.3-p173) [gem]" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="json (v1.8.3, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="loofah (v2.0.3, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mail (v2.6.3, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="mime-types (v2.99.1, ruby-2.2.3-p173) [gem]" level="application" />
@@ -55,8 +55,6 @@
     <orderEntry type="library" scope="PROVIDED" name="multi_json (v1.11.2, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="nokogiri (v1.6.7.2, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="orm_adapter (v0.5.0, ruby-2.2.3-p173) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="parser (v2.3.0.6, ruby-2.2.3-p173) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="powerpack (v0.1.1, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="quiet_assets (v1.1.0, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack (v1.6.4, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rack-test (v0.6.3, ruby-2.2.3-p173) [gem]" level="application" />
@@ -66,24 +64,18 @@
     <orderEntry type="library" scope="PROVIDED" name="rails-html-sanitizer (v1.0.3, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rails_layout (v1.0.29, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="railties (v4.2.5.1, ruby-2.2.3-p173) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rainbow (v2.1.0, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="rake (v10.5.0, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="responders (v2.1.1, ruby-2.2.3-p173) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="rubocop (v0.37.2, ruby-2.2.3-p173) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="ruby-progressbar (v1.7.5, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass (v3.4.21, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sass-rails (v5.0.4, ruby-2.2.3-p173) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="spring (v1.6.4, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets (v3.5.2, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sprockets-rails (v3.0.4, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="sqlite3 (v1.3.11, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thor (v0.19.1, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="thread_safe (v0.3.5, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tilt (v2.0.2, ruby-2.2.3-p173) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="turbolinks (v2.5.3, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="tzinfo (v1.2.2, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="uglifier (v2.7.2, ruby-2.2.3-p173) [gem]" level="application" />
-    <orderEntry type="library" scope="PROVIDED" name="unicode-display_width (v0.3.1, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="warden (v1.2.6, ruby-2.2.3-p173) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="web-console (v2.3.0, ruby-2.2.3-p173) [gem]" level="application" />
   </component>

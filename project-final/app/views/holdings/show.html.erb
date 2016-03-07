@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Holding:</strong>
+  <%= @holding.holding_id %>
+</p>
+
+<p>
+  <strong>Portfolio:</strong>
+  <%= @holding.portfolio_id %>
+</p>
+
+<p>
+  <strong>Symbol:</strong>
+  <%= @holding.symbol %>
+</p>
+
+<p>
+  <strong>Exchange:</strong>
+  <%= @holding.exchange %>
+</p>
+
+<p>
+  <strong>Num shares:</strong>
+  <%= @holding.num_shares %>
+</p>
+
+<p>
+  <strong>Datetime:</strong>
+  <%= @holding.datetime %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @holding.price %>
+</p>
+
+<%= link_to 'Edit', edit_holding_path(@holding) %> |
+<%= link_to 'Back', holdings_path %>
