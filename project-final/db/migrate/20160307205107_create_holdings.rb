@@ -7,9 +7,6 @@ class CreateHoldings < ActiveRecord::Migration
       t.datetime :datetime, null: false
       t.decimal :price, null: false
 
-      t.foreign_key :portfolios, on_delete: :restrict
-      t.foreign_key :stocks
-
       t.timestamps null: false
     end
   end

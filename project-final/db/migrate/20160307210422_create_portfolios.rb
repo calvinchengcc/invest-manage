@@ -8,9 +8,6 @@ class CreatePortfolios < ActiveRecord::Migration
       t.integer :owner_id, null: false, index: true
       t.integer :manager_id, null: false, index: true
 
-      t.foreign_key :users, column: :owner_id
-      t.foreign_key :users, column: :manager_id
-
       t.timestamps null: false
     end
   end
