@@ -33,6 +33,9 @@ ActiveRecord::Schema.define(version: 20160307214325) do
     t.datetime "updated_at",   null: false
   end
 
+  add_index "holdings", ["portfolio_id"], name: "index_holdings_on_portfolio_id"
+  add_index "holdings", ["stock_id"], name: "index_holdings_on_stock_id"
+
   create_table "portfolios", force: :cascade do |t|
     t.string   "purpose"
     t.date     "creation_date"
@@ -44,6 +47,9 @@ ActiveRecord::Schema.define(version: 20160307214325) do
     t.datetime "updated_at",                  null: false
   end
 
+  add_index "portfolios", ["manager_id"], name: "index_portfolios_on_manager_id"
+  add_index "portfolios", ["owner_id"], name: "index_portfolios_on_owner_id"
+
   create_table "stocks", force: :cascade do |t|
     t.string   "symbol",     null: false
     t.string   "exchange",   null: false
@@ -51,6 +57,8 @@ ActiveRecord::Schema.define(version: 20160307214325) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "stocks", ["symbol", "exchange"], name: "index_stocks_on_symbol_and_exchange", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

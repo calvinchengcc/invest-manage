@@ -5,9 +5,9 @@ class CreateStocks < ActiveRecord::Migration
       t.string :exchange, null: false
       t.string :name, null: false
 
+      t.index [:symbol, :exchange], unique: true
+
       t.timestamps null: false
     end
-
-    add_index :stocks, [:symbol, :exchange], unique: true
   end
 end

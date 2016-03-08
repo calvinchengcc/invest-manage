@@ -36,13 +36,14 @@ class CreateUsers < ActiveRecord::Migration
       t.string :phone
       t.integer :address_id
 
+      t.foreign_key :addresses
+
+      t.index :email, unique: true
+      t.index :reset_password_token, unique: true
+
       t.timestamps null: false
     end
 
-    add_foreign_key :users, :addresses
-
-    add_index :users, :email,                unique: true
-    add_index :users, :reset_password_token, unique: true
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end
