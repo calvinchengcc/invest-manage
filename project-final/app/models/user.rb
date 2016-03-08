@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  belongs_to :address
+  has_many :owned_portfolios, class_name: 'Portfolio', foreign_key: 'owner_id'
+  has_many :managed_portfolios, class_name: 'Portfolio', foreign_key: 'manager_id'
   enum role: [:user, :vip, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
