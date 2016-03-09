@@ -1,4 +1,3 @@
 #!/usr/bin/env sh
 set -x
-git subtree push --prefix project-final heroku master
-
+git push --force heroku `git subtree split --prefix project-final HEAD`:master
