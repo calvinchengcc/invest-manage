@@ -19,4 +19,5 @@ ActiveRecord::Base.transaction do
     end
   end
 end
-puts 'Added stock exchange codes'
+puts 'ADDED STOCK EXCHANGE CODES'
+
