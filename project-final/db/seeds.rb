@@ -13,6 +13,10 @@ puts 'CREATED ADMIN USER: ' << user.email
 exchange_data_file = File.join(Dir.pwd, 'db', 'seeds', 'stock_exchange_codes.csv')
 exchange_data = SmarterCSV.process exchange_data_file
 ActiveRecord::Base.transaction do
-  StockExchange.create! exchange_data
+  exchange_data.each do |row|
+    Exchange.find_or_create_by!(code: row[:code]) do |exchange|
+      exchange.name = row[:name]
+    end
+  end
 end
 puts 'Added stock exchange codes'

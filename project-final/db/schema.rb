@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160309084918) do
+ActiveRecord::Schema.define(version: 20160309180006) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "number"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20160309084918) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
+
+  create_table "exchanges", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "name", null: false
+  end
+
+  add_index "exchanges", ["code"], name: "index_exchanges_on_code", unique: true
 
   create_table "holdings", force: :cascade do |t|
     t.integer  "portfolio_id", null: false
@@ -50,19 +57,12 @@ ActiveRecord::Schema.define(version: 20160309084918) do
   add_index "portfolios", ["manager_id"], name: "index_portfolios_on_manager_id"
   add_index "portfolios", ["owner_id"], name: "index_portfolios_on_owner_id"
 
-  create_table "stock_exchanges", force: :cascade do |t|
-    t.string "exchange_code", null: false
-    t.string "exchange_name", null: false
-  end
-
-  add_index "stock_exchanges", ["exchange_code"], name: "index_stock_exchanges_on_exchange_code", unique: true
-
   create_table "stocks", force: :cascade do |t|
-    t.string   "symbol",            null: false
-    t.string   "stock_exchange_id", null: false
-    t.string   "name",              null: false
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.string   "symbol",      null: false
+    t.string   "exchange_id", null: false
+    t.string   "name",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "stocks", ["symbol"], name: "index_stocks_on_symbol", unique: true
