@@ -1,0 +1,644 @@
+Exchange Code,Exchange Name
+#CI,"Abidjan SE, Non-Exchange FI Update"
+ABJ,Abidjan Stock Exchange
+ABD,Abu Dhabi Stock Exchange
+ABC,ADIX Brokers Group
+ASG,AGRARIAN STOCK EXCHANGE OF GUATEMALA
+AHM,AHMEDABAD STOCK EXCHANGE
+AIF,"AIAF S.A., Mercado de Renta Fija"
+ALB,Alberta Stock Exchange
+ALG,Algiers Stock Exchange
+ACC,American Commodity Exchange
+AOE,American Options Exchange
+AP$,American Petroleum Institute
+LCA,American Stock Excahnge for Nasdaq Large Cap
+ASE,American Stock Exchange
+SCA,American Stock Exchange for Nasdaq Small Cap
+ASQ,AMEX Consolidated
+AMM,Amman Financial Market
+ATA,Amsterdam Agricultural Commodities Exchange
+ACE,Amsterdam Commodity Exchange
+AFF,Amsterdam Financial Futures Exchange
+APX,Amsterdam Power Exchange
+AMS,Amsterdam Stock Exchange
+ANT,Antwerp Stock Exchange
+AR$,ARA Products Barge
+ARC,Archipelago L.L.C.
+ST$,Asian Saturday Rates
+ASU,Asuncion Stock Exchange
+ADE,Athens Derivatives Exchange
+ATH,Athens Stock Exchange
+#AU,"Australia, Non-Exchange FI Update"
+ADX,Australian Derivatives Exchange (AUDX)
+EAX,Australian Energy Data
+AU$,Australian Money Rates
+ASX,Australian Stock Exchange Ltd
+#AT,"Austria, Non-Exchange FI Update"
+OTB,Austrian Futures and Options Exchange (OTOB)
+APE,Automated Power Exchange
+AVK,AVK Closing Joint Stock Co
+BIX,Bahamas International Securities Exchange
+BIF,Baltic International Freight Futures Exchange (BIFFEX)
+BAL,Baltimore Stock Exchange
+BKK,Bangkok Stock Exchange
+TOT,Bangok Stock Dealing Centre
+BNL,Banja Luka Exchange
+BNC,Bank Negara Malaysia
+BKG,Bank Of Greece
+BSL,Basel Stock Exchange
+BJC,Beijing Commodities Exchange
+BPX,Beijing Petroleum Exchange
+BES,Beirut Secondary Market
+BDB,Beirut Stock Exchange
+BLE,Belarus Intercurrency and Stock Exchange
+BCS,Belarusian Currency and Stock Exchange
+BFX,Belgian Futures and Options Exchange (BELFOX)
+#BE,"Belgium, Non-Exchange FI Update"
+BEL,Belgrade Stock Exchange
+BER,Berlin Stock Exchange
+BRN,Berne Stock Exchange
+BIL,Bilbao Stock Exchange
+CSO,"Board of Trade of the City of New York, Inc. (Coffee, Sugar, Cocoa Options)"
+CSC,"Board of Trade of the City of New York, Inc. (Coffee,Sugar and Cocoa)"
+NYC,"Board of Trade of the City of New York, Inc. (NYCE - Cotton)"
+NYF,"Board of Trade of the City of New York, Inc. (NYFE - Futures)"
+CEO,"Board of Trade of the City of New York, Inc. CEC (Options)"
+BOG,Bogota Stock Exchange
+LPA,Bolivian Stock Exchange
+BSE,Bombay Stock Exchange
+BZA,Bond Exchange of South Africa
+BOR,Bordeaux Stock Exchange
+BOX,Boston Options Exchange
+LCB,Boston Stock Exchange for Nasdaq Large Cap
+SCB,Boston Stock Exchange for Nasdaq Small Cap
+BOS,Boston Stock Exchange Inc
+BSM,Botswana Stock Exchange
+BOB,Bratislava Options Exchange
+BRA,Bratislava Stock Exchange
+BBF,Brazilian Commodities and Futures Exchange
+BRE,Bremen Stock Exchange
+BOE,Brussels Stock Exchange Options
+BCE,Budapest Commodity Exchange
+BUD,Budapest Stock Exchange
+BUE,Buenos Aires Stock Exchange
+BLG,Bulgarian Stock Exchange - Sofia
+CAI,Cairo Stock Exchange
+CLI,CALI Stock Exchange
+#CA,"Canada, Non-Exchange FI Update"
+CDN,Canadian Dealing Network
+CMF,Canadian Mutual Fund Exchange
+CG$,Canadian Natural Gas
+CNQ,Canadian Trading and Quotation System Inc
+CDG,CanDeal
+CPX,CanPX
+CFF,Cantor Financial Futures Exchange
+CCS,Caracas Stock Exchange
+CAS,Casablanca Stock Exchange
+CC3,Cash Commodity Rates Americas
+CC2,Cash Commodity Rates Asia
+CC1,Cash Commodity Rates EMEA
+CBF,"CBOE Futures Exchange, LLC"
+CAE,Central Asian Stock Exchange
+JK$,Central Bank of Indonesia
+CRU,Central Russian Universal Exchange
+CUF,Chengdu United Futures Exchange
+CBT,Chicago Board of Trade
+CBO,Chicago Board Options Exchange
+WCB,Chicago Board Options Exchange
+LCW,Chicago Board Options Exchange for Nasdaq Large Cap Equity
+SCW,Chicago Board Options Exchange for Nasdaq Small Cap Equity
+CME,Chicago Mercantile Exchange
+CRC,Chicago Rice and Cotton Exchange
+SCM,Chicago Stock Exchange for Nasdaq Small Cap
+BEC,Chile Electronic Exchange
+CFE,China Commod & Fut Exch Inc of Hainan
+CN$,China Money Rates
+ZHC,China Zhengzhou Commodity Exchange
+#CN,"China, Non-Exchange FI Update"
+CHT,Chittagong Stock Exchange Ltd
+CQC,Chongqing Commodity Exchange
+CCX,Chubu Commodity Exchange
+CHU,Chur Stock Exchange
+LCC,Cincinnati Stock Exchange for Nasdaq Large Cap
+SCC,Cincinnati Stock Exchange for Nasdaq Small Cap
+GEM,CME Growth and emerging markets
+IOM,CME:Index and Options Market
+IMM,CME:International Monetary Market
+COL,Colombia Stock Exchange
+CSE,Colombo Stock Exchange
+CMX,Commodities Exchange Centre (CEC)
+CMM,Commodity and Monetary Exchange of Malaysia (COMMEX Malaysia)
+CNN,Companies Tracked By Editorial
+CEQ,Consolidated European Quotes
+BSQ,Consolidated Issues listed by Boston SE
+WCQ,Consolidated Issues listed by CBOE
+MWQ,CONSOLIDATED ISSUES LISTED BY MIDWEST SE
+PSQ,Consolidated Issues Listed By Pacific SE
+PHQ,Consolidated Issues listed by Philadelphia SE
+CUQ,Consolidated UK Quotes
+CPH,Copenhagen Stock Exchange
+COR,Cordoba Stock Exchange
+CRE,Costa Rica Electronic Stock Exchange
+CRN,Costa Rica National Stock Exchange
+FMF,Cote Bleu
+CU$,Currency Data Base
+DLC,Dalian Commodity Exchange
+DSS,Dar es Salaam Stock Exchange
+#DK,"Denmark, Non-Exchange FI Update"
+DSE,Dhaka Stock Exchange Ltd
+DSM,Doha Securities Market
+DJI,Dow Jones Global Indices
+DTB,DTB
+DXB,Dubai Financial Market
+DUB,Dublin Stock Exchange
+#IE,"Dublin, Non-Exchange FI Updates"
+DUN,Dunedin Regional Stock Exchange
+DUS,Dusseldorf Stock Exchange
+EAS,EASDAQ SA
+ELS,El Salvador Stock Exchange
+ECM,Emerging Company Marketplace
+EF$,Energy Exchange-Friday RAM updates
+AT$,Energy Exchange-Tues/Thurs RAM updates
+TE$,Energy Exchange-Tues/Thurs REMA updates
+WE$,Energy Exchange-Wednesday RAM updates
+WS$,Energy Exchange-Wednesday Singapore upd
+ENO,Energy Options Exchange
+EMO,EnMO
+EUX,Eurex
+EUD,Eurex Market Depth
+EUS,Eurex US
+ME2,EURO MTS-LISTINO
+#XS,"Eurobonds, Non-Exchange FI Update"
+MTE,EuroMTS Ltd
+NXT,EuroNext
+AEX,Euronext Amsterdam NV
+BRU,Euronext Brussels
+ES1,EURONEXT CASH LEVEL 1
+ENS,EURONEXT CASH LEVEL 2
+ENX,Euronext Indices
+RE$,Europe and Mediterranean Bunkers
+EEX,European Energy Exchange
+EME,European Mercantile Exchange
+EWX,European Warrant Exchange (EUWAX)
+EXA,EXAA Energy Exchange Austria
+EX@,Exotic Forex
+FEP,Financial Express
+FTM,"Financial Terminal Market, Amsterdam"
+FOM,Finland Options Market (Helsinki Securities & Derivatives Exchange)
+#FI,"Finland, Non-Exchange FI Update"
+ELX,Finnish Electricity Exchange
+FIX,Fixings
+FIR,Florence Stock Exchange
+#FR,"France, Non-Exchange FI Update"
+FRA,Frankfurt Stock Exchange
+FSI,FTSE International
+FST,FTSE UK Trader
+FKA,Fukuoka Stock Exchange
+GVA,Geneva Stock Exchange
+GOA,Genoa Stock Exchange
+RG$,German Inland Gas Oil
+#DE,"Germany, Non-Exchange FI Update"
+GSE,Ghana Stock Exchange
+GBE,Global Best
+#GR,"Greece, Non-Exchange FI Update"
+TWO,Gretai Securities Market
+GUF,Guangdong United Futures Exchange
+GZC,Guangzhou Commodities & Futures Exchange
+GYQ,Guayaquil Stock Exchange
+HAM,Hamburg Stock Exchange
+WTB,HANOVER COMMODITY EXCHANGE
+HAN,Hanover Stock Exchange
+HOM,Helsinki Options & Futures Exchange
+HEL,Helsinki Stock Exchange
+$HF,HFE Rolling Forex
+HIR,Hiroshima Stock Exchange
+VSE,Ho Chi Minh Securities Trading Centre
+HGE,Hokkaido Grain
+HFE,Hong Kong Futures Exchange Ltd
+HK$,Hong Kong Money Rates
+#HK,"Hong Kong, Non-Exchange FI Update"
+IBX,iBOXX Ltd
+#IS,Iceland Fixed Income
+ICX,Iceland Stock Exchange
+#IN,India Non-Exchange FI Update
+IBK,Indian Government Benchmarks
+ID$,Indonesia Funds
+INS,Instinet
+IBS,Inter Bank Information Systems (IBIS)
+IB$,Interbank Rates
+MCP,Interbolsa Portugal
+IBU,International Brunei Exchange
+IL$,International LPG
+IPE,International Petroleum Exchange
+ISO,International Securities Exchange
+IR$,Iran Non Exchange Forex
+IFX,Irish Futures and Options Market
+IFE,Island Futures Exchange LLC
+IGE,Istanbul Gold Exchange
+IST,Istanbul Stock Exchange
+ISF,Istanbul Stock Exchange (Mutual Funds)
+#TR,"Istanbul, Non-Exchange FI Update"
+IGF,Italian Government Forwards
+#IT,"Italy, Non-Exchange FI Update"
+JFX,Jakarta Futures Exchange
+JKT,Jakarta Stock Exchange
+JA$,Japan Spot Products
+#JP,"Japan, Non-Exchange FI Update"
+JBT,Japanese Bond Trading Co (JBTC)
+JSD,JASDAQ - OTC (Japan Securities Dealers' Association)
+JIW,Jiway Ltd
+FFE,Kanmon Commodity Exchange
+KEX,Kansai Agricultural Commodity
+KBT,Kansas City Board of Trade
+#KZ,"Kazakhstan, Non-Exchange FI Update"
+KAZ,Kazakstan Stock Exchange
+KRE,Kobe Rubber Exchange
+KEC,Korea Electronic Communications Network
+KFE,Korea Futures Exchange
+KOE,Korea Securities Dealers Automated Quotation (KOSDAQ)
+KSC,Korea Stock Exchange
+KSB,Korea Stock Exchange - Bond Data
+KS$,Korean Money Rates (Mon-Fri)
+KO$,Korean Money Rates (Mon-Sat)
+#KR,Korean OTC Bonds
+KLS,Kuala Lumpur Stock Exchange
+KUW,Kuwait Stock Exchange
+KYO,Kyoto Stock Exchange
+LAP,La Plata Stock Exchange
+LAG,Lagos Stock Exchange
+LAT,LATIBEX
+LAU,Lausanne Stock Exchange
+NLX,LIFFE/NASDAQ Single Stock Futures Exchange
+LIC,Lille Commodity Exchange
+LIL,Lille Stock Exchange
+LMA,Lima Stock Exchange
+LIP,Lipper
+LPC,Lipper Canadian Mutual Funds
+LIS,Lisbon Stock Exchange
+LJU,"Ljubljana Stock Exchange, Inc"
+LCE,London Commodity Exchange
+LD@,London Forex
+LFO,London Futures & Options Exchange
+FOX,London Futures and Options Exchange
+LLT,London Latest Touch System
+LMF,London Meat Futures Exchange
+LOT,London Over The Counter Market
+LSE,London Stock Exchange
+LUZ,Lucerne Stock Exchange
+LUS,Lusaka Stock Exchange
+LUX,Luxembourg Stock Exchange
+#LU,"Luxembourg, Non-Exchange FI Update"
+LYO,Lyon Stock Exchange
+MDS,Madras Stock Exchange Ltd
+MFI,Madrid Fixed Income Market
+MAD,Madrid Stock Exchange
+MAE,MAE Argentina
+MDC,Maeba Cocoons Exchange
+MAK,Makati Stock Exchange
+MLS,Malawi Stock Exchange
+MDX,Malaysia Derivatives Exchange Bhd
+#MY,"Malaysia, Non-Exchange FI Update"
+MY$,Malaysian Money Rates
+MLT,Malta Stock Exchange
+MIF,Manila International Futures Exchange
+MNL,Manila Stock Exchange
+MRC,Maricaibo Stock Exchange
+MRS,Marseilles Stock Exchange
+MAT,MATIF
+KLC,Mdex Commodity Market
+MBM,Mdex MGS Futures Market
+MME,Mdex Non-Equity Financial Market
+MED,Medellmn Stock Exchange
+MD$,Mediterranean Spot Products
+MEL,Melbourne Stock Exchange
+MEN,Mendoza Stock Exchange
+BCC,Mercado A Termino de Buenos Aires
+MCA,Mercado de Deuda Publica en Anotaciones
+MST,Mercato Telematico Titoli Stat
+MLY,Merrill Lynch Eurobonds
+154,Metrex Stock Exchange
+MEX,Mexican Stock Exchange
+MXI,MEXICO STOCK EXCH (INTERMEDIATE MARKET)
+#MX,"Mexico, Non-Exchange FI Update"
+MAC,MidAmerica Commodities Exchange
+ME$,MidEast Spot Products
+MID,Midwest Stock Exchange
+LCM,Midwest Stock Exchange for Nasdaq Large Cap
+IFM,MIF SpA
+MIL,Milan Stock Exchange
+MGE,Minneapolis Grain Exchange
+MO$,Monday Update Only
+MNP,MONEP
+AM$,Monitor Amsterdam Rates
+AS$,Monitor Asian Rates
+BR$,Monitor Brussels Rates
+EU$,Monitor European Rates
+FF$,Monitor Frankfurt Rates
+GMT,Monitor General Exchange Offset
+IN$,Monitor Indian Rates
+LA$,Monitor Latin American Rates
+LO$,Monitor London Rates
+NZ$,Monitor New Zealand Rates
+NA$,Monitor North American Rates
+PA$,Monitor Paris Rates
+SI$,Monitor Singapore Rates
+SY$,Monitor Sydney Rates
+TO$,Monitor Tokyo Rates
+WL$,Monitor Wellington Rates
+BEU,Montevideo Electronic Stock Exchange
+MTV,Montevideo Stock Exchange
+MON,Montreal Exchange
+MOE,Montreal Options Exchange
+MIO,Montreal SE IOM Division
+MDM,Montreal SE Mercantile Division
+MCS,Moscow Central Stock Exchange
+MOS,Moscow Commodities Exchange
+MCX,Moscow Interbank Currency Exchange (MICEX)
+MOI,Moscow Oil Exchange
+MSE,Moscow Stock Exchange (MOSTEX)
+BIN,MSG Bond Index
+MTA,MTS Amsterdam
+MTR,MTS Austrian Market
+MTC,MTS Belgium
+MTD,MTS Denmark
+MTL,MTS Finland
+ML2,MTS Finland - Listino
+MTF,MTS France
+MTG,MTS Germany
+MG2,MTS Germany - Listino
+MTI,MTS Ireland
+MI2,MTS Ireland - Listino
+MS2,MTS ITALY - LISTINO
+MTS,MTS ITALY - LISTINO
+MT1,MTS PORTUGAL
+MTU,MTS Spain
+MUN,Munich Stock Exchange
+MUS,Muscat Securities Market
+NGO,Nagoya Stock Exchange
+NTC,Nagoya Textile Exchange
+NAI,Nairobi Stock Exchange
+NAK,NAKADACHI SECURITIES
+NAY,Nancy Stock Exchange
+XXX,Nanjing Petroleum Exchange
+NAN,Nantes Stock Exchange
+NAP,Naples Stock Exchange
+ADF,NASD Alternative Display Facility for Nasdaq Large Cap
+ADS,NASD Alternative Display Facility for Nasdaq Small Cap
+ADC,NASD Alternative Display Facility for NYSE/AMEX Issues
+NQS,NASD Alternative Quotation Systems
+NSD,NASD Trace Feed
+NDV,Nasdaq Depth View
+NQD,NASDAQ DEUTSCHLAND
+NIM,NASDAQ International Marketing System
+NAJ,NASDAQ Japan Exchange
+NMS,NASDAQ National Market System
+NMQ,NASDAQ Stock Exchange Consolidated Large Cap
+NAQ,NASDAQ Stock Exchange Consolidated Small Cap
+NTV,Nasdaq Total View
+UIT,NASDAQ Unit Trust
+CIN,National Stock Exchange
+NSI,National Stock Exchange of India
+VLX,National Stock Exchange of Lithuania
+NG$,Natural Gas Exchange
+#NL,"Netherlands, Non-Exchange FI Update"
+NEU,Neuenberg Stock Exchange
+LNM,New Market (France)
+POD,New Securities Exchange Montenegro
+NBI,New York Board of Trade Indices
+NYQ,New York Consolidated
+NY@,New York Forex
+NY$,New York Harbour Spot Products
+NYM,New York Mercantile Exchange (NYMEX)
+NYO,New York Options Exchange
+NYS,New York Stock Exchange
+LCN,New York Stock Exchange for Nasdaq Large Cap
+SCN,New York Stock Exchange for Nasdaq Small Cap
+NY2,New York Stock Exchange OpenBook
+NFE,New Zealand Futures & Options Exchange
+NZI,New Zealand Interest Rate Indices
+NZE,New Zealand Stock Exchange
+#NZ,"New Zealand, Non-Exchange FI Update"
+NWX,NEWEX Borse AG
+NIK,Nihon Keizai Shimbun Inc
+NII,Niigata Securities Exchange
+NGM,Nordic Growth Market
+NPX,NordPool ASA
+RA$,North American Bunkers
+NCE,North Cyprus Exchange
+NW$,North West Europe Spot Products
+#NO,"Norway, Non-Exchange FI Update"
+NFF,Norwegian Fund Broker Association
+NOM,Norwegian Options Market
+NQB,NQB US Pink Sheet Quotations
+OSE,Occidente Stock Exchange
+OFX,OFEX
+OML,OMLX London Securities & Derivatives Exchange
+ONE,One Chicago LLC
+BDP,Oporto Derivatives Exchange
+OMF,Options Market France
+OPQ,Options Price Reporting Authority BBO
+OGE,Osaka Grain Exchange
+OME,Osaka Mercantile Exchange
+OSA,Osaka Securities Exchange
+OTE,Osaka Textile Exchange
+OSL,Oslo Stock Exchange
+OBB,OTC Bulletin Board Market
+OTI,Over The Counter Exchange of India
+OTC,Over The Counter Mkt
+PAO,Pacific Options Exchange
+PSE,Pacific Stock Exchange
+LCP,Pacific Stock Exchange for Nasdaq Large Cap
+SCP,Pacific Stock Exchange for Nasdaq Small Cap
+PAL,Palermo Stock Exchange
+PLS,Palestine Securities Exchange
+PAN,Panama Stock Exchange
+PCE,Paris Commodity Exchange
+PFF,Paris Financial Futures
+PAR,Paris Stock Exchange
+UTS,PFTS Securites Trading System (Ukraine)
+PFT,PFTS Securities Trading System (Ukraine)
+PBT,Philadelphia Board of Trade
+PHO,Philadelphia Options Exchange
+XPH,Philadelphia Stock Exchange
+LCX,Philadelphia Stock Exchange for Nasdaq Large Cap
+SCX,Philadelphia Stock Exchange for Nasdaq Small Cap
+PHS,"Philippine Stock Exchange, Inc"
+PH$,Philippines Money Rate
+#PH,Philippines Non Exchange FI Update
+#PL,"Poland, Non-Exchange FI Update"
+POX,Polish Power Exchange
+#PT,"Portugal, Non-Exchange FI Update"
+PRA,Prague Stock Exchange
+PRU,Pru-Bache LME Contributor Rates
+PUX,PULPEX
+QTO,Quito Stock Exchange
+EA$,RA Energy Exchange
+EM$,RAM Energy Exchange
+RSQ,RASDAQ
+RED,REDIBook
+EE$,REMA Energy Exchange
+REU,Reuters
+RII,RIM Intelligence Co Ltd
+RIO,Rio de Janeiro Stock Exchange
+TNL,Romanian Equities Traded but not Listed
+#RO,Romanian Non-Exchange FI Update
+ROM,Rome Stock Exchange
+ROS,Rosario Stock Exchange
+RAS,Rubber Association of Singapore
+#RU,"Russia, Non-Exchange FI Update"
+RUO,Russian OTC Exchange
+RUS,Russian Stock Exchange
+RTS,Russian Trading System - RTS
+SGO,Santiago Stock Exchange
+BMF,Sao Paulo Commodity and Futures Exchange
+SAO,Sao Paulo Stock Exchange
+SAP,Sapporo Securities Exchange
+SAU,Saudi Arabian Monetary Authority
+#SA,Saudi Arabian Non-Exchange FI update
+SCE,Shanghai Cereals & Oils Exchange
+SHF,Shanghai Futures Exchange
+SGE,Shanghai Gold Exchange
+SME,Shanghai Metal Exchange
+SHH,Shanghai Stock Exchange
+SYC,Shenyang Commodity Exchange
+SZM,Shenzhen Mercantile Exchange
+SHZ,Shenzhen Stock Exchange
+MCE,SIBE - Mercado continuo Espanol
+SIK,Siberian Interbank Currency Exchange
+SFC,Sibiu Monetary-Financial and Commodities Exchange
+SNC,SINAC
+SIC,Singapore Commodity Exchange Ltd
+ES$,Singapore Energy Exchange
+SES,Singapore Exchange Securities Trading
+RS$,Singapore FEOP
+SIM,Singapore International Monetary Exchange Ltd
+SS$,Singapore Spot Product Prices
+SG$,Singapore Unit Trusts and Funds
+#SI,"Singapore, Non-Exchange FI Update"
+SMA,SOMA Stock Exchange
+RCT,Source is a Reuter Contributor
+#ZA,"South Africa, Non-Exchange FI Update"
+SFX,South African Futures Exchange
+RSA,South African Quotations (SAQUOT)
+#KS,South Korea Non-Exchange FI Update
+SUE,South Urals Stock Exchange
+#ES,"Spain, Non-Exchange FI Update"
+MRF,Spanish Financial Futures Market MEFF Renta Fija
+FDI,Spanish Investment Funds
+MFX,Spanish Options Exchange
+SPN,SPECTRON
+LK$,Sri Lanka Money Rates
+SGA,St Gallen Stock Exchange
+SPC,St Petersburg Currency Exchange
+SPS,St Petersburg Stock Exchange
+MAU,Stock Exchange of Mauritius Ltd
+STO,Stockholmsborsen - cash
+SOM,Stockholmsborsen - derivatives
+STX,STOXX
+STU,Stuttgart Stock Exchange
+SUB,Surabaya Stock Exchange
+SUC,Suzhou Commodity Exchange
+PMI,Svenska Penningmarknad
+#SE,"Sweden, Non-Exchange FI Update"
+FBF,Swedish Mutual Fund Association
+SWX,Swiss Exchange
+SFF,Swiss Options and Financial Futures Exchange (SOFFEX)
+#CH,"Switzerland, Non-Exchange FI Update"
+SFE,Sydney Futures Exchange
+TIM,Taiwan Futures Exchange
+TW$,Taiwan Money Rates
+TAI,Taiwan Stock Exchange
+#TW,"Taiwan, Non-Exchange FI Update"
+TLX,Tallinn Stock Exchange (Estonia)
+SE$,TDB Energy - Thursday Singapore UPD
+TLV,Tel-Aviv Stock Exchange
+BDC,Thai Bond Dealing Centre
+TH$,Thailand Money Rates
+AFT,The Agricultural Futures Exchange of Thailand
+BAH,The Bahrain Stock Exchange
+BFE,The Baltic Exchange
+BAR,The Barcelona Stock Exchange
+BSX,The Bermuda Stock Exchange
+BUH,The Bucharest Stock Exchange
+CAL,The Calcutta Stock Exchange
+CIE,"The Channel Islands Stock Exchange, LBG"
+CYS,The Cyprus Stock Exchange
+DES,The Delhi Stock Exchange Association Ltd
+ISE,The Irish Stock Exchange
+ISL,"The Island ECN, Inc"
+ILT,The Island Trading
+JNB,The Johannesburg Stock Exchange
+KAR,The Karachi Stock Exchange (Guarantee) Ltd
+KLF,The Kuala Lumpur Options and Financial Futures Exchange (KLOFFE)
+LIF,The London International Financial Futures and Options Exchange
+LME,The London Metal Exchange
+NSE,The Namibian Stock Exchange
+NAS,The Nasdaq Stock Market
+OPO,The Oporto Derivatives Exchange
+RIX,The Riga Stock Exchange
+MRV,The Spanish Options Exchange
+HKG,The Stock Exchange of Hong Kong Ltd
+SET,The Stock Exchange of Thailand
+TOR,The Toronto Stock Exchange
+WPG,The Winnipeg Commodity Exchange
+WPE,The Winnipeg Stock Exchange
+ZAG,The Zagreb Stock Exchange
+THM,Third Market Corp
+ECO,Third-Party Economic Database
+TUF,Tianjin United Future Exchange
+TIR,Tirana Stock Exchange
+TXX,TLX Trading Lab
+TCE,Tokyo Commodity Exchange (TOCOM)
+ET$,Tokyo Energy Exchange
+TGE,Tokyo Grain Exchange
+TFF,Tokyo International Financial Futures Exchange
+TYO,Tokyo Stock Exchange
+TSU,Tokyo Sugar Exchange
+TO@,Toronto Forex
+TFE,Toronto Futures Exchange
+TOE,Toronto Options Exchange
+TRI,Trieste Stock Exchange
+CVE,TSX Venture Exchange
+NEX,TSX Venture Exchange (Inactive Board)
+TUN,Tunis Stock Exchange
+TRN,Turin Stock Exchange
+UG$,U.S. Gulf Spot Product
+UL$,U.S. LPG
+RT$,U.S. Mid-Continent Group3 Spot Pr.
+RC$,U.S. Mid-Continent Sp. Pr. (Chicago)
+RN$,U.S. Natural Gas Prices
+UW$,U.S. West Coast Spot Product
+UGS,Uganda Securities Exchange
+PWX,UK Power Exchange
+UKR,Ukraine Commodity Exchange
+UCE,Ukrainian Interbank Currency Exchange
+#UK,"United Kingdom, Non-Exchange FI Update"
+#US,"United States, Non-Exchange FI Update"
+UEX,Uruguayan Electronic Exchange
+UCA,US Composite - AMSE
+UCQ,US Composite - NYSE
+IMQ,US Intermarket Level 2
+PNK,USA Pink Sheets
+VAL,Valencia Stock Exchange
+VAO,Vancouver Options Exchange
+VAN,Vancouver Stock Exchange
+BEV,Venezuelan Electronic Stock Exchange
+VCE,Venice Stock Exchange
+VIE,Vienna Stock Exchange - Cash Market
+VN$,Vietnam Money Rates
+VTX,Virt-X PLC
+WSE,Warsaw Stock Exchange
+WAS,Washington Stock Exchange
+WLG,Wellington Regional Stock Exchange
+WMC,WM Co
+NE$,World Crude Netbacks
+CR$,World Crude Spot
+EW$,World Energy Exchange
+IND,World Indices
+GL$,World Monitor Exchange
+WHS,Wuhan Securities Exchange Centre
+GER,Xetra
+YCE,Yokohama Commodity Exchange
+YSE,Yokohama Silk Exchange
+ZSE,Zimbabwe Stock Exchange
+ZRH,Zurich Stock Exchange

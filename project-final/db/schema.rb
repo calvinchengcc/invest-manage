@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160308223650) do
+ActiveRecord::Schema.define(version: 20160309084918) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "number"
@@ -50,15 +50,22 @@ ActiveRecord::Schema.define(version: 20160308223650) do
   add_index "portfolios", ["manager_id"], name: "index_portfolios_on_manager_id"
   add_index "portfolios", ["owner_id"], name: "index_portfolios_on_owner_id"
 
-  create_table "stocks", force: :cascade do |t|
-    t.string   "symbol",     null: false
-    t.string   "exchange",   null: false
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "stock_exchanges", force: :cascade do |t|
+    t.string "exchange_code", null: false
+    t.string "exchange_name", null: false
   end
 
-  add_index "stocks", ["symbol", "exchange"], name: "index_stocks_on_symbol_and_exchange", unique: true
+  add_index "stock_exchanges", ["exchange_code"], name: "index_stock_exchanges_on_exchange_code", unique: true
+
+  create_table "stocks", force: :cascade do |t|
+    t.string   "symbol",            null: false
+    t.string   "stock_exchange_id", null: false
+    t.string   "name",              null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "stocks", ["symbol"], name: "index_stocks_on_symbol", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
