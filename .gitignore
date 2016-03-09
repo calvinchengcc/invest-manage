@@ -127,3 +127,7 @@ bower.json
 *.aux
 *.log
 *.synctex.gz
+
+# IntelliJ
+*.iml
+.idea/
