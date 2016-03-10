@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  exchange_code: MyString
-  exchange_code: 
-
-two:
-  exchange_code: MyString
-  exchange_code: 
