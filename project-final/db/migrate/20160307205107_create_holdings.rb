@@ -6,8 +6,6 @@ class CreateHoldings < ActiveRecord::Migration
       t.integer :num_shares, null: false
       t.datetime :datetime, null: false
       t.decimal :price, null: false
-
-      t.timestamps null: false
     end
   end
 end

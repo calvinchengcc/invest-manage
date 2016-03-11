@@ -1,0 +1,6 @@
+id, purpose, creation_date, principal, cash, owner_id, manager_id
+1, investing, 2015-01-03, 10000, 124, 1, 1
+2, investing, 2012-08-13, 400000, 3728.12, 3, 2
+3, trading, 2008-04-10, 23000, 124323.93, 4, 4
+4, retirement, 2007-03-29, 100000, 10.53, 1, 2
+5, bored, 2004-12-25, 500000, 0.01, 5, 5

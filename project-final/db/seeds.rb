@@ -7,16 +7,39 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'smarter_csv'
 
-user = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << user.email
+def main
+  user = CreateAdminService.new.call
+  puts 'CREATED ADMIN USER: ' << user.email
 
-exchange_data_file = File.join(Dir.pwd, 'db', 'seeds', 'stock_exchange_codes.csv')
-exchange_data = SmarterCSV.process exchange_data_file
-ActiveRecord::Base.transaction do
-  exchange_data.each do |row|
-    Exchange.find_or_create_by!(code: row[:code]) do |exchange|
-      exchange.name = row[:name]
-    end
+  seed_record('exchanges', Exchange)
+  puts 'ADDED STOCK EXCHANGES'
+
+  seed_record('stocks', Stock)
+  puts 'ADDED STOCKS'
+
+  seed_record('addresses', Address)
+  puts 'ADDED ADDRESSES'
+
+  seed_record('users', User)
+  puts 'ADDED USERS'
+
+  seed_record('portfolios', Portfolio)
+  puts 'ADDED PORTFOLIOS'
+
+  seed_record('holdings', Holding)
+  puts 'ADDED HOLDINGS'
+end
+
+def parse_csv_file(filename)
+  file = File.join(Dir.pwd, 'db', 'seeds', "#{filename}.csv")
+  SmarterCSV.process file
+end
+
+def seed_record(filename, record)
+  data = parse_csv_file(filename)
+  ActiveRecord::Base.transaction do
+    data.each { |row| record.create!(row) if record.find_by(id: row[:id]).nil? }
   end
 end
-puts 'Added stock exchange codes'
+
+main
