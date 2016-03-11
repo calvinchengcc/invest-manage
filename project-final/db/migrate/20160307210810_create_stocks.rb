@@ -6,8 +6,6 @@ class CreateStocks < ActiveRecord::Migration
       t.string :name, null: false
 
       t.index :symbol, unique: true
-
-      t.timestamps null: false
     end
   end
 end

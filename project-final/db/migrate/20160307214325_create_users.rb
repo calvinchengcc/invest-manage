@@ -27,8 +27,6 @@ class CreateUsers < ActiveRecord::Migration
 
       t.index :email, unique: true
       t.index :reset_password_token, unique: true
-
-      t.timestamps null: false
     end
   end
 end

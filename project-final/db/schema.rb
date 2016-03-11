@@ -14,13 +14,11 @@
 ActiveRecord::Schema.define(version: 20160309180006) do
 
   create_table "addresses", force: :cascade do |t|
-    t.string   "number"
-    t.string   "street"
-    t.string   "city",        null: false
-    t.string   "country",     null: false
-    t.string   "postal_code"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string "number"
+    t.string "street"
+    t.string "city",        null: false
+    t.string "country",     null: false
+    t.string "postal_code"
   end
 
   create_table "exchanges", force: :cascade do |t|
@@ -36,33 +34,27 @@ ActiveRecord::Schema.define(version: 20160309180006) do
     t.integer  "num_shares",   null: false
     t.datetime "datetime",     null: false
     t.decimal  "price",        null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
   end
 
   add_index "holdings", ["portfolio_id"], name: "index_holdings_on_portfolio_id"
   add_index "holdings", ["stock_id"], name: "index_holdings_on_stock_id"
 
   create_table "portfolios", force: :cascade do |t|
-    t.string   "purpose"
-    t.date     "creation_date"
-    t.decimal  "principal",     default: 0.0, null: false
-    t.decimal  "cash",          default: 0.0, null: false
-    t.integer  "owner_id",                    null: false
-    t.integer  "manager_id",                  null: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.string  "purpose"
+    t.date    "creation_date"
+    t.decimal "principal",     default: 0.0, null: false
+    t.decimal "cash",          default: 0.0, null: false
+    t.integer "owner_id",                    null: false
+    t.integer "manager_id",                  null: false
   end
 
   add_index "portfolios", ["manager_id"], name: "index_portfolios_on_manager_id"
   add_index "portfolios", ["owner_id"], name: "index_portfolios_on_owner_id"
 
   create_table "stocks", force: :cascade do |t|
-    t.string   "symbol",      null: false
-    t.integer  "exchange_id", null: false
-    t.string   "name",        null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string  "symbol",      null: false
+    t.integer "exchange_id", null: false
+    t.string  "name",        null: false
   end
 
   add_index "stocks", ["symbol"], name: "index_stocks_on_symbol", unique: true
@@ -82,8 +74,6 @@ ActiveRecord::Schema.define(version: 20160309180006) do
     t.integer  "role",                   default: 0,  null: false
     t.string   "phone"
     t.integer  "address_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

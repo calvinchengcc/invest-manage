@@ -7,8 +7,6 @@ class CreatePortfolios < ActiveRecord::Migration
       t.decimal :cash, null: false, default: 0
       t.integer :owner_id, null: false, index: true
       t.integer :manager_id, null: false, index: true
-
-      t.timestamps null: false
     end
   end
 end
