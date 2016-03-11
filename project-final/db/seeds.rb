@@ -17,6 +17,11 @@ def main
   put_csv_data_in_record('stocks', Stock)
   puts 'ADDED STOCKS'
 
+  # TODO Add portfolios first
+
+  put_csv_data_in_record('holdings', Holding)
+  puts 'ADDED HOLDINGS'
+
   put_csv_data_in_record('addresses', Address)
   puts 'ADDED ADDRESSES'
 

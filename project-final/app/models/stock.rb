@@ -1,5 +1,5 @@
 class Stock < ActiveRecord::Base
-  belongs_to :exchange, primary_key: :code
+  belongs_to :exchange, primary_key: :code, inverse_of: :stocks
   has_many :holdings
 
   validate :listed_on_us_exchange
