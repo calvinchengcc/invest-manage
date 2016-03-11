@@ -1,0 +1,7 @@
+name, email, phone, address_id, role, password, password_confirmation
+George Preece, gkp@example.com, 6392840427, 6, 0, default, default
+Anabelle Liao, aliao@example.com, 4216160000, 5, 1, default, default
+Erik Combs, ecombs@example.com, 4382719285, 4, 0, default, default
+Natalie Bolduc, natalie@example.com, 583716379, 3, 0, default, default
+Madeleine Nilsen, mnilsen@example.com, 5829774637, 2, 0, default, default
+Patrik Larsson, patrik@example.com, 7947252898, 1, 0, default, default

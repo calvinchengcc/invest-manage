@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20160309180006) do
 
   create_table "stocks", force: :cascade do |t|
     t.string   "symbol",      null: false
-    t.string   "exchange_id", null: false
+    t.integer  "exchange_id", null: false
     t.string   "name",        null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20160309180006) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "name",                                null: false
-    t.integer  "role",                                null: false
+    t.integer  "role",                   default: 0,  null: false
     t.string   "phone"
     t.integer  "address_id"
     t.datetime "created_at",                          null: false

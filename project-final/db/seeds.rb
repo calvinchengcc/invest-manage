@@ -17,24 +17,38 @@ def main
   put_csv_data_in_record('stocks', Stock)
   puts 'ADDED STOCKS'
 
-  # TODO Add portfolios first
-
-  put_csv_data_in_record('holdings', Holding)
-  puts 'ADDED HOLDINGS'
-
   put_csv_data_in_record('addresses', Address)
   puts 'ADDED ADDRESSES'
 
-  # TODO
+  put_user_data('users')
   puts 'ADDED USERS'
+
+  put_csv_data_in_record('portfolios', Portfolio)
+  puts 'ADDED PORTFOLIOS'
+
+  put_csv_data_in_record('holdings', Holding)
+  puts 'ADDED HOLDINGS'
+end
+
+def parse_csv_file(filename)
+  file = File.join(Dir.pwd, 'db', 'seeds', "#{filename}.csv")
+  SmarterCSV.process file
 end
 
 def put_csv_data_in_record(filename, record)
-  file = File.join(Dir.pwd, 'db', 'seeds', "#{filename}.csv")
-  data = SmarterCSV.process file
+  data = parse_csv_file(filename)
   ActiveRecord::Base.transaction do
     data.each do |row|
       record.find_or_create_by! row
+    end
+  end
+end
+
+def put_user_data(filename)
+  data = parse_csv_file filename
+  ActiveRecord::Base.transaction do
+    data.each do |row|
+      User.create(row) if User.find_by(email: row[:email]).nil?
     end
   end
 end

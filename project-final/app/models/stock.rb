@@ -16,6 +16,5 @@ class Stock < ActiveRecord::Base
     query = StockQuote::Stock.quote(self.symbol)
     self.exchange_id ||= Exchange.find_by!(code: query.stock_exchange).id
     self.name ||= query.name
-    puts("#{self.exchange_id} #{self.name}")
   end
 end
