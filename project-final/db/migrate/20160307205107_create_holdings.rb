@@ -4,7 +4,7 @@ class CreateHoldings < ActiveRecord::Migration
       t.integer :portfolio_id, null: false, index: true
       t.integer :stock_id, null: false, index: true
       t.integer :num_shares, null: false
-      t.date :date, null: false
+      t.datetime :datetime, null: false
       t.decimal :price, null: false
 
       t.timestamps null: false

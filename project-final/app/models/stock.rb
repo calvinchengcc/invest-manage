@@ -1,5 +1,5 @@
 class Stock < ActiveRecord::Base
-  belongs_to :exchange, primary_key: :code, inverse_of: :stocks
+  belongs_to :exchange
   has_many :holdings
 
   validate :listed_on_us_exchange
@@ -7,13 +7,15 @@ class Stock < ActiveRecord::Base
   before_validation :lookup_exchange_and_name_if_not_given
 
   def listed_on_us_exchange
-    unless Exchange.exists?(code: self.exchange_id)
+    unless Exchange.exists?(self.exchange_id)
       errors.add(self.symbol, 'is not listed on a US stock exchange.')
     end
   end
 
   def lookup_exchange_and_name_if_not_given
-    self.exchange_id ||= StockQuote::Stock.quote(self.symbol).stock_exchange
-    self.name ||= StockQuote::Stock.quote(self.symbol).name
+    query = StockQuote::Stock.quote(self.symbol)
+    self.exchange_id ||= Exchange.find_by!(code: query.stock_exchange).id
+    self.name ||= query.name
+    puts("#{self.exchange_id} #{self.name}")
   end
 end
