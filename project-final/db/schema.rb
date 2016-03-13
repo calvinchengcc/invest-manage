@@ -14,11 +14,10 @@
 ActiveRecord::Schema.define(version: 20160309180006) do
 
   create_table "addresses", force: :cascade do |t|
-    t.string "number"
-    t.string "street"
-    t.string "city",        null: false
-    t.string "country",     null: false
-    t.string "postal_code"
+    t.string "street_address", null: false
+    t.string "city",           null: false
+    t.string "country",        null: false
+    t.string "postal_code",    null: false
   end
 
   create_table "exchanges", force: :cascade do |t|
