@@ -1,5 +1,4 @@
 id,name,email,phone,address_id,role,password
-1,George Preece,gkp@example.com,6392840427,1,0,default
 2,Anabelle Liao,aliao@example.com,4216160000,2,1,default
 3,Erik Combs,ecombs@example.com,4382719285,3,0,default
 4,Natalie Bolduc,natalie@example.com,583716379,4,0,default
@@ -105,3 +104,4 @@ id,name,email,phone,address_id,role,password
 104,Fay Calhoun,vel.nisl.Quisque@Sedpharetra.edu,5432787404,104,0,default
 105,Amethyst Albert,lobortis@arcu.edu,5971629267,105,1,default
 106,Demetria Matthews,vel.arcu.Curabitur@infaucibus.edu,4721659078,106,0,default
+107,George Preece,gkp@example.com,6392840427,1,0,default
