@@ -1,4 +1,4 @@
-id,portfolio_id,stock_id,num_shares,datetime,price
+id,portfolio_id,stock_id,num_shares,purchase_date,price
 1,1,1,100,2015-01-03 09:43:12 -0800,39.23
 2,1,5,300,2015-06-02 10:23:12 -0800,102.26
 3,1,1,300,2016-01-02 13:23:31 -0800,39.23

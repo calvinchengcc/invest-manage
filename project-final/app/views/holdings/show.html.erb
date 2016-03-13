@@ -2,7 +2,7 @@
 
 <p>
   <strong>Holding:</strong>
-  <%= @holding.holding_id %>
+  <%= @holding.id %>
 </p>
 
 <p>
@@ -12,12 +12,7 @@
 
 <p>
   <strong>Symbol:</strong>
-  <%= @holding.symbol %>
-</p>
-
-<p>
-  <strong>Exchange:</strong>
-  <%= @holding.exchange %>
+  <%= @holding.stock.symbol %>
 </p>
 
 <p>
@@ -26,8 +21,8 @@
 </p>
 
 <p>
-  <strong>Datetime:</strong>
-  <%= @holding.datetime %>
+  <strong>Purchase Date:</strong>
+  <%= @holding.purchase_date %>
 </p>
 
 <p>

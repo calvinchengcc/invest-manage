@@ -28,11 +28,11 @@ ActiveRecord::Schema.define(version: 20160309180006) do
   add_index "exchanges", ["code"], name: "index_exchanges_on_code", unique: true
 
   create_table "holdings", force: :cascade do |t|
-    t.integer  "portfolio_id", null: false
-    t.integer  "stock_id",     null: false
-    t.integer  "num_shares",   null: false
-    t.datetime "datetime",     null: false
-    t.decimal  "price",        null: false
+    t.integer  "portfolio_id",  null: false
+    t.integer  "stock_id",      null: false
+    t.integer  "num_shares",    null: false
+    t.datetime "purchase_date", null: false
+    t.decimal  "price",         null: false
   end
 
   add_index "holdings", ["portfolio_id"], name: "index_holdings_on_portfolio_id"

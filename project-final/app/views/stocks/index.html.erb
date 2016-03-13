@@ -13,10 +13,10 @@
   </thead>
 
   <tbody>
-    <% @stocks.each do |stock| %>
+    <% @stocks.order(:symbol).each do |stock| %>
       <tr>
         <td><%= stock.symbol %></td>
-        <td><%= stock.exchange %></td>
+        <td><%= stock.exchange.code %></td>
         <td><%= stock.name %></td>
         <td><%= link_to 'Show', stock %></td>
         <td><%= link_to 'Edit', edit_stock_path(stock) %></td>

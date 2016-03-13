@@ -5,8 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Number</th>
-      <th>Street</th>
+      <th>Street Address</th>
       <th>City</th>
       <th>Country</th>
       <th>Postal code</th>
@@ -17,8 +16,7 @@
   <tbody>
     <% @addresses.each do |address| %>
       <tr>
-        <td><%= address.number %></td>
-        <td><%= address.street %></td>
+        <td><%= address.street_address %></td>
         <td><%= address.city %></td>
         <td><%= address.country %></td>
         <td><%= address.postal_code %></td>
