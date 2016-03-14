@@ -19,8 +19,8 @@
     <% @holdings.each do |holding| %>
       <tr>
         <td><%= holding.id %></td>
-        <td><%= holding.portfolio_id %></td>
-        <td><%= holding.stock.symbol %></td>
+        <td><%= link_to holding.portfolio_id, holding.portfolio %></td>
+        <td><%= link_to holding.stock.symbol, holding.stock %></td>
         <td><%= holding.num_shares %></td>
         <td><%= holding.purchase_date %></td>
         <td><%= holding.price %></td>

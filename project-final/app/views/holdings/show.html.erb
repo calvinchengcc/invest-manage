@@ -7,12 +7,12 @@
 
 <p>
   <strong>Portfolio:</strong>
-  <%= @holding.portfolio_id %>
+  <%= link_to @holding.portfolio_id, @holding.portfolio %>
 </p>
 
 <p>
   <strong>Symbol:</strong>
-  <%= @holding.stock.symbol %>
+  <%= link_to @holding.stock.symbol, @holding.stock %>
 </p>
 
 <p>
