@@ -1,4 +1,5 @@
 id,name,email,phone,address_id,role,password
+1,Calvin Cheng,calvin.cheng.cc@outlook.com,6043128081,1,2,asdfghjkl;1234
 2,Anabelle Liao,aliao@example.com,4216160000,2,1,default
 3,Erik Combs,ecombs@example.com,4382719285,3,0,default
 4,Natalie Bolduc,natalie@example.com,583716379,4,0,default

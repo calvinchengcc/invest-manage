@@ -22,8 +22,8 @@ class CreateUsers < ActiveRecord::Migration
       # Other attributes
       t.string :name, null: false
       t.integer :role, default: 0, null: false
-      t.string :phone
-      t.integer :address_id
+      t.string :phone, null: false
+      t.integer :address_id, null: false
 
       t.index :email, unique: true
       t.index :reset_password_token, unique: true
