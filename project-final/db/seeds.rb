@@ -8,9 +8,6 @@
 require 'smarter_csv'
 
 def main
-  user = CreateAdminService.new.call
-  puts 'CREATED ADMIN USER: ' << user.email
-
   seed_record('exchanges', Exchange)
   puts 'ADDED STOCK EXCHANGES'
 
