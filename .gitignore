@@ -97,6 +97,7 @@ capybara-*.html
 /project-final/public/system
 /project-final/coverage/
 /project-final/spec/tmp
+/project-final/out
 **.orig
 rerun.txt
 pickle-email-*.html
