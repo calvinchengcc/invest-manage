@@ -22,8 +22,8 @@
         <td><%= portfolio.creation_date %></td>
         <td><%= portfolio.principal %></td>
         <td><%= portfolio.cash %></td>
-        <td><%= portfolio.owner.name %></td>
-        <td><%= portfolio.manager.name %></td>
+        <td><%= link_to portfolio.owner.name, portfolio.owner %></td>
+        <td><%= link_to portfolio.manager.name, portfolio.manager %></td>
         <td><%= link_to 'Show', portfolio %></td>
         <td><%= link_to 'Edit', edit_portfolio_path(portfolio) %></td>
         <td><%= link_to 'Destroy', portfolio, method: :delete, data: { confirm: 'Are you sure?' } %></td>

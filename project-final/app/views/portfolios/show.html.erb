@@ -22,12 +22,12 @@
 
 <p>
   <strong>Owner:</strong>
-  <%= @portfolio.owner_id %>
+  <%= link_to "#{@portfolio.owner.name}: #{@portfolio.owner_id}", @portfolio.owner %>
 </p>
 
 <p>
   <strong>Manager:</strong>
-  <%= @portfolio.manager_id %>
+  <%= link_to  "#{@portfolio.manager.name}: #{@portfolio.manager_id}", @portfolio.manager %>
 </p>
 
 <%= link_to 'Edit', edit_portfolio_path(@portfolio) %> |

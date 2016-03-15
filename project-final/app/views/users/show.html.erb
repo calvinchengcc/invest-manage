@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Role:</strong>
+  <%= @user.role %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @user.phone %>
+</p>
+
+<p>
+  <strong>Address ID:</strong>
+  <%= link_to @user.address_id, @user.address %>
+</p>
+
+<p>
+  <strong>Owned Portfolios:</strong>
+  <ul>
+	<% @user.owned_portfolios.each do |portfolio| %>
+      <li><%= link_to portfolio.id, portfolio %></li>
+	<% end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
