@@ -15,5 +15,20 @@
   <%= @stock.name %>
 </p>
 
+<p>
+  <strong>Price:</strong>
+  <%= @stock.current_price %>
+</p>
+
+<p>
+  <strong>Change:</strong>
+  <%= @stock.current_change %> <%= @stock.current_change_percent %>
+</p>
+
+<p>
+  <strong>Historical:</strong>
+  <%= @stock.historical_price %>
+</p>
+
 <%= link_to 'Edit', edit_stock_path(@stock) %> |
 <%= link_to 'Back', stocks_path %>
