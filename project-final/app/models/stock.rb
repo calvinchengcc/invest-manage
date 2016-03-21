@@ -24,4 +24,16 @@ class Stock < ActiveRecord::Base
     StockQuote::Stock.quote(symbol).last_trade_price_only
   end
 
+  def current_change
+    StockQuote::Stock.quote(symbol).change
+  end
+
+  def current_change_percent
+    StockQuote::Stock.quote(symbol).changein_percent
+  end
+
+  def historical_price
+    StockQuote::Stock.history(symbol, Date.today - 10, Date.today).map{|x| { price: x.close.round(2), date: x.date } }
+  end
+
 end
