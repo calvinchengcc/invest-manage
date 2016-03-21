@@ -20,16 +20,28 @@ class Stock < ActiveRecord::Base
     end
   end
 
+  def update_quote
+    @quote ||= StockQuote::Stock.quote(symbol)
+  end
+
   def current_price
-    StockQuote::Stock.quote(symbol).last_trade_price_only
+    update_quote
+	@quote.last_trade_price_only
+  end
+
+  def last_trade_date_time
+    update_quote
+    { date: @quote.last_trade_date, time: @quote.last_trade_time }
   end
 
   def current_change
-    StockQuote::Stock.quote(symbol).change
+    update_quote
+    @quote.change
   end
 
   def current_change_percent
-    StockQuote::Stock.quote(symbol).changein_percent
+    update_quote
+    @quote.changein_percent
   end
 
   def historical_price
