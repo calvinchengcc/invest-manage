@@ -1,0 +1,76 @@
+body {
+	font: 10pt/1.2em "Source Sans Pro";
+	color: #444;
+}
+
+.column {
+	width: 25%;
+	box-sizing: border-box;
+	padding: 2em 0 2em 2em;
+	border-right: 1px solid #f5f5f5;
+	float: left;
+	height: 100%;
+}
+.column.view {
+	width: 50%;
+	border-right: none;
+}
+
+.nav {
+	margin-left: 12pt;
+}
+h1.title {
+	margin: 4em 0;
+	font-weight: 300;
+}
+
+.entry {
+	font-size: 12pt;
+	line-height: 16pt;
+	padding: 1em;
+	border-radius: 2px;
+}
+.entry:hover {
+	cursor: pointer;
+	background: #f5f5f5;
+}
+.entry:hover .left span {
+	text-decoration: underline;
+}
+
+.entry .right {
+	float: right;
+	text-align: right;
+}
+.entry .left {
+	display: inline-block;
+}
+.entry span {
+	display: block;
+}
+
+.portfolio span.name,
+.holding span.symbol {
+	font-weight: 700;
+}
+.portfolio span.price {
+	font-size: 16pt;
+	line-height: 32pt;
+}
+
+.holding span.price {
+	font-size: 10pt;
+}
+.holding span.change {
+	font-size: 10pt;
+	font-weight: 700;
+	padding: 1pt 4pt;
+	margin: 0 -4pt;
+	border-radius: 2px;
+}
+.holding span.change.pos {
+	background: #cfe;
+}
+.holding span.change.neg {
+	background: #fcd;
+}
