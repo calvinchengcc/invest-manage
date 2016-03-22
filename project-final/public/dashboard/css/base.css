@@ -6,13 +6,14 @@ body {
 .column {
 	width: 25%;
 	box-sizing: border-box;
-	padding: 2em 0 2em 2em;
-	border-right: 1px solid #f5f5f5;
+	padding: 20pt 0 20pt 20pt;
 	float: left;
 	height: 100%;
 }
 .column.view {
 	width: 50%;
+	padding-left: 44pt;
+	padding-right: 44pt;
 	border-right: none;
 }
 
@@ -38,11 +39,13 @@ h1.title {
 	text-decoration: underline;
 }
 
-.entry .right {
+.entry .right,
+.view .right {
 	float: right;
 	text-align: right;
 }
-.entry .left {
+.entry .left,
+.view .left {
 	display: inline-block;
 }
 .entry span {
@@ -68,9 +71,56 @@ h1.title {
 	margin: 0 -4pt;
 	border-radius: 2px;
 }
-.holding span.change.pos {
+span.change.pos {
 	background: #cfe;
 }
-.holding span.change.neg {
+span.change.neg {
 	background: #fcd;
+}
+
+.view .top {
+	margin-top: 12pt;
+	font-size: 12pt;
+}
+.view h2.symbol {
+	margin: 0 0 8pt;
+}
+.view .right span {
+	display: block;
+}
+.view .change {
+	margin: -6pt -6pt 6pt 6pt;
+	font-weight: 700;
+	font-size: 13pt;
+	padding: 4pt 6pt;
+	border-radius: 2px;
+}
+
+.graph {
+	margin: 24pt 0;
+}
+.graph svg {
+	overflow: visible;
+}
+.graph .line {
+	fill: none;
+	stroke: #4dc;
+}
+.graph .axis path, .graph .axis line {
+	stroke: #ddd;
+	stroke-width: 1px;
+	fill: none;
+}
+.graph text {
+	fill: #ddd;
+	font-size: 8pt;
+}
+.graph .axis {
+	shape-rendering: crispEdges;
+}
+.graph .axis.y .domain {
+	stroke: none;
+}
+.graph .axis.y text {
+	transform: rotate(90deg) translate(-12pt, -10pt);
 }
