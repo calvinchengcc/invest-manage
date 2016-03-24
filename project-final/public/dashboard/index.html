@@ -6,81 +6,71 @@
 		<link rel="stylesheet" href="css/base.css">
 	</head>
 	<body>
+		<div id="pageload" class="loading page">
+			<div class="wave"></div>
+			<div class="wave"></div>
+			<div class="wave"></div>
+			<div class="wave"></div>
+			<div class="wave"></div>
+		</div>
 		<div class="column portfolios">
 			<div class="nav">
 				<h1 class="title">Prophet</h1>
 			</div>
 			<div id="portfolios">
-				<div class="entry portfolio">
-					<div class="left">
-						<span class="name">Bored</span>
-						<span class="manager">Jane Smith</span>
-					</div>
-					<div class="right">
-						<span class="price">$2359</span>
-					</div>
-				</div>
-				<div class="entry portfolio">
-					<div class="left">
-						<span class="name">My Own Hedge Fund&trade;</span>
-						<span class="manager">Julie Andrews</span>
-					</div>
-					<div class="right">
-						<span class="price">$8472</span>
-					</div>
-				</div>
 			</div>
 		</div>
 		<div class="column holdings">
 			<div id="holdings">
-				<div class="entry holding">
-					<div class="left">
-						<span class="symbol">AAPL</span>
-						<span class="name">Apple Inc.</span>
-					</div>
-					<div class="right">
-						<span class="change pos">+1.03</span>
-						<span class="price">$277</span>
-					</div>
-				</div>
-				<div class="entry holding">
-					<div class="left">
-						<span class="symbol">TSLA</span>
-						<span class="name">Tesla Motors</span>
-					</div>
-					<div class="right">
-						<span class="change pos">+2.38</span>
-						<span class="price">$128</span>
-					</div>
-				</div>
-				<div class="entry holding">
-					<div class="left">
-						<span class="symbol">GOOG</span>
-						<span class="name">Alphabet Inc</span>
-					</div>
-					<div class="right">
-						<span class="change neg">-0.54</span>
-						<span class="price">$342</span>
-					</div>
-				</div>
 			</div>
 		</div>
-		<div class="column view">
+		<div id="view" class="column view">
 			<div class="top">
 				<div class="left">
-					<h2 class="symbol">AAPL</h2>
-					<span class="name">Apple Inc.</span>
+					<h2 id="symbol" class="symbol"></h2>
+					<span id="name" class="name"></span>
 				</div>
 				<div class="right">
-					<span class="change pos">+1.03</span>
-					<span class="price">$277.84</span>
+					<span id="change" class="change"></span>
+					<span id="price" class="price"></span>
 				</div>
 			</div>
 			<div class="graph">
-				<svg id="graph" width="100%" height="300px">
+				<div id="graphload" class="loading">
+					<div class="wave"></div>
+					<div class="wave"></div>
+					<div class="wave"></div>
+					<div class="wave"></div>
+					<div class="wave"></div>
+				</div>
+				<svg id="graph" width="100%" height="240pt">
 				</svg>
 			</div>
 		</div>
+
+		<script id="portfolio" type="text/template">
+<div class="entry portfolio">
+	<div class="left">
+		<span class="name">%s</span>
+		<span class="manager">%s</span>
+	</div>
+	<div class="right">
+		<span class="price">$%s</span>
+	</div>
+</div>
+		</script>
+		<script id="holding" type="text/template">
+<div class="entry holding">
+	<div class="left">
+		<span class="symbol">%s</span>
+		<span class="name">%s</span>
+	</div>
+	<div class="right">
+		<span class="change %s">%s</span>
+		<span class="price">$%s</span>
+	</div>
+</div>
+		</script>
 
 		<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 		<script src="js/script.js"></script>

@@ -44,8 +44,12 @@ class Stock < ActiveRecord::Base
     @quote.changein_percent
   end
 
-  def historical_price
+  def historical_price_10d
     StockQuote::Stock.history(symbol, Date.today - 10, Date.today).map{|x| { price: x.close.round(2), date: x.date } }
+  end
+
+  def historical_price_365d
+    StockQuote::Stock.history(symbol, Date.today - 365, Date.today).map{|x| { price: x.close.round(2), date: x.date } }
   end
 
 end

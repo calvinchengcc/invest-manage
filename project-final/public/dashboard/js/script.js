@@ -1,48 +1,205 @@
-var svg = d3.select("#graph");
-var width = svg.node().getBoundingClientRect().width;
-var height = svg.node().getBoundingClientRect().height - 30;
+Element.prototype.removeAllChildren = function () {
+	while (this.lastChild)
+		this.removeChild(this.lastChild);
+}
 
-var df = d3.time.format("%b %d");
+function App() {
+	var load = document.getElementById("pageload");
+	this.get();
+	this.render();
+	load.style.display = "none";
+}
 
-var x = d3.scale.linear().range([0, width]);
-var y = d3.scale.linear().range([height, 0]);
-var xa = d3.svg.axis().scale(x).orient("bottom").tickFormat(function (d) {
-	return df(new Date(data[d].date));
-});
-var ya = d3.svg.axis().scale(y).orient("right").ticks(6);
+App.prototype.get = function () {
+	var self = this;
+	var req = new XMLHttpRequest();
+	req.open("GET", "/users/1.json", false);
+	req.onload = function () {
+		var data = JSON.parse(req.responseText);
+		self.portfolios = data.owned_portfolios.concat(data.managed_portfolios).map(Portfolio.parse);
+	}
+	req.send();
+}
 
-var line = d3.svg.line()
-	.x(function (d, i) { return x(i); })
-	.y(function (d) { return y(d.price); });
+App.prototype.render = function () {
+	var pel = document.getElementById("portfolios");
+	pel.removeAllChildren();
+	this.portfolios.forEach(function (p) {
+		pel.appendChild(p.render());
+	});
+}
 
-{//{{{
-	var data = JSON.parse('[{"price":105.91,"date":"2016-03-21"},{"price":105.92,"date":"2016-03-18"},{"price":105.8,"date":"2016-03-17"},{"price":105.97,"date":"2016-03-16"},{"price":104.58,"date":"2016-03-15"},{"price":102.52,"date":"2016-03-14"},{"price":102.26,"date":"2016-03-11"},{"price":101.17,"date":"2016-03-10"},{"price":101.12,"date":"2016-03-09"},{"price":101.03,"date":"2016-03-08"},{"price":101.87,"date":"2016-03-07"},{"price":103.01,"date":"2016-03-04"},{"price":101.5,"date":"2016-03-03"},{"price":100.75,"date":"2016-03-02"},{"price":100.53,"date":"2016-03-01"},{"price":96.69,"date":"2016-02-29"},{"price":96.91,"date":"2016-02-26"},{"price":96.76,"date":"2016-02-25"},{"price":96.1,"date":"2016-02-24"},{"price":94.69,"date":"2016-02-23"},{"price":96.88,"date":"2016-02-22"},{"price":96.04,"date":"2016-02-19"},{"price":96.26,"date":"2016-02-18"},{"price":98.12,"date":"2016-02-17"},{"price":96.64,"date":"2016-02-16"},{"price":93.99,"date":"2016-02-12"},{"price":93.7,"date":"2016-02-11"},{"price":94.27,"date":"2016-02-10"},{"price":94.99,"date":"2016-02-09"},{"price":95.01,"date":"2016-02-08"},{"price":94.02,"date":"2016-02-05"},{"price":96.6,"date":"2016-02-04"},{"price":96.35,"date":"2016-02-03"},{"price":94.48,"date":"2016-02-02"},{"price":96.43,"date":"2016-02-01"},{"price":97.34,"date":"2016-01-29"},{"price":94.09,"date":"2016-01-28"},{"price":93.42,"date":"2016-01-27"},{"price":99.99,"date":"2016-01-26"},{"price":99.44,"date":"2016-01-25"},{"price":101.42,"date":"2016-01-22"},{"price":96.3,"date":"2016-01-21"},{"price":96.79,"date":"2016-01-20"},{"price":96.66,"date":"2016-01-19"},{"price":97.13,"date":"2016-01-15"},{"price":99.52,"date":"2016-01-14"},{"price":97.39,"date":"2016-01-13"},{"price":99.96,"date":"2016-01-12"},{"price":98.53,"date":"2016-01-11"},{"price":96.96,"date":"2016-01-08"},{"price":96.45,"date":"2016-01-07"},{"price":100.7,"date":"2016-01-06"},{"price":102.71,"date":"2016-01-05"},{"price":105.35,"date":"2016-01-04"},{"price":105.26,"date":"2015-12-31"},{"price":107.32,"date":"2015-12-30"},{"price":108.74,"date":"2015-12-29"},{"price":106.82,"date":"2015-12-28"},{"price":108.03,"date":"2015-12-24"},{"price":108.61,"date":"2015-12-23"},{"price":107.23,"date":"2015-12-22"},{"price":107.33,"date":"2015-12-21"},{"price":106.03,"date":"2015-12-18"},{"price":108.98,"date":"2015-12-17"},{"price":111.34,"date":"2015-12-16"},{"price":110.49,"date":"2015-12-15"},{"price":112.48,"date":"2015-12-14"},{"price":113.18,"date":"2015-12-11"},{"price":116.17,"date":"2015-12-10"},{"price":115.62,"date":"2015-12-09"},{"price":118.23,"date":"2015-12-08"},{"price":118.28,"date":"2015-12-07"},{"price":119.03,"date":"2015-12-04"},{"price":115.2,"date":"2015-12-03"},{"price":116.28,"date":"2015-12-02"},{"price":117.34,"date":"2015-12-01"},{"price":118.3,"date":"2015-11-30"},{"price":117.81,"date":"2015-11-27"},{"price":118.03,"date":"2015-11-25"},{"price":118.88,"date":"2015-11-24"},{"price":117.75,"date":"2015-11-23"},{"price":119.3,"date":"2015-11-20"},{"price":118.78,"date":"2015-11-19"},{"price":117.29,"date":"2015-11-18"},{"price":113.69,"date":"2015-11-17"},{"price":114.18,"date":"2015-11-16"},{"price":112.34,"date":"2015-11-13"},{"price":115.72,"date":"2015-11-12"},{"price":116.11,"date":"2015-11-11"},{"price":116.77,"date":"2015-11-10"},{"price":120.57,"date":"2015-11-09"},{"price":121.06,"date":"2015-11-06"},{"price":120.92,"date":"2015-11-05"},{"price":122.0,"date":"2015-11-04"},{"price":122.57,"date":"2015-11-03"},{"price":121.18,"date":"2015-11-02"},{"price":119.5,"date":"2015-10-30"},{"price":120.53,"date":"2015-10-29"},{"price":119.27,"date":"2015-10-28"},{"price":114.55,"date":"2015-10-27"},{"price":115.28,"date":"2015-10-26"},{"price":119.08,"date":"2015-10-23"},{"price":115.5,"date":"2015-10-22"},{"price":113.76,"date":"2015-10-21"},{"price":113.77,"date":"2015-10-20"},{"price":111.73,"date":"2015-10-19"},{"price":111.04,"date":"2015-10-16"},{"price":111.86,"date":"2015-10-15"},{"price":110.21,"date":"2015-10-14"},{"price":111.79,"date":"2015-10-13"},{"price":111.6,"date":"2015-10-12"},{"price":112.12,"date":"2015-10-09"},{"price":109.5,"date":"2015-10-08"},{"price":110.78,"date":"2015-10-07"},{"price":111.31,"date":"2015-10-06"},{"price":110.78,"date":"2015-10-05"},{"price":110.38,"date":"2015-10-02"},{"price":109.58,"date":"2015-10-01"},{"price":110.3,"date":"2015-09-30"},{"price":109.06,"date":"2015-09-29"},{"price":112.44,"date":"2015-09-28"},{"price":114.71,"date":"2015-09-25"},{"price":115.0,"date":"2015-09-24"},{"price":114.32,"date":"2015-09-23"},{"price":113.4,"date":"2015-09-22"},{"price":115.21,"date":"2015-09-21"},{"price":113.45,"date":"2015-09-18"},{"price":113.92,"date":"2015-09-17"},{"price":116.41,"date":"2015-09-16"},{"price":116.28,"date":"2015-09-15"},{"price":115.31,"date":"2015-09-14"},{"price":114.21,"date":"2015-09-11"},{"price":112.57,"date":"2015-09-10"},{"price":110.15,"date":"2015-09-09"},{"price":112.31,"date":"2015-09-08"},{"price":109.27,"date":"2015-09-04"},{"price":110.37,"date":"2015-09-03"},{"price":112.34,"date":"2015-09-02"},{"price":107.72,"date":"2015-09-01"},{"price":112.76,"date":"2015-08-31"},{"price":113.29,"date":"2015-08-28"},{"price":112.92,"date":"2015-08-27"},{"price":109.69,"date":"2015-08-26"},{"price":103.74,"date":"2015-08-25"},{"price":103.12,"date":"2015-08-24"},{"price":105.76,"date":"2015-08-21"},{"price":112.65,"date":"2015-08-20"},{"price":115.01,"date":"2015-08-19"},{"price":116.5,"date":"2015-08-18"},{"price":117.16,"date":"2015-08-17"},{"price":115.96,"date":"2015-08-14"},{"price":115.15,"date":"2015-08-13"},{"price":115.24,"date":"2015-08-12"},{"price":113.49,"date":"2015-08-11"},{"price":119.72,"date":"2015-08-10"},{"price":115.52,"date":"2015-08-07"},{"price":115.13,"date":"2015-08-06"},{"price":115.4,"date":"2015-08-05"},{"price":114.64,"date":"2015-08-04"},{"price":118.44,"date":"2015-08-03"},{"price":121.3,"date":"2015-07-31"},{"price":122.37,"date":"2015-07-30"},{"price":122.99,"date":"2015-07-29"},{"price":123.38,"date":"2015-07-28"},{"price":122.77,"date":"2015-07-27"},{"price":124.5,"date":"2015-07-24"},{"price":125.16,"date":"2015-07-23"},{"price":125.22,"date":"2015-07-22"},{"price":130.75,"date":"2015-07-21"},{"price":132.07,"date":"2015-07-20"},{"price":129.62,"date":"2015-07-17"},{"price":128.51,"date":"2015-07-16"},{"price":126.82,"date":"2015-07-15"},{"price":125.61,"date":"2015-07-14"},{"price":125.66,"date":"2015-07-13"},{"price":123.28,"date":"2015-07-10"},{"price":120.07,"date":"2015-07-09"},{"price":122.57,"date":"2015-07-08"},{"price":125.69,"date":"2015-07-07"},{"price":126.0,"date":"2015-07-06"},{"price":126.44,"date":"2015-07-02"},{"price":126.6,"date":"2015-07-01"},{"price":125.43,"date":"2015-06-30"},{"price":124.53,"date":"2015-06-29"},{"price":126.75,"date":"2015-06-26"},{"price":127.5,"date":"2015-06-25"},{"price":128.11,"date":"2015-06-24"},{"price":127.03,"date":"2015-06-23"},{"price":127.61,"date":"2015-06-22"},{"price":126.6,"date":"2015-06-19"},{"price":127.88,"date":"2015-06-18"},{"price":127.3,"date":"2015-06-17"},{"price":127.6,"date":"2015-06-16"},{"price":126.92,"date":"2015-06-15"},{"price":127.17,"date":"2015-06-12"},{"price":128.59,"date":"2015-06-11"},{"price":128.88,"date":"2015-06-10"},{"price":127.42,"date":"2015-06-09"},{"price":127.8,"date":"2015-06-08"},{"price":128.65,"date":"2015-06-05"},{"price":129.36,"date":"2015-06-04"},{"price":130.12,"date":"2015-06-03"},{"price":129.96,"date":"2015-06-02"},{"price":130.54,"date":"2015-06-01"},{"price":130.28,"date":"2015-05-29"},{"price":131.78,"date":"2015-05-28"},{"price":132.04,"date":"2015-05-27"}]');
-}//}}}
+function Portfolio(id, purpose, principal, cash, owner, manager) {
+	this.id = id;
+	this.purpose = purpose;
+	this.principal = principal;
+	this.cash = cash;
+	this.owner = owner;
+	this.manager = manager;
 
-data = data.map(function (d) {
-	return {
-		price: d.price,
-		date: new Date(d.date)
-	};
-}).reverse();
+	this.get();
+}
 
-x.domain(d3.extent(data, function (d, i) {
-	return i;
-}));
-y.domain(d3.extent(data, function (d) {
-	return d.price;
-}));
+Portfolio.parse = function (d) {
+	return new Portfolio(d.id, d.purpose, d.principal, d.cash, d.owner.name, d.manager.name);
+}
 
-svg.append("path").datum(data).attr({
-	class: "line",
-	d: line,
-	transform: "translate(0,0)"
-});
-svg.append("g").call(ya).attr({
-	class: "y axis",
-	transform: "translate(" + width + ", 0)"
-});
-svg.append("g").call(xa).attr({
-	class: "x axis",
-	transform: "translate(0," + (height + 10) + ")"
-});
+Portfolio.template = function () {
+	var i = 0, args = arguments;
+	var e = document.createElement("div");
+	e.innerHTML = document.getElementById("portfolio").textContent.replace(/%s/g, function () {
+		return args[i++];
+	});
+
+	return e.children[0];
+}
+
+Portfolio.prototype.get = function () {
+	var self = this;
+	var req = new XMLHttpRequest();
+	req.open("GET", "/portfolios/" + this.id + ".json", false);
+	req.onload = function () {
+		var data = JSON.parse(req.responseText);
+		self.holdings = data.holdings.map(Holding.parse);
+	}
+	req.send();
+}
+
+Portfolio.prototype.render = function () {
+	var self = this;
+	var el = Portfolio.template(this.purpose, this.manager, this.cash);
+	el.onclick = function () {
+		var selected = el.parentNode.getElementsByClassName("selected");
+		for (var i = 0; i < selected.length; i++) selected[i].classList.remove("selected");
+		el.classList.add("selected");
+
+		var hel = document.getElementById("holdings");
+		hel.removeAllChildren();
+		self.holdings.forEach(function (h) {
+			hel.appendChild(h.render());
+		});
+	}
+
+	return el;
+}
+
+function Holding(id, shares, purchase, stock, symbol, name, exchange, price, change) {
+	this.id = id;
+	this.shares = shares;
+	this.purchase = purchase;
+	this.stock = stock;
+	this.symbol = symbol;
+	this.name = name;
+	this.exchange = exchange;
+	this.price = price;
+	this.change = change;
+}
+
+Holding.parse = function (d) {
+	return new Holding(d.id, d.num_shares, d.price, d.stock.id, d.stock.symbol, d.stock.name, d.stock.exchange.code, d.stock.current_price, d.stock.current_change_percent);
+}
+
+Holding.template = function () {
+	var i = 0, args = arguments;
+	var e = document.createElement("div");
+	e.innerHTML = document.getElementById("holding").textContent.replace(/%s/g, function () {
+		return args[i++];
+	});
+
+	return e.children[0];
+}
+
+Holding.prototype.render = function () {
+	var self = this;
+	var changeClass = this.change[0] == "-" ? "neg" : "pos";
+	var el = Holding.template(this.symbol, this.name, changeClass, this.change, this.price);
+	el.onclick = function () {
+		var gel = document.getElementById("graph");
+		var load = document.getElementById("graphload");
+		gel.style.display = "none";
+		gel.removeAllChildren();
+		load.style.display = "flex";
+
+		var req = new XMLHttpRequest();
+		req.open("GET", "/stocks/" + self.stock + ".json", true);
+		req.onload = function () {
+			var data = JSON.parse(req.responseText);
+			var graph = new Graph(data.historical_price_365d);
+			load.style.display = "none";
+			gel.style.display = "initial";
+			graph.render();
+		}
+		req.send();
+
+		var selected = el.parentNode.getElementsByClassName("selected");
+		for (var i = 0; i < selected.length; i++) selected[i].classList.remove("selected");
+		el.classList.add("selected");
+
+		var view = document.getElementById("view");
+		view.style.display = "initial";
+		document.getElementById("symbol").innerText = self.symbol;
+		document.getElementById("name").innerText = self.name;
+		document.getElementById("change").innerText = self.change;
+		document.getElementById("change").classList.remove("neg");
+		document.getElementById("change").classList.remove("pos");
+		document.getElementById("change").classList.add(self.change[0] == "-" ? "neg" : "pos");
+		document.getElementById("price").innerText = "$" + self.price;
+	}
+
+	return el;
+}
+
+function Graph(data) {
+	this.data = data;
+}
+
+Graph.prototype.render = function () {
+	var svg = d3.select("#graph");
+	svg.selectAll("*").remove();
+
+	var width = svg.node().getBoundingClientRect().width;
+	var height = svg.node().getBoundingClientRect().height - 30;
+
+	var df = d3.time.format("%b %d");
+
+	var x = d3.scale.linear().range([0, width]);
+	var y = d3.scale.linear().range([height, 0]);
+	var xa = d3.svg.axis().scale(x).orient("bottom").tickFormat(function (d) {
+		return df(new Date(data[d].date));
+	});
+	var ya = d3.svg.axis().scale(y).orient("right").ticks(6);
+
+	var line = d3.svg.line()
+		.x(function (d, i) { return x(i); })
+		.y(function (d) { return y(d.price); });
+
+	var data = this.data.map(function (d) {
+		return {
+			price: d.price,
+			date: new Date(d.date)
+		};
+	}).reverse();
+
+	x.domain(d3.extent(data, function (d, i) {
+		return i;
+	}));
+	y.domain(d3.extent(data, function (d) {
+		return d.price;
+	}));
+
+	svg.append("path").datum(data).attr({
+		class: "line",
+		d: line,
+		transform: "translate(0,0)"
+	});
+	svg.append("g").call(ya).attr({
+		class: "y axis",
+		transform: "translate(" + (width + 10) + ", 0)"
+	});
+	svg.append("g").call(xa).attr({
+		class: "x axis",
+		transform: "translate(0," + (height + 10) + ")"
+	});
+}
+
+new App();
