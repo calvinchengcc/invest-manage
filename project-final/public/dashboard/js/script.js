@@ -13,10 +13,11 @@ function App() {
 App.prototype.get = function () {
 	var self = this;
 	var req = new XMLHttpRequest();
-	req.open("GET", "/users/1.json", false);
+	req.open("GET", "/users/108.json", false);
 	req.onload = function () {
 		var data = JSON.parse(req.responseText);
-		self.portfolios = data.owned_portfolios.concat(data.managed_portfolios).map(Portfolio.parse);
+		// self.portfolios = data.owned_portfolios.concat(data.managed_portfolios).map(Portfolio.parse);
+		self.portfolios = data.managed_portfolios.map(Portfolio.parse);
 	}
 	req.send();
 }
@@ -69,6 +70,11 @@ Portfolio.prototype.render = function () {
 	var self = this;
 	var el = Portfolio.template(this.purpose, this.manager, this.cash);
 	el.onclick = function () {
+		if (el.classList.contains("selected")) return;
+
+		var view = document.getElementById("view");
+		view.style.display = "none";
+
 		var selected = el.parentNode.getElementsByClassName("selected");
 		for (var i = 0; i < selected.length; i++) selected[i].classList.remove("selected");
 		el.classList.add("selected");
@@ -202,4 +208,6 @@ Graph.prototype.render = function () {
 	});
 }
 
-new App();
+window.onload = function () {
+	new App();
+}

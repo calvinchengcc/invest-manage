@@ -149,8 +149,19 @@ span.change.neg {
 	display: none;
 }
 .wave {
-	width: 4px;
+	width: 2px;
 	height: 20px;
 	margin: 2px;
 	background: #4dc;
+	animation: .5s spin linear infinite;
+}
+.wave:nth-of-type(1) { animation-delay: 0s; }
+.wave:nth-of-type(2) { animation-delay: -.4s; }
+.wave:nth-of-type(3) { animation-delay: -.2s; }
+.wave:nth-of-type(4) { animation-delay: -.3s; }
+.wave:nth-of-type(5) { animation-delay: -.1s; }
+
+@keyframes spin {
+	from { transform: rotateX(0); }
+	to { transform: rotateX(180deg); }
 }
