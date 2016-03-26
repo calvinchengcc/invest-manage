@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   # GET /users/1
   # GET /users/1.json
+  # GET /users/1?show[]=companies
   def show
     if params.has_key?('show')
       arr = Array.wrap(params[:show])
