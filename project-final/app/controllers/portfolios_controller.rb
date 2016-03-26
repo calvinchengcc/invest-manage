@@ -4,7 +4,7 @@ class PortfoliosController < ApplicationController
   # GET /portfolios
   # GET /portfolios.json
   # GET /portfolios?filter[:attr][:op]=value
-  # GET /portfolios?filter[:attr][:op]=value&columns[]=value
+  # GET /portfolios?filter[:attr][:op]=value&hidden[]=value
   def index
     if params.has_key?(:filter)
       begin
@@ -19,6 +19,17 @@ class PortfoliosController < ApplicationController
       end
     end
     @portfolios ||= Portfolio.all
+
+    if params.has_key?(:hidden)
+      begin
+        @hidden_cols = params[:hidden]
+        puts @portfolios.pluck(*(Portfolio.column_names - @hidden_cols))
+      rescue StandardError => e
+        puts e
+        flash[:error] = 'Error specifying columns.'
+      end
+    end
+    @hidden_cols ||= []
   end
 
   # GET /portfolios/1
