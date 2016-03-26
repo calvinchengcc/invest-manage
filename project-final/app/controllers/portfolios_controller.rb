@@ -23,7 +23,7 @@ class PortfoliosController < ApplicationController
     if params.has_key?(:hidden)
       begin
         @hidden_cols = params[:hidden]
-        puts @portfolios.pluck(*(Portfolio.column_names - @hidden_cols))
+        @portfolios = @portfolios.select(Portfolio.column_names - @hidden_cols)
       rescue StandardError => e
         puts e
         flash[:error] = 'Error specifying columns.'
