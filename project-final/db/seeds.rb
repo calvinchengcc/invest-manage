@@ -35,7 +35,7 @@ end
 def seed_record(filename, record)
   data = parse_csv_file(filename)
   ActiveRecord::Base.transaction do
-    data.each { |row| record.create!(row) if record.find_by(id: row[:id]).nil? }
+    data.each { |row| record.create!(row) unless record.exists?(row[:id]) }
   end
 end
 
