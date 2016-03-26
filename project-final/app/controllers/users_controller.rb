@@ -10,6 +10,15 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    if params.has_key?('show')
+      arr = Array.wrap(params[:show])
+      arr.each do |val|
+        case val
+          when 'companies'
+            @companies = companies_invested_in(@user)
+        end
+      end
+    end
   end
 
   # GET /users/new
@@ -62,13 +71,27 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :role, :phone, :address_id)
-    end
+  def companies_invested_in(user)
+    Stock.find_by_sql(['SELECT S.id, S.symbol, S.exchange_id, S.name
+                        FROM users U
+                        INNER JOIN portfolios P
+                          ON U.id = P.owner_id
+                        INNER JOIN holdings H
+                          ON H.portfolio_id = P.id
+                        INNER JOIN Stocks S
+                          ON S.id = H.stock_id
+                        WHERE U.id = ?',
+                       user.id])
+  end
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def user_params
+    params.require(:user).permit(:name, :email, :password, :role, :phone, :address_id)
+  end
 end
