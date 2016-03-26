@@ -4,9 +4,10 @@ class PortfoliosController < ApplicationController
   # GET /portfolios
   # GET /portfolios.json
   # GET /portfolios?filter[:attr][:op]=value
-  # GET /portfolios?filter[:attr][:op]=value&hidden[]=value
+  # GET /portfolios?filter[:attr][:op]=value&hidden[]=col
+  # GET /portfolios?filter[:attr][:op]=value&hidden[]=col&contains[]=stock
   def index
-    if params.has_key?(:filter)
+    if params.has_key?(:filter) && params[:filter].is_a?(Hash)
       begin
         filters = params[:filter].map do |attr, conds|
           conds.map { |op, v| "#{attr} #{op_to_sym(op)} #{v}" }
@@ -18,9 +19,30 @@ class PortfoliosController < ApplicationController
         flash[:error] = 'Error while filtering results.'
       end
     end
+    if params.has_key?(:contains) && params[:contains].is_a?(Array)
+      begin
+        stocks = params[:contains].map(&:upcase)
+                   .select { |s| Stock.exists?(symbol: s) }
+                   .map { |s| "'#{s}'" }
+                   .join(',')
+        @portfolios = Portfolio.find_by_sql(["SELECT *
+                                              FROM portfolios P
+                                              WHERE NOT EXISTS (
+                                                SELECT S.id
+                                                FROM stocks S
+                                                WHERE symbol IN (#{stocks})
+                                                EXCEPT
+                                                SELECT H.stock_id
+                                                FROM holdings H
+                                                WHERE H.portfolio_id = P.id);"])
+      rescue StandardError => e
+        puts e
+        flash[:error] = 'Error finding portfolios containing specified stocks.'
+      end
+    end
     @portfolios ||= Portfolio.all
 
-    if params.has_key?(:hidden)
+    if params.has_key?(:hidden) && params[:hidden].is_a?(Array)
       begin
         @hidden_cols = params[:hidden]
         @portfolios = @portfolios.select(Portfolio.column_names - @hidden_cols)
