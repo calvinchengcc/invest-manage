@@ -20,7 +20,6 @@ class UsersController < ApplicationController
             @companies = companies_invested_in(@user)
           when 'total-principal'
             @total_principal = total_principal(@user)
-            puts @total_principal
         end
       end
     end

@@ -15,3 +15,4 @@ json.managed_portfolios do
   end
 end
 json.companies @companies
+json.total_principal @total_principal
