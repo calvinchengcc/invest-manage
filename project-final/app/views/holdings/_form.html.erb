@@ -13,29 +13,24 @@
 
   <!--
   <div class="field">
-    <%= f.label :id %><br>
-    <%= f.number_field :id %>
-  </div>
-  -->
-  <div class="field">
     <%= f.label :portfolio_id %><br>
-    <%= f.number_field :portfolio_id %>
+    <%= f.number_field :portfolio_id, required: true %>
   </div>
   <div class="field">
     <%= f.label :stock_id %><br>
-    <%= f.text_field :stock_id %>
+    <%= f.text_field :stock_id, required: true %>
   </div>
   <div class="field">
     <%= f.label :num_shares %><br>
-    <%= f.number_field :num_shares %>
+    <%= f.number_field :num_shares, required: true %>
   </div>
   <div class="field">
     <%= f.label :purchase_date %><br>
-    <%= f.datetime_select :purchase_date %>
+    <%= f.datetime_select :purchase_date, required: true %>
   </div>
   <div class="field">
     <%= f.label :price %><br>
-    <%= f.text_field :price %>
+    <%= f.number_field :price, step: 0.01, required: true %>
   </div>
   <div class="actions">
     <%= f.submit %>

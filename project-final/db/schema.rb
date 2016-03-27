@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(version: 20160309180006) do
   create_table "portfolios", force: :cascade do |t|
     t.string  "purpose"
     t.date    "creation_date"
-    t.decimal "principal",     default: 0.0, null: false
-    t.decimal "cash",          default: 0.0, null: false
-    t.integer "owner_id",                    null: false
-    t.integer "manager_id",                  null: false
+    t.decimal "principal",     null: false
+    t.decimal "cash",          null: false
+    t.integer "owner_id",      null: false
+    t.integer "manager_id",    null: false
   end
 
   add_index "portfolios", ["manager_id"], name: "index_portfolios_on_manager_id", using: :btree
