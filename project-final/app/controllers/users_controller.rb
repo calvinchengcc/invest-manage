@@ -28,7 +28,6 @@ class UsersController < ApplicationController
       end
     end
     @principal_by_country ||= []
-    puts @principal_by_country.to_s
   end
 
   # GET /users/1
