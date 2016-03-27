@@ -27,8 +27,19 @@
 
 <p>
   <strong>Manager:</strong>
-  <%= link_to  "#{@portfolio.manager.name}: #{@portfolio.manager_id}", @portfolio.manager %>
+  <%= link_to "#{@portfolio.manager.name}: #{@portfolio.manager_id}", @portfolio.manager %>
 </p>
+
+<% unless @portfolio.holdings.empty? %>
+  <p>
+    <strong>Holdings:</strong>
+    <ul>
+      <% @portfolio.holdings.each do |holding| %>
+        <li><%= link_to holding.id, holding %></li>
+      <% end %>
+    </ul>
+  </p>
+<% end %>
 
 <%= link_to 'Edit', edit_portfolio_path(@portfolio) %> |
 <%= link_to 'Back', portfolios_path %>
