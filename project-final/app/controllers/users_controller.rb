@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
   # GET /users/stats
   # GET /users/stats.json
+  # GET /users/stats?principal-by-country=DESC
+  # GET /users/stats.json?principal-by-country=ASC
   def stats
     @stats = {}
     @stats[:total_users] = User.count
