@@ -48,7 +48,7 @@
         <% end %>
         <td><%= link_to 'Show', portfolio %></td>
         <td><%= link_to 'Edit', edit_portfolio_path(portfolio) %></td>
-        <td><%= link_to 'Destroy', portfolio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', portfolio, method: :delete, data: { confirm: 'Are you sure? All holdings in the portfolio (if any) will be deleted as well.' } %></td>
       </tr>
     <% end %>
   </tbody>

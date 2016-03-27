@@ -1,5 +1,5 @@
 class Portfolio < ActiveRecord::Base
-  has_many :holdings, dependent: :destroy
+  has_many :holdings
   belongs_to :owner, class_name: 'User'
   belongs_to :manager, class_name: 'User'
 
