@@ -88,6 +88,8 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
     pg (0.18.4)
+    postgresql-check (0.1.1)
+      activerecord (>= 3.2.0)
     puma (3.1.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
@@ -178,6 +180,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pg
+  postgresql-check
   puma
   quiet_assets
   rails (= 4.2.5.1)

@@ -7,6 +7,9 @@ class CreatePortfolios < ActiveRecord::Migration
       t.decimal :cash, null: false, default: 0
       t.integer :owner_id, null: false, index: true
       t.integer :manager_id, null: false, index: true
+
+      t.check 'principal >= 0', name: 'chk_principal'
+      t.check 'cash >= 0', name: 'chk_cash'
     end
   end
 end

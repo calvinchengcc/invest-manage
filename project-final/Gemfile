@@ -9,6 +9,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'smarter_csv'
 gem 'stock_quote'
 gem 'pg'
+gem 'postgresql-check'
 
 group :development, :test do
   gem 'byebug'
