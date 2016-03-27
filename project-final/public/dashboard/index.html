@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Prophet</title>
+		<link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Source+Sans+Pro:300,400,600,700,400i,700i">
+		<link rel="stylesheet" href="css/base.css">
+	</head>
+	<body>
+		<div id="pageload" class="loading page">
+			<div class="wave"></div>
+			<div class="wave"></div>
+			<div class="wave"></div>
+			<div class="wave"></div>
+			<div class="wave"></div>
+		</div>
+		<div class="column portfolios">
+			<div class="nav">
+				<h1 class="title">Prophet</h1>
+			</div>
+			<div id="portfolios">
+			</div>
+		</div>
+		<div class="column holdings">
+			<div id="holdings">
+			</div>
+		</div>
+		<div id="view" class="column view">
+			<div class="top">
+				<div class="left">
+					<h2 id="symbol" class="symbol"></h2>
+					<span id="name" class="name"></span>
+				</div>
+				<div class="right">
+					<span id="change" class="change"></span>
+					<span id="price" class="price"></span>
+				</div>
+			</div>
+			<div class="graph">
+				<div id="graphload" class="loading">
+					<div class="wave"></div>
+					<div class="wave"></div>
+					<div class="wave"></div>
+					<div class="wave"></div>
+					<div class="wave"></div>
+				</div>
+				<svg id="graph" width="100%" height="240pt">
+				</svg>
+			</div>
+			<div class="stats">
+				<table>
+					<tr>
+						<td class="key">Range</td>
+						<td class="val" id="range"></td>
+					</tr>
+					<tr>
+						<td class="key">52 week</td>
+						<td class="val" id="52week"></td>
+					</tr>
+					<tr>
+						<td class="key">Open</td>
+						<td class="val" id="open"></td>
+					</tr>
+					<tr>
+						<td class="key">Volume / Daily Avg.</td>
+						<td class="val" id="vol"></td>
+					</tr>
+					<tr>
+						<td class="key">Market cap</td>
+						<td class="val" id="cap"></td>
+					</tr>
+				</table>
+				<table>
+					<tr>
+						<td class="key">Dividend / yield</td>
+						<td class="val" id="div"></td>
+					</tr>
+					<tr>
+						<td class="key">EPS</td>
+						<td class="val" id="eps"></td>
+					</tr>
+					<tr>
+						<td class="key">Ask</td>
+						<td class="val" id="ask"></td>
+					</tr>
+					<tr>
+						<td class="key">Bid</td>
+						<td class="val" id="bid"></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<script id="portfolio" type="text/template">
+<div class="entry portfolio">
+	<div class="left">
+		<span class="name">%s</span>
+		<span class="manager">%s</span>
+	</div>
+	<div class="right">
+		<span class="price">$%s</span>
+	</div>
+</div>
+		</script>
+		<script id="holding" type="text/template">
+<div class="entry holding">
+	<div class="left">
+		<span class="symbol">%s</span>
+		<span class="name">%s</span>
+	</div>
+	<div class="right">
+		<span class="change %s">%s</span>
+		<span class="price">$%s</span>
+	</div>
+</div>
+		</script>
+
+		<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="js/script.js"></script>
+	</body>
+</html>
