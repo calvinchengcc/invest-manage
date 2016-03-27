@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :password %><br>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, required: true %>
   </div>
   <div class="field">
     <%= f.label :role %><br>
@@ -29,11 +29,11 @@
   </div>
   <div class="field">
     <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone, required: true %>
   </div>
   <div class="field">
     <%= f.label :address_id %><br>
-    <%= f.number_field :address_id %>
+    <%= f.number_field :address_id, required: true %>
   </div>
   <div class="actions">
     <%= f.submit %>
