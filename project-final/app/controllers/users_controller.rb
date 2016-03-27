@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   # GET /users/1?show[]=companies
+  # GET /users/1?show[]=companies&show[]=total-principal
   def show
     if params.has_key?('show')
       arr = Array.wrap(params[:show])
@@ -17,6 +18,9 @@ class UsersController < ApplicationController
         case val
           when 'companies'
             @companies = companies_invested_in(@user)
+          when 'total-principal'
+            @total_principal = total_principal(@user)
+            puts @total_principal
         end
       end
     end
@@ -84,6 +88,15 @@ class UsersController < ApplicationController
                           ON S.id = H.stock_id
                         WHERE U.id = ?',
                        user.id])
+  end
+
+  def total_principal(user)
+    User.count_by_sql(['SELECT SUM(principal)
+                        FROM users U
+                        INNER JOIN portfolios P
+                          ON U.id = P.owner_id
+                        WHERE U.id = ?',
+                      user.id])
   end
 
   # Use callbacks to share common setup or constraints between actions.
