@@ -7,9 +7,35 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  # GET /users/stats
+  # GET /users/stats.json
+  # GET /users/stats?principal-by-country=DESC
+  # GET /users/stats.json?principal-by-country=ASC
+  def stats
+    @stats = {}
+    @stats[:total_users] = User.count
+    @stats[:total_admins] = User.admin.count
+    @stats[:total_advisors] = User.advisor.count
+    @stats[:average_principal] = Portfolio.average(:principal).round(2)
+    @stats[:average_cash] = Portfolio.average(:cash).round(2)
+    @stats[:min_principal] = Portfolio.minimum(:principal).round(2)
+    @stats[:max_principal] = Portfolio.maximum(:principal).round(2)
+    if params.has_key?('principal-by-country')
+      begin
+        order = params['principal-by-country'].upcase
+        @principal_by_country = avg_portfolio_by_country('principal', order)
+      rescue StandardError => e
+        puts e
+        flash[:error] = "Error getting average principal per country: #{e}"
+      end
+    end
+    @principal_by_country ||= []
+  end
+
   # GET /users/1
   # GET /users/1.json
   # GET /users/1?show[]=companies
+  # GET /users/1?show[]=companies&show[]=total-principal
   def show
     if params.has_key?('show')
       arr = Array.wrap(params[:show])
@@ -17,6 +43,8 @@ class UsersController < ApplicationController
         case val
           when 'companies'
             @companies = companies_invested_in(@user)
+          when 'total-principal'
+            @total_principal = total_principal(@user)
         end
       end
     end
@@ -84,6 +112,32 @@ class UsersController < ApplicationController
                           ON S.id = H.stock_id
                         WHERE U.id = ?',
                        user.id])
+  end
+
+  def total_principal(user)
+    User.count_by_sql(['SELECT SUM(principal)
+                        FROM users U
+                        INNER JOIN portfolios P
+                          ON U.id = P.owner_id
+                        WHERE U.id = ?',
+                      user.id])
+  end
+
+  def avg_portfolio_by_country(attr, order)
+    query = ["SELECT country, AVG(#{attr})
+              FROM users U
+              INNER JOIN portfolios P
+                ON U.id = P.owner_id
+              INNER JOIN addresses A
+                ON A.id = U.address_id
+              GROUP BY country
+              ORDER BY AVG(#{attr}) #{order}"]
+    User.find_by_sql(query)
+        .map(&:attributes)
+        .map { |h| h.except('id') }
+        .map { |h| h['avg'] = h['avg'].round(2); h }
+        .map(&:values)
+        .to_h
   end
 
   # Use callbacks to share common setup or constraints between actions.

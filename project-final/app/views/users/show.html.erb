@@ -55,6 +55,14 @@
     </ul>
   <% end %>
 </p>
+<p>
+  <strong>Total amount invested: </strong>
+  <% if @total_principal.nil? %>
+    <%= link_to 'Show', params.merge(show: (Array.wrap(params[:show]) | ['total-principal'])) %>
+  <% else %>
+    $<%= @total_principal %>
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

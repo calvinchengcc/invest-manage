@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   resources :addresses
   resources :portfolios
   resources :holdings
-  resources :users
+  resources :users do
+    collection do
+      get 'stats' => 'users#stats'
+    end
+  end
   root to: 'visitors#index'
   devise_for :users
 end

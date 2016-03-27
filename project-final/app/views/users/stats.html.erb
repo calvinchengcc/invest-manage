@@ -1,0 +1,49 @@
+<h1>User Stats</h1>
+
+<table>
+  <tr>
+    <td>Total Users (including admins and advisors)</td>
+    <td><%= @stats[:total_users] %></td>
+  </tr>
+  <tr>
+    <td>Total Admins</td>
+    <td><%= @stats[:total_admins] %></td>
+  </tr>
+  <tr>
+    <td>Total Advisors</td>
+    <td><%= @stats[:total_advisors] %></td>
+  </tr>
+  <tr>
+    <td>Average principal in each portfolio</td>
+    <td>$<%= @stats[:average_principal] %></td>
+  </tr>
+  <tr>
+    <td>Average cash in each portfolio</td>
+    <td>$<%= @stats[:average_cash] %></td>
+  </tr>
+  <tr>
+    <td>Smallest principal in a portfolio</td>
+    <td>$<%= @stats[:min_principal] %></td>
+  </tr>
+  <tr>
+    <td>Largest principal in a portfolio</td>
+    <td>$<%= @stats[:max_principal] %></td>
+  </tr>
+</table>
+
+<h3>Average Portfolio Principal by Country</h3>
+<%= link_to 'Show Ascending', params.merge('principal-by-country' => 'asc') %> | <%= link_to 'Show Descending', params.merge('principal-by-country' => 'desc') %>
+<% unless @principal_by_country.empty? %>
+  <table>
+    <tr>
+      <th>Country</th>
+      <th>Average Portfolio Principal</th>
+    </tr>
+    <% @principal_by_country.each do |country, avg| %>
+      <tr>
+        <td><%= country %></td>
+        <td>$<%= avg %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
