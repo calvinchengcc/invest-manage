@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20160309180006) do
 
   add_check "users", "(role = ANY (ARRAY[0, 1, 2]))", name: "chk_role"
 
-  add_foreign_key "holdings", "portfolios"
+  add_foreign_key "holdings", "portfolios", on_delete: :cascade
   add_foreign_key "holdings", "stocks"
   add_foreign_key "portfolios", "users", column: "manager_id"
   add_foreign_key "portfolios", "users", column: "owner_id"
