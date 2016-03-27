@@ -41,6 +41,9 @@ ActiveRecord::Schema.define(version: 20160309180006) do
   add_index "holdings", ["portfolio_id"], name: "index_holdings_on_portfolio_id", using: :btree
   add_index "holdings", ["stock_id"], name: "index_holdings_on_stock_id", using: :btree
 
+  add_check "holdings", "(num_shares > 0)", name: "chk_shares"
+  add_check "holdings", "(price > (0)::numeric)", name: "chk_holdings"
+
   create_table "portfolios", force: :cascade do |t|
     t.string  "purpose"
     t.date    "creation_date"
@@ -52,6 +55,9 @@ ActiveRecord::Schema.define(version: 20160309180006) do
 
   add_index "portfolios", ["manager_id"], name: "index_portfolios_on_manager_id", using: :btree
   add_index "portfolios", ["owner_id"], name: "index_portfolios_on_owner_id", using: :btree
+
+  add_check "portfolios", "(principal >= (0)::numeric)", name: "chk_principal"
+  add_check "portfolios", "(cash >= (0)::numeric)", name: "chk_cash"
 
   create_table "stocks", force: :cascade do |t|
     t.string  "symbol",      null: false
@@ -80,6 +86,8 @@ ActiveRecord::Schema.define(version: 20160309180006) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  add_check "users", "(role = ANY (ARRAY[0, 1, 2]))", name: "chk_role"
 
   add_foreign_key "holdings", "portfolios"
   add_foreign_key "holdings", "stocks"

@@ -25,6 +25,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :phone, null: false
       t.integer :address_id, null: false
 
+      t.check 'role IN (0, 1, 2)', name: 'chk_role'
+
       t.index :email, unique: true
       t.index :reset_password_token, unique: true
     end
