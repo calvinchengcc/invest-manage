@@ -18,6 +18,17 @@ class UsersController < ApplicationController
     @stats[:average_cash] = Portfolio.average(:cash).round(2)
     @stats[:min_principal] = Portfolio.minimum(:principal).round(2)
     @stats[:max_principal] = Portfolio.maximum(:principal).round(2)
+    if params.has_key?('principal-by-country')
+      begin
+        order = params['principal-by-country'].upcase
+        @principal_by_country = avg_portfolio_by_country('principal', order)
+      rescue StandardError => e
+        puts e
+        flash[:error] = "Error getting average principal per country: #{e}"
+      end
+    end
+    @principal_by_country ||= []
+    puts @principal_by_country.to_s
   end
 
   # GET /users/1
@@ -109,6 +120,23 @@ class UsersController < ApplicationController
                           ON U.id = P.owner_id
                         WHERE U.id = ?',
                       user.id])
+  end
+
+  def avg_portfolio_by_country(attr, order)
+    query = ["SELECT country, AVG(#{attr})
+              FROM users U
+              INNER JOIN portfolios P
+                ON U.id = P.owner_id
+              INNER JOIN addresses A
+                ON A.id = U.address_id
+              GROUP BY country
+              ORDER BY AVG(#{attr}) #{order}"]
+    User.find_by_sql(query)
+        .map(&:attributes)
+        .map { |h| h.except('id') }
+        .map { |h| h['avg'] = h['avg'].round(2); h }
+        .map(&:values)
+        .to_h
   end
 
   # Use callbacks to share common setup or constraints between actions.
