@@ -7,6 +7,19 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  # GET /users/stats
+  # GET /users/stats.json
+  def stats
+    @stats = {}
+    @stats[:total_users] = User.count
+    @stats[:total_admins] = User.admin.count
+    @stats[:total_advisors] = User.advisor.count
+    @stats[:average_principal] = Portfolio.average(:principal)
+    @stats[:average_cash] = Portfolio.average(:cash)
+    @stats[:min_principal] = Portfolio.where(principal: Portfolio.minimum(:principal))
+    @stats[:max_principal] = Portfolio.where(principal: Portfolio.maximum(:principal))
+  end
+
   # GET /users/1
   # GET /users/1.json
   # GET /users/1?show[]=companies
