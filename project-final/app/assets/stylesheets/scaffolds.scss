@@ -37,8 +37,16 @@ div {
   }
 }
 
-#notice {
+.alert-notice {
   color: green;
+}
+
+.alert-warn {
+  color: gold;
+}
+
+.alert-error {
+  color: red;
 }
 
 .field_with_errors {
