@@ -14,10 +14,10 @@ class UsersController < ApplicationController
     @stats[:total_users] = User.count
     @stats[:total_admins] = User.admin.count
     @stats[:total_advisors] = User.advisor.count
-    @stats[:average_principal] = Portfolio.average(:principal)
-    @stats[:average_cash] = Portfolio.average(:cash)
-    @stats[:min_principal] = Portfolio.where(principal: Portfolio.minimum(:principal))
-    @stats[:max_principal] = Portfolio.where(principal: Portfolio.maximum(:principal))
+    @stats[:average_principal] = Portfolio.average(:principal).round(2)
+    @stats[:average_cash] = Portfolio.average(:cash).round(2)
+    @stats[:min_principal] = Portfolio.minimum(:principal).round(2)
+    @stats[:max_principal] = Portfolio.maximum(:principal).round(2)
   end
 
   # GET /users/1
