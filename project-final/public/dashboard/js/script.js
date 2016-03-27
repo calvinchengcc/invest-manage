@@ -89,7 +89,7 @@ Portfolio.prototype.render = function () {
 	return el;
 }
 
-function Holding(id, shares, purchase, stock, symbol, name, exchange, price, change) {
+function Holding(id, shares, purchase, stock, symbol, name, exchange, price, change, range, yrange, open, vol, avgVol, cap, div, yield, eps, ask, bid) {
 	this.id = id;
 	this.shares = shares;
 	this.purchase = purchase;
@@ -99,10 +99,22 @@ function Holding(id, shares, purchase, stock, symbol, name, exchange, price, cha
 	this.exchange = exchange;
 	this.price = price;
 	this.change = change;
+
+	this.range = range;
+	this.yrange = yrange;
+	this.open = open;
+	this.vol = vol;
+	this.avgVol = avgVol || "-";
+	this.cap = cap;
+	this.div = div || "-";
+	this.yield = yield || "-";
+	this.eps = eps;
+	this.ask = ask;
+	this.bid = bid;
 }
 
 Holding.parse = function (d) {
-	return new Holding(d.id, d.num_shares, d.price, d.stock.id, d.stock.symbol, d.stock.name, d.stock.exchange.code, d.stock.current_price, d.stock.current_change_percent);
+	return new Holding(d.id, d.num_shares, d.price, d.stock.id, d.stock.symbol, d.stock.name, d.stock.exchange.code, d.stock.current_price, d.stock.current_change_percent, d.stock.stats.days_range, d.stock.stats.year_range, d.stock.stats.open, d.stock.stats.volume, d.stock.stats.average_daily_volume, d.stock.stats.market_capitalization, d.stock.stats.dividend_share / 4, d.stock.stats.dividend_yield, d.stock.stats.earnings_share, d.stock.stats.ask, d.stock.stats.bid);
 }
 
 Holding.template = function () {
@@ -150,6 +162,16 @@ Holding.prototype.render = function () {
 		document.getElementById("change").classList.remove("pos");
 		document.getElementById("change").classList.add(self.change[0] == "-" ? "neg" : "pos");
 		document.getElementById("price").innerText = "$" + self.price;
+
+		document.getElementById("range").innerText = self.range;
+		document.getElementById("52week").innerText = self.yrange;
+		document.getElementById("open").innerText = self.open;
+		document.getElementById("vol").innerText = self.vol + " / " + self.avgVol;
+		document.getElementById("cap").innerText = self.cap;
+		document.getElementById("div").innerText = self.div + "/" + self.yield;
+		document.getElementById("eps").innerText = self.eps;
+		document.getElementById("ask").innerText = self.ask;
+		document.getElementById("bid").innerText = self.bid;
 	}
 
 	return el;

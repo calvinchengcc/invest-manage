@@ -12,6 +12,7 @@ body {
 }
 .column.view {
 	width: 50%;
+	display: none;
 	padding-left: 44pt;
 	padding-right: 44pt;
 	border-right: none;
@@ -101,6 +102,7 @@ span.change.neg {
 
 .graph {
 	margin: 24pt 0;
+	height: 240pt;
 }
 .graph svg {
 	overflow: visible;
@@ -126,6 +128,22 @@ span.change.neg {
 }
 .graph .axis.y text {
 	transform: rotate(90deg) translate(-12pt, -12pt);
+}
+
+.stats {
+	display: flex;
+	flex-direction: row;
+	font-size: 12pt;
+}
+.stats table {
+	width: 50%;
+	border-collapse: collapse;
+}
+.stats td {
+	padding: 6pt 0;
+}
+.stats td.key {
+	font-weight: 300;
 }
 
 .loading {

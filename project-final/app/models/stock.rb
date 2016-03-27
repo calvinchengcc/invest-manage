@@ -24,9 +24,14 @@ class Stock < ActiveRecord::Base
     @quote ||= StockQuote::Stock.quote(symbol)
   end
 
+  def quote
+    update_quote
+    @quote
+  end
+
   def current_price
     update_quote
-	@quote.last_trade_price_only
+    @quote.last_trade_price_only
   end
 
   def last_trade_date_time
