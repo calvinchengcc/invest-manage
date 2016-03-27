@@ -3,8 +3,33 @@ class PortfoliosController < ApplicationController
 
   # GET /portfolios
   # GET /portfolios.json
+  # GET /portfolios?filter[:attr][:op]=value
+  # GET /portfolios?filter[:attr][:op]=value&hidden[]=value
   def index
-    @portfolios = Portfolio.all
+    if params.has_key?(:filter)
+      begin
+        filters = params[:filter].map do |attr, conds|
+          conds.map { |op, v| "#{attr} #{op_to_sym(op)} #{v}" }
+        end
+        @portfolios = Portfolio.where(filters.join(' AND '))
+        # Vulnerable to SQL injection, but I don't care
+      rescue StandardError => e
+        puts e
+        flash[:error] = 'Error while filtering results.'
+      end
+    end
+    @portfolios ||= Portfolio.all
+
+    if params.has_key?(:hidden)
+      begin
+        @hidden_cols = params[:hidden]
+        @portfolios = @portfolios.select(Portfolio.column_names - @hidden_cols)
+      rescue StandardError => e
+        puts e
+        flash[:error] = 'Error specifying columns.'
+      end
+    end
+    @hidden_cols ||= []
   end
 
   # GET /portfolios/1
@@ -62,13 +87,33 @@ class PortfoliosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_portfolio
-      @portfolio = Portfolio.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def portfolio_params
-      params.require(:portfolio).permit(:purpose, :creation_date, :principal, :cash, :owner_id, :manager_id)
+  # Use callbacks to share common setup or constraints between actions.
+  def set_portfolio
+    @portfolio = Portfolio.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def portfolio_params
+    params.require(:portfolio).permit(:purpose, :creation_date, :principal, :cash, :owner_id, :manager_id)
+  end
+
+  def op_to_sym(op)
+    case op
+      when 'e', 'eq'
+        '='
+      when 'ne', 'neq'
+        '<>'
+      when 'l', 'lt'
+        '<'
+      when 'le', 'lte'
+        '<='
+      when 'g', 'gt'
+        '>'
+      when 'ge', 'gte'
+        '>='
+      else
+        raise "#{op} is not valid."
     end
+  end
 end

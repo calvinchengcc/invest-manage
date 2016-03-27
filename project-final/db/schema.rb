@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160309180006) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "addresses", force: :cascade do |t|
     t.string "street_address", null: false
     t.string "city",           null: false
@@ -25,7 +28,7 @@ ActiveRecord::Schema.define(version: 20160309180006) do
     t.string "name", null: false
   end
 
-  add_index "exchanges", ["code"], name: "index_exchanges_on_code", unique: true
+  add_index "exchanges", ["code"], name: "index_exchanges_on_code", unique: true, using: :btree
 
   create_table "holdings", force: :cascade do |t|
     t.integer  "portfolio_id",  null: false
@@ -35,8 +38,8 @@ ActiveRecord::Schema.define(version: 20160309180006) do
     t.decimal  "price",         null: false
   end
 
-  add_index "holdings", ["portfolio_id"], name: "index_holdings_on_portfolio_id"
-  add_index "holdings", ["stock_id"], name: "index_holdings_on_stock_id"
+  add_index "holdings", ["portfolio_id"], name: "index_holdings_on_portfolio_id", using: :btree
+  add_index "holdings", ["stock_id"], name: "index_holdings_on_stock_id", using: :btree
 
   create_table "portfolios", force: :cascade do |t|
     t.string  "purpose"
@@ -47,8 +50,8 @@ ActiveRecord::Schema.define(version: 20160309180006) do
     t.integer "manager_id",                  null: false
   end
 
-  add_index "portfolios", ["manager_id"], name: "index_portfolios_on_manager_id"
-  add_index "portfolios", ["owner_id"], name: "index_portfolios_on_owner_id"
+  add_index "portfolios", ["manager_id"], name: "index_portfolios_on_manager_id", using: :btree
+  add_index "portfolios", ["owner_id"], name: "index_portfolios_on_owner_id", using: :btree
 
   create_table "stocks", force: :cascade do |t|
     t.string  "symbol",      null: false
@@ -56,7 +59,7 @@ ActiveRecord::Schema.define(version: 20160309180006) do
     t.string  "name",        null: false
   end
 
-  add_index "stocks", ["symbol"], name: "index_stocks_on_symbol", unique: true
+  add_index "stocks", ["symbol"], name: "index_stocks_on_symbol", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -71,11 +74,17 @@ ActiveRecord::Schema.define(version: 20160309180006) do
     t.string   "last_sign_in_ip"
     t.string   "name",                                null: false
     t.integer  "role",                   default: 0,  null: false
-    t.string   "phone"
-    t.integer  "address_id"
+    t.string   "phone",                               null: false
+    t.integer  "address_id",                          null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "holdings", "portfolios"
+  add_foreign_key "holdings", "stocks"
+  add_foreign_key "portfolios", "users", column: "manager_id"
+  add_foreign_key "portfolios", "users", column: "owner_id"
+  add_foreign_key "stocks", "exchanges"
+  add_foreign_key "users", "addresses"
 end
