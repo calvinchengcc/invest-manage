@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :portfolio_id %><br>
-    <%= f.number_field :portfolio_id, required: true %>
+    <%= f.collection_select :portfolio_id, Portfolio.all.order(:id), :id, :id, required: true %>
   </div>
   <div class="field">
     <%= f.label :stock %><br>
