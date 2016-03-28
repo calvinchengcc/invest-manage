@@ -34,6 +34,10 @@ class Portfolio < ActiveRecord::Base
     holdings.map(&:stock).map(&:name).uniq
   end
 
+  def to_s
+    "#{owner.name}'s #{purpose} portfolio (created on #{creation_date.to_formatted_s(:long)})"
+  end
+
   private
 
   def years_since(date)

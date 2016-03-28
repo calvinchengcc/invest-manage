@@ -27,7 +27,7 @@
   <strong>Owned Portfolios:</strong>
   <ul>
 	<% @user.owned_portfolios.each do |portfolio| %>
-      <li><%= link_to portfolio.id, portfolio %></li>
+      <li><%= link_to portfolio.to_s, portfolio %></li>
 	<% end %>
   </ul>
 </p>
@@ -37,7 +37,7 @@
     <strong>Managed Portfolios:</strong>
     <ul>
       <% @user.managed_portfolios.each do |portfolio| %>
-        <li><%= link_to "#{portfolio.id}, owned by #{portfolio.owner.name}", portfolio %></li>
+        <li><%= link_to portfolio.to_s, portfolio %></li>
       <% end %>
     </ul>
   </p>
