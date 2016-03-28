@@ -13,19 +13,25 @@ class Portfolio < ActiveRecord::Base
     Array.wrap(StockQuote::Stock.quote(symbols))
         .map(&:last_trade_price_only)
         .zip(self.holdings.map(&:num_shares))
-        .map { |a| a[0] * a[1] }.reduce(:+)
+        .map { |a| a[0] * a[1] }
+        .reduce(:+)
+        .round(2)
   end
 
   def profit_loss
-    current_value - principal
+    (current_value - principal).round(2)
   end
 
   def annualized_return
-    (current_value / principal) ** (1 / years_since(creation_date)) - 1 * 100
+    (((current_value / principal) ** (1 / years_since(creation_date)) - 1) * 100).round(2)
   end
 
   def total_return
-    (current_value / principal - 1) * 100
+    ((current_value / principal - 1) * 100).round(2)
+  end
+
+  def companies_represented
+    holdings.map(&:stock).map(&:name).uniq
   end
 
   private
