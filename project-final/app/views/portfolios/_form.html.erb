@@ -13,27 +13,27 @@
 
   <div class="field">
     <%= f.label :purpose %><br>
-    <%= f.text_field :purpose %>
+    <%= f.text_field :purpose, required: true %>
   </div>
   <div class="field">
     <%= f.label :creation_date %><br>
-    <%= f.date_select :creation_date %>
+    <%= f.date_select :creation_date, required: true %>
   </div>
   <div class="field">
     <%= f.label :principal %><br>
-    <%= f.text_field :principal %>
+    <%= f.number_field :principal, step: 0.01, required: true %>
   </div>
   <div class="field">
     <%= f.label :cash %><br>
-    <%= f.text_field :cash %>
+    <%= f.number_field :cash, step: 0.01 %>
   </div>
   <div class="field">
     <%= f.label :owner_id %><br>
-    <%= f.number_field :owner_id %>
+    <%= f.number_field :owner_id, required: true %>
   </div>
   <div class="field">
     <%= f.label :manager_id %><br>
-    <%= f.number_field :manager_id %>
+    <%= f.number_field :manager_id, required: true %>
   </div>
   <div class="actions">
     <%= f.submit %>

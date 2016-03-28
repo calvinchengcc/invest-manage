@@ -104,10 +104,16 @@ class PortfoliosController < ApplicationController
   # DELETE /portfolios/1
   # DELETE /portfolios/1.json
   def destroy
-    @portfolio.destroy
     respond_to do |format|
-      format.html { redirect_to portfolios_url, notice: 'Portfolio was successfully destroyed.' }
-      format.json { head :no_content }
+      begin
+        @portfolio.destroy
+        format.html { redirect_to portfolios_url, notice: 'Portfolio was successfully destroyed.' }
+        format.json { head :no_content }
+      rescue StandardError => e
+        flash[:error] = "Deletion failed: #{e.to_s}"
+        format.html { redirect_to portfolios_url }
+        format.json { head :unprocessable_entity  }
+      end
     end
   end
 

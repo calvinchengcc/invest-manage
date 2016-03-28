@@ -10,5 +10,5 @@ Rails.application.routes.draw do
     end
   end
   root to: 'visitors#index'
-  devise_for :users
+  devise_for :users, path: 'u'
 end

@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(version: 20160309180006) do
   create_table "portfolios", force: :cascade do |t|
     t.string  "purpose"
     t.date    "creation_date"
-    t.decimal "principal",     default: 0.0, null: false
-    t.decimal "cash",          default: 0.0, null: false
-    t.integer "owner_id",                    null: false
-    t.integer "manager_id",                  null: false
+    t.decimal "principal",     null: false
+    t.decimal "cash",          null: false
+    t.integer "owner_id",      null: false
+    t.integer "manager_id",    null: false
   end
 
   add_index "portfolios", ["manager_id"], name: "index_portfolios_on_manager_id", using: :btree
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20160309180006) do
 
   add_check "users", "(role = ANY (ARRAY[0, 1, 2]))", name: "chk_role"
 
-  add_foreign_key "holdings", "portfolios"
+  add_foreign_key "holdings", "portfolios", on_delete: :cascade
   add_foreign_key "holdings", "stocks"
   add_foreign_key "portfolios", "users", column: "manager_id"
   add_foreign_key "portfolios", "users", column: "owner_id"
