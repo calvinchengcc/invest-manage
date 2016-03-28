@@ -1,25 +1,62 @@
 <h1>Listing Portfolios</h1>
 
+<% def show(col)
+p = params.clone
+p['hidden'] -= [col]
+return p
+end %>
+
+<% if @hidden_cols.include?('purpose') %>
+  <%= link_to 'Purpose', show('purpose') %>
+<% end %>
+<% if @hidden_cols.include?('creation_date') %>
+  <%= link_to 'Creation date', show('creation_date') %>
+<% end %>
+<% if @hidden_cols.include?('principal') %>
+  <%= link_to 'Principal', show('principal') %>
+<% end %>
+<% if @hidden_cols.include?('cash') %>
+  <%= link_to 'Cash', show('cash') %>
+<% end %>
+<% if @hidden_cols.include?('owner_id') %>
+  <%= link_to 'Owner', show('owner_id') %>
+<% end %>
+<% if @hidden_cols.include?('manager_id') %>
+  <%= link_to 'Manager', show('manager_id') %>
+<% end %>
+
 <table>
   <thead>
     <tr>
       <% unless @hidden_cols.include?('purpose') %>
-        <th>Purpose</th>
+        <th>
+          <%= link_to 'Purpose', params.merge('hidden[]' => 'purpose') %>
+        </th>
       <% end %>
       <% unless @hidden_cols.include?('creation_date') %>
-        <th>Creation date</th>
+        <th>
+          <%= link_to 'Creation date', params.merge('hidden[]' => 'creation_date') %>
+        </th>
       <% end %>
       <% unless @hidden_cols.include?('principal') %>
-        <th>Principal</th>
+        <th>
+          <%= link_to 'Principal', params.merge('hidden[]' => 'principal') %>
+        </th>
       <% end %>
       <% unless @hidden_cols.include?('cash') %>
-        <th>Cash</th>
+        <th>
+          <%= link_to 'Cash', params.merge('hidden[]' => 'cash') %>
+        </th>
       <% end %>
       <% unless @hidden_cols.include?('owner_id') %>
-        <th>Owner</th>
+        <th>
+          <%= link_to 'Owner', params.merge('hidden[]' => 'owner_id') %>
+        </th>
       <% end %>
       <% unless @hidden_cols.include?('manager_id') %>
-        <th>Manager</th>
+        <th>
+          <%= link_to 'Manager', params.merge('hidden[]' => 'manager_id') %>
+        </th>
       <% end %>
       <th colspan="3"></th>
     </tr>
