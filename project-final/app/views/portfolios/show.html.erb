@@ -53,7 +53,7 @@
       <td>
         <ul>
           <% @portfolio.holdings.each do |holding| %>
-            <li><%= link_to holding.id, holding %></li>
+            <li><%= link_to holding.to_s, holding %></li>
           <% end %>
         </ul>
       </td>
