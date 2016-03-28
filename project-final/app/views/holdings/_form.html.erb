@@ -16,8 +16,8 @@
     <%= f.number_field :portfolio_id, required: true %>
   </div>
   <div class="field">
-    <%= f.label :stock_id %><br>
-    <%= f.text_field :stock_id, required: true %>
+    <%= f.label :stock %><br>
+    <%= f.collection_select :stock_id, Stock.all.order(:symbol), :id, :symbol_and_name, required: true %>
   </div>
   <div class="field">
     <%= f.label :num_shares %><br>

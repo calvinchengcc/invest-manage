@@ -57,4 +57,12 @@ class Stock < ActiveRecord::Base
     StockQuote::Stock.history(symbol, Date.today - 365, Date.today).map{|x| { price: x.close.round(2), date: x.date } }
   end
 
+  def symbol_and_name
+    "#{symbol} - #{name}"
+  end
+
+  def name_symbol
+    "#{name} (#{symbol})"
+  end
+
 end
