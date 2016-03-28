@@ -65,4 +65,6 @@ class Stock < ActiveRecord::Base
     "#{name} (#{symbol})"
   end
 
+  alias_method :to_s, :name_symbol
+
 end

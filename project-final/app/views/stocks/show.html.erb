@@ -5,7 +5,7 @@
 
 <p>
   <strong>Exchange:</strong>
-  <%= @stock.exchange.code %>
+  <%= @stock.exchange %>
 </p>
 
 <p>
@@ -20,12 +20,24 @@
 
 <p>
   <strong>Change:</strong>
-  <%= @stock.current_change %> <%= @stock.current_change_percent %>
+  <%= @stock.current_change %> (<%= @stock.current_change_percent %>)
 </p>
 
 <p>
-  <strong>Historical:</strong>
-  <%= @stock.historical_price_10d %>
+  <strong>Recent closing prices:</strong>
+  <table>
+    <% if @stock.historical_price_10d.empty? %>
+      No data available.
+    <% else %>
+      <tr>
+        <th>Closing price</th>
+        <th>Date</th>
+      </tr>
+      <%= render(partial: 'historical_price',
+                 collection: @stock.historical_price_10d,
+                 as: :historical_price)%>
+    <% end %>
+  </table>
 </p>
 
 <%= link_to 'Edit', edit_stock_path(@stock) %> |
