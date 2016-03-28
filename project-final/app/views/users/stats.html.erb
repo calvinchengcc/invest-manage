@@ -32,7 +32,8 @@
 </table>
 
 <h3>Average Portfolio Principal by Country</h3>
-<%= link_to 'Show Ascending', params.merge('principal-by-country' => 'asc') %> | <%= link_to 'Show Descending', params.merge('principal-by-country' => 'desc') %>
+<%= link_to 'Show Ascending', params.merge('principal-by-country' => 'asc') %> |
+<%= link_to 'Show Descending', params.merge('principal-by-country' => 'desc') %>
 <% unless @principal_by_country.empty? %>
   <table>
     <tr>
