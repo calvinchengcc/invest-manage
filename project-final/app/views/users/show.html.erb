@@ -45,7 +45,7 @@
     <%= link_to 'Show companies', params.merge(show: (Array.wrap(params[:show]) | ['companies'])) %>
   <% else %>
     <ul>
-      <%= render(@companies) || 'None' %>
+      <%= render(partial: 'company', collection: @companies) || 'None' %>
     </ul>
   <% end %>
 </p>
