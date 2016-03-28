@@ -5,24 +5,28 @@ p = params.clone
 p['hidden'] -= [col]
 return p
 end %>
-
-<% if @hidden_cols.include?('purpose') %>
-  <%= link_to 'Purpose', show('purpose') %>
-<% end %>
-<% if @hidden_cols.include?('creation_date') %>
-  <%= link_to 'Creation date', show('creation_date') %>
-<% end %>
-<% if @hidden_cols.include?('principal') %>
-  <%= link_to 'Principal', show('principal') %>
-<% end %>
-<% if @hidden_cols.include?('cash') %>
-  <%= link_to 'Cash', show('cash') %>
-<% end %>
-<% if @hidden_cols.include?('owner_id') %>
-  <%= link_to 'Owner', show('owner_id') %>
-<% end %>
-<% if @hidden_cols.include?('manager_id') %>
-  <%= link_to 'Manager', show('manager_id') %>
+<% if @hidden_cols.length > 0 %>
+  <div class="hidden-cols">
+    Hidden columns:
+    <% if @hidden_cols.include?('purpose') %>
+      <%= link_to 'Purpose', show('purpose') %>
+    <% end %>
+    <% if @hidden_cols.include?('creation_date') %>
+      <%= link_to 'Creation date', show('creation_date') %>
+    <% end %>
+    <% if @hidden_cols.include?('principal') %>
+      <%= link_to 'Principal', show('principal') %>
+    <% end %>
+    <% if @hidden_cols.include?('cash') %>
+      <%= link_to 'Cash', show('cash') %>
+    <% end %>
+    <% if @hidden_cols.include?('owner_id') %>
+      <%= link_to 'Owner', show('owner_id') %>
+    <% end %>
+    <% if @hidden_cols.include?('manager_id') %>
+      <%= link_to 'Manager', show('manager_id') %>
+    <% end %>
+  </div>
 <% end %>
 
 <table>
