@@ -26,9 +26,7 @@
 <p>
   <strong>Owned Portfolios:</strong>
   <ul>
-	<% @user.owned_portfolios.each do |portfolio| %>
-      <li><%= link_to portfolio.to_s, portfolio %></li>
-	<% end %>
+    <%= render(partial: 'portfolio', collection: @user.owned_portfolios, as: :portfolio) || 'None' %>
   </ul>
 </p>
 
@@ -36,9 +34,7 @@
   <p>
     <strong>Managed Portfolios:</strong>
     <ul>
-      <% @user.managed_portfolios.each do |portfolio| %>
-        <li><%= link_to portfolio.to_s, portfolio %></li>
-      <% end %>
+      <%= render(partial: 'portfolio', collection: @user.managed_portfolios, as: :portfolio) || 'None' %>
     </ul>
   </p>
 <% end %>
@@ -49,9 +45,7 @@
     <%= link_to 'Show companies', params.merge(show: (Array.wrap(params[:show]) | ['companies'])) %>
   <% else %>
     <ul>
-      <% @companies.each do |company| %>
-        <li><%= link_to company.name, stock_path(company.id) %></li>
-      <% end %>
+      <%= render(@companies) || 'None' %>
     </ul>
   <% end %>
 </p>

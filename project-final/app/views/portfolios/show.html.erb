@@ -52,9 +52,7 @@
       <td>Holdings</td>
       <td>
         <ul>
-          <% @portfolio.holdings.each do |holding| %>
-            <li><%= link_to holding.to_s, holding %></li>
-          <% end %>
+          <%= render(partial: 'holding', collection: @portfolio.holdings) || 'None' %>
         </ul>
       </td>
     </tr>
@@ -62,9 +60,10 @@
       <td>Companies represented</td>
       <td>
         <ul>
-          <% @portfolio.companies_represented.each do |company| %>
-            <li><%= company %></li>
-          <% end %>
+          <%= render(partial: 'company',
+                     collection: @portfolio.companies_represented,
+                     as: :company) ||
+                  'None' %>
         </ul>
       </td>
     </tr>
