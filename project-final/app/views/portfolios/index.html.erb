@@ -1,103 +1,130 @@
 <h1>Listing Portfolios</h1>
 
-<%
-  def show(col)
-    params.merge({'hidden' => (Array.wrap(params['hidden']) - [col])})
-  end
+<script type="text/template" id="st">
+<select class="col">
+	<option name="cash">Cash</option>
+	<option name="principal">Principal</option>
+</select>
+<select class="op">
+	<option name="lt">&lt;</option>
+	<option name="le">&lt;=</option>
+	<option name="eq">=</option>
+	<option name="ne">!=</option>
+	<option name="ge">&gt;=</option>
+	<option name="gt">&gt;</option>
+</select>
+<input type="text">
+<button class="remove">-</button>
+</script>
 
-  def hide(col)
-    params.merge({'hidden' => (Array.wrap(params['hidden']) | [col])})
-  end
-%>
-<% if @hidden_cols.length > 0 %>
-  <div class="hidden-cols">
-    Hidden columns:
-    <% if @hidden_cols.include?('purpose') %>
-      <%= link_to 'Purpose', show('purpose') %>
-    <% end %>
-    <% if @hidden_cols.include?('creation_date') %>
-      <%= link_to 'Creation date', show('creation_date') %>
-    <% end %>
-    <% if @hidden_cols.include?('principal') %>
-      <%= link_to 'Principal', show('principal') %>
-    <% end %>
-    <% if @hidden_cols.include?('cash') %>
-      <%= link_to 'Cash', show('cash') %>
-    <% end %>
-    <% if @hidden_cols.include?('owner_id') %>
-      <%= link_to 'Owner', show('owner_id') %>
-    <% end %>
-    <% if @hidden_cols.include?('manager_id') %>
-      <%= link_to 'Manager', show('manager_id') %>
-    <% end %>
-  </div>
+<%= form_tag("", method: "get", id: "filter") do %>
+	<strong>Hidden columns:</strong>
+	<%= check_box_tag("hidden[]", "purpose", @hidden_cols.include?('purpose'), id: "purpose_hidden") %>
+	<%= label_tag("purpose_hidden", "Purpose") %>
+	<%= check_box_tag("hidden[]", "creation_date", @hidden_cols.include?('creation_date'), id: "creation_hidden") %>
+	<%= label_tag("creation_hidden", "Creation date") %>
+	<%= check_box_tag("hidden[]", "principal", @hidden_cols.include?('principal'), id: "principal_hidden") %>
+	<%= label_tag("principal_hidden", "Principal") %>
+	<%= check_box_tag("hidden[]", "cash", @hidden_cols.include?('cash'), id: "cash_hidden") %>
+	<%= label_tag("cash_hidden", "Cash") %>
+	<%= check_box_tag("hidden[]", "owner_id", @hidden_cols.include?('owner_id'), id: "owner_hidden") %>
+	<%= label_tag("owner_hidden", "Owner") %>
+	<%= check_box_tag("hidden[]", "manager_id", @hidden_cols.include?('manager_id'), id: "manager_hidden") %>
+	<%= label_tag("manager_hidden", "Manager") %>
+	<br>
+	<strong>Filters:</strong>
+	<button id="add">+</button>
+	<div class="filters">
+		<% if params[:filter] then params[:filter].each do |filter| %>
+			<% filter[1].each do |f| %>
+				<div class="selection">
+					<select class="col">
+						<option value="cash" <%= if (filter[0] == 'cash') then 'selected' end %>>Cash</option>
+						<option value="principal" <%= if (filter[0] == 'principal') then 'selected' end %>>Principal</option>
+					</select>
+					<select class="op">
+						<option value="lt" <%= if (f[0] == 'lt') then 'selected' end %>>&lt;</option>
+						<option value="le" <%= if (f[0] == 'le') then 'selected' end %>>&lt;=</option>
+						<option value="eq" <%= if (f[0] == 'eq') then 'selected' end %>>=</option>
+						<option value="ne" <%= if (f[0] == 'ne') then 'selected' end %>>!=</option>
+						<option value="ge" <%= if (f[0] == 'ge') then 'selected' end %>>&gt;=</option>
+						<option value="gt" <%= if (f[0] == 'gt') then 'selected' end %>>&gt;</option>
+					</select>
+					<input type="text" value="<%= f[1] %>">
+					<button class="remove">-</button>
+				</div>
+			<% end %>
+		<% end
+		end %>
+	</div>
+	<%= submit_tag("Filter") %>
 <% end %>
 
 <table>
-  <thead>
-    <tr>
-      <% unless @hidden_cols.include?('purpose') %>
-        <th>
-          <%= link_to 'Purpose', hide('purpose') %>
-        </th>
-      <% end %>
-      <% unless @hidden_cols.include?('creation_date') %>
-        <th>
-          <%= link_to 'Creation date', hide('creation_date') %>
-        </th>
-      <% end %>
-      <% unless @hidden_cols.include?('principal') %>
-        <th>
-          <%= link_to 'Principal', hide('principal') %>
-        </th>
-      <% end %>
-      <% unless @hidden_cols.include?('cash') %>
-        <th>
-          <%= link_to 'Cash', hide('cash') %>
-        </th>
-      <% end %>
-      <% unless @hidden_cols.include?('owner_id') %>
-        <th>
-          <%= link_to 'Owner', hide('owner_id') %>
-        </th>
-      <% end %>
-      <% unless @hidden_cols.include?('manager_id') %>
-        <th>
-          <%= link_to 'Manager', hide('manager_id') %>
-        </th>
-      <% end %>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+	<thead>
+		<tr>
+			<% unless @hidden_cols.include?('purpose') %>
+				<th>
+					Purpose
+				</th>
+			<% end %>
+			<% unless @hidden_cols.include?('creation_date') %>
+				<th>
+					Creation date
+				</th>
+			<% end %>
+			<% unless @hidden_cols.include?('principal') %>
+				<th>
+					Principal
+				</th>
+			<% end %>
+			<% unless @hidden_cols.include?('cash') %>
+				<th>
+					Cash
+				</th>
+			<% end %>
+			<% unless @hidden_cols.include?('owner_id') %>
+				<th>
+					Owner
+				</th>
+			<% end %>
+			<% unless @hidden_cols.include?('manager_id') %>
+				<th>
+					Manager
+				</th>
+			<% end %>
+			<th colspan="3"></th>
+		</tr>
+	</thead>
 
-  <tbody>
-    <% @portfolios.each do |portfolio| %>
-      <tr>
-        <% unless @hidden_cols.include?('purpose') %>
-          <td><%= portfolio.purpose %></td>
-        <% end %>
-        <% unless @hidden_cols.include?('creation_date') %>
-          <td><%= portfolio.creation_date %></td>
-        <% end %>
-        <% unless @hidden_cols.include?('principal') %>
-          <td><%= portfolio.principal %></td>
-        <% end %>
-        <% unless @hidden_cols.include?('cash') %>
-          <td><%= portfolio.cash %></td>
-        <% end %>
-        <% unless @hidden_cols.include?('owner_id') %>
-          <td><%= link_to portfolio.owner.name, portfolio.owner %></td>
-        <% end %>
-        <% unless @hidden_cols.include?('manager_id') %>
-          <td><%= link_to portfolio.manager.name, portfolio.manager %></td>
-        <% end %>
-        <td><%= link_to 'Show', portfolio %></td>
-        <td><%= link_to 'Edit', edit_portfolio_path(portfolio) %></td>
-        <td><%= link_to 'Destroy', portfolio, method: :delete,
-                        data: { confirm: "Are you sure?\n\nAll holdings in the portfolio (if any) will be deleted as well!" } %></td>
-      </tr>
-    <% end %>
-  </tbody>
+	<tbody>
+		<% @portfolios.each do |portfolio| %>
+			<tr>
+				<% unless @hidden_cols.include?('purpose') %>
+					<td><%= portfolio.purpose %></td>
+				<% end %>
+				<% unless @hidden_cols.include?('creation_date') %>
+					<td><%= portfolio.creation_date %></td>
+				<% end %>
+				<% unless @hidden_cols.include?('principal') %>
+					<td><%= portfolio.principal %></td>
+				<% end %>
+				<% unless @hidden_cols.include?('cash') %>
+					<td><%= portfolio.cash %></td>
+				<% end %>
+				<% unless @hidden_cols.include?('owner_id') %>
+					<td><%= link_to portfolio.owner.name, portfolio.owner %></td>
+				<% end %>
+				<% unless @hidden_cols.include?('manager_id') %>
+					<td><%= link_to portfolio.manager.name, portfolio.manager %></td>
+				<% end %>
+				<td><%= link_to 'Show', portfolio %></td>
+				<td><%= link_to 'Edit', edit_portfolio_path(portfolio) %></td>
+				<td><%= link_to 'Destroy', portfolio, method: :delete,
+					data: { confirm: "Are you sure?\n\nAll holdings in the portfolio (if any) will be deleted as well!" } %></td>
+			</tr>
+		<% end %>
+	</tbody>
 </table>
 
 <br>
