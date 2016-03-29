@@ -51,8 +51,9 @@ class PortfoliosController < ApplicationController
         flash[:error] = 'Error specifying columns.'
       end
     end
-    @portfolios = @portfolios.includes(:owner).includes(:manager)
     @hidden_cols ||= []
+    @portfolios = @portfolios.includes(:owner) unless @hidden_cols.include?('owner_id')
+    @portfolios = @portfolios.includes(:manager) unless @hidden_cols.include?('manager_id')
   end
 
   # GET /portfolios/1
