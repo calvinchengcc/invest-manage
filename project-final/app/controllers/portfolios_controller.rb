@@ -51,6 +51,7 @@ class PortfoliosController < ApplicationController
         flash[:error] = 'Error specifying columns.'
       end
     end
+    @portfolios = @portfolios.includes(:owner).includes(:manager)
     @hidden_cols ||= []
   end
 
