@@ -4,7 +4,7 @@ class HoldingsController < ApplicationController
   # GET /holdings
   # GET /holdings.json
   def index
-    @holdings = Holding.all
+    @holdings = Holding.all.includes(:stock, :portfolio)
   end
 
   # GET /holdings/1
