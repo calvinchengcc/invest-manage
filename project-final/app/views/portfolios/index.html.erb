@@ -2,18 +2,26 @@
 
 <script type="text/template" id="st">
 <select class="col">
-	<option name="cash">Cash</option>
-	<option name="principal">Principal</option>
+	<option value="cash">Cash</option>
+	<option value="principal">Principal</option>
 </select>
 <select class="op">
-	<option name="lt">&lt;</option>
-	<option name="le">&lt;=</option>
-	<option name="eq">=</option>
-	<option name="ne">!=</option>
-	<option name="ge">&gt;=</option>
-	<option name="gt">&gt;</option>
+	<option value="lt">&lt;</option>
+	<option value="le">&lt;=</option>
+	<option value="eq">=</option>
+	<option value="ne">!=</option>
+	<option value="ge">&gt;=</option>
+	<option value="gt">&gt;</option>
 </select>
 <input type="text">
+<button class="remove">-</button>
+</script>
+<script type="text/template" id="sc">
+<select name="contains[]" class="stock">
+<% Stock.all.each do |s| %>
+   <option><%= s.symbol %></option>
+<% end %>
+</select>
 <button class="remove">-</button>
 </script>
 
@@ -56,6 +64,21 @@
 			<% end %>
 		<% end
 		end %>
+	</div>
+	<strong>Stocks:</strong>
+	<button id="sadd">+</button>
+	<div class="stocks">
+		<% if params[:contains] then params[:contains].each do |ss| %>
+			<div class="sf">
+				<select name="contains[]" class="stock">
+					<% Stock.all.each do |s| %>
+						<option <%= if (ss == s.symbol) then 'selected' end %>><%= s.symbol %></option>
+					<% end %>
+				</select>
+				<button class="remove">-</button>
+			</div>
+		<% end
+		end	%>
 	</div>
 	<%= submit_tag("Filter") %>
 <% end %>

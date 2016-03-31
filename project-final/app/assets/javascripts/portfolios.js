@@ -4,13 +4,11 @@ window.onload = function () {
 		for (var i = 0; i < selections.length; i++) {
 			var s = selections[i];
 			var col = s.querySelector("select.col");
-			col = col.children[col.selectedIndex].getAttribute("name");
+			col = col.children[col.selectedIndex].value;
 			var op = s.querySelector("select.op");
-			op = op.children[op.selectedIndex].getAttribute("name");
+			op = op.children[op.selectedIndex].value;
 			s.querySelector("input").setAttribute("name", "filter[" + col + "][" + op + "]");
-			console.log(col, op, s);
 		}
-		console.log(e, this);
 	}
 
 	var add = document.getElementById("add");
@@ -30,6 +28,23 @@ window.onload = function () {
 		return false;
 	}
 
+	var sadd = document.getElementById("sadd");
+	var sc = document.getElementById("sc").textContent;
+	var stocks = document.querySelector(".stocks");
+	function addStockFilter(e) {
+		e.preventDefault();
+		var d = document.createElement("div");
+		d.classList.add("sf");
+		d.innerHTML = sc;
+		d.querySelector(".remove").onclick = function (e) {
+			e.preventDefault();
+			d.remove();
+		}
+		stocks.appendChild(d);
+
+		return false;
+	}
+
 	var r = document.querySelectorAll(".remove");
 	for (var i = 0; i < r.length; i++) {
 		r[i].onclick = function (e) {
@@ -39,4 +54,5 @@ window.onload = function () {
 	}
 
 	add.onclick = addFilter;
+	sadd.onclick = addStockFilter;
 }
