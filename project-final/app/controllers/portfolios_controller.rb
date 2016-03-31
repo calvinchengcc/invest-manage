@@ -13,7 +13,7 @@ class PortfoliosController < ApplicationController
           conds.map { |op, v| "#{attr} #{op_to_sym(op)} #{v}" }
         end
         @portfolios = Portfolio.where(filters.join(' AND '))
-        # Vulnerable to SQL injection, but I don't care
+          # Vulnerable to SQL injection, but I don't care
       rescue StandardError => e
         puts e
         flash[:error] = 'Error while filtering results.'
@@ -22,20 +22,20 @@ class PortfoliosController < ApplicationController
     if params.has_key?(:contains) && params[:contains].is_a?(Array)
       begin
         stocks = params[:contains].map(&:upcase)
-                   .select { |s| Stock.exists?(symbol: s) }
-                   .map { |s| "'#{s}'" }
-                   .join(',')
-        results = Portfolio.find_by_sql(["SELECT *
-                                         FROM portfolios P
-                                         WHERE NOT EXISTS (
-                                           SELECT S.id
-                                           FROM stocks S
-                                           WHERE symbol IN (#{stocks})
-                                           EXCEPT
-                                           SELECT H.stock_id
-                                           FROM holdings H
-                                           WHERE H.portfolio_id = P.id);"])
-		@portfolios = Portfolio.where(id: results.map(&:id))
+                     .select { |s| Stock.exists?(symbol: s) }
+                     .map { |s| "'#{s}'" }
+                     .join(',')
+        ids = Portfolio.find_by_sql("SELECT P.id
+                                     FROM portfolios P
+                                     WHERE NOT EXISTS (
+                                       SELECT S.id
+                                       FROM stocks S
+                                       WHERE symbol IN (#{stocks})
+                                       EXCEPT
+                                       SELECT H.stock_id
+                                       FROM holdings H
+                                       WHERE H.portfolio_id = P.id);")
+        @portfolios = Portfolio.where(id: ids)
       rescue StandardError => e
         puts e
         flash[:error] = 'Error finding portfolios containing specified stocks.'
@@ -115,7 +115,7 @@ class PortfoliosController < ApplicationController
       rescue StandardError => e
         flash[:error] = "Deletion failed: #{e.to_s}"
         format.html { redirect_to portfolios_url }
-        format.json { head :unprocessable_entity  }
+        format.json { head :unprocessable_entity }
       end
     end
   end
