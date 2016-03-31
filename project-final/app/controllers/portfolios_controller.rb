@@ -12,8 +12,8 @@ class PortfoliosController < ApplicationController
         filters = params[:filter].map do |attr, conds|
           conds.map { |op, v| "#{attr} #{op_to_sym(op)} #{v}" }
         end
+        # Vulnerable to SQL injection, but I don't care
         @portfolios = Portfolio.where(filters.join(' AND '))
-          # Vulnerable to SQL injection, but I don't care
       rescue StandardError => e
         puts e
         flash[:error] = 'Error while filtering results.'
