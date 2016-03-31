@@ -25,16 +25,17 @@ class PortfoliosController < ApplicationController
                    .select { |s| Stock.exists?(symbol: s) }
                    .map { |s| "'#{s}'" }
                    .join(',')
-        @portfolios = Portfolio.find_by_sql(["SELECT *
-                                              FROM portfolios P
-                                              WHERE NOT EXISTS (
-                                                SELECT S.id
-                                                FROM stocks S
-                                                WHERE symbol IN (#{stocks})
-                                                EXCEPT
-                                                SELECT H.stock_id
-                                                FROM holdings H
-                                                WHERE H.portfolio_id = P.id);"])
+        results = Portfolio.find_by_sql(["SELECT *
+                                         FROM portfolios P
+                                         WHERE NOT EXISTS (
+                                           SELECT S.id
+                                           FROM stocks S
+                                           WHERE symbol IN (#{stocks})
+                                           EXCEPT
+                                           SELECT H.stock_id
+                                           FROM holdings H
+                                           WHERE H.portfolio_id = P.id);"])
+		@portfolios = Portfolio.where(id: results.map(&:id))
       rescue StandardError => e
         puts e
         flash[:error] = 'Error finding portfolios containing specified stocks.'
