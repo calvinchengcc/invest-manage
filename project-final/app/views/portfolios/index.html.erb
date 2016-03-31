@@ -6,12 +6,12 @@
 	<option value="principal">Principal</option>
 </select>
 <select class="op">
-	<option value="lt">&lt;</option>
-	<option value="le">&lt;=</option>
-	<option value="eq">=</option>
-	<option value="ne">!=</option>
-	<option value="ge">&gt;=</option>
-	<option value="gt">&gt;</option>
+	<option value="lt">is less than</option>
+	<option value="le">is less than or equal to</option>
+	<option value="eq">is equal to</option>
+	<option value="ne">is not equal to</option>
+	<option value="ge">is greater than or equal to</option>
+	<option value="gt">is greater than</option>
 </select>
 <input type="text">
 <button class="remove">-</button>
@@ -25,20 +25,20 @@
 <button class="remove">-</button>
 </script>
 
-<%= form_tag("", method: "get", id: "filter") do %>
+<%= form_tag('', method: 'get', id: 'filter', enforce_utf8: false) do %>
 	<strong>Hidden columns:</strong>
-	<%= check_box_tag("hidden[]", "purpose", @hidden_cols.include?('purpose'), id: "purpose_hidden") %>
-	<%= label_tag("purpose_hidden", "Purpose") %>
-	<%= check_box_tag("hidden[]", "creation_date", @hidden_cols.include?('creation_date'), id: "creation_hidden") %>
-	<%= label_tag("creation_hidden", "Creation date") %>
-	<%= check_box_tag("hidden[]", "principal", @hidden_cols.include?('principal'), id: "principal_hidden") %>
-	<%= label_tag("principal_hidden", "Principal") %>
-	<%= check_box_tag("hidden[]", "cash", @hidden_cols.include?('cash'), id: "cash_hidden") %>
-	<%= label_tag("cash_hidden", "Cash") %>
-	<%= check_box_tag("hidden[]", "owner_id", @hidden_cols.include?('owner_id'), id: "owner_hidden") %>
-	<%= label_tag("owner_hidden", "Owner") %>
-	<%= check_box_tag("hidden[]", "manager_id", @hidden_cols.include?('manager_id'), id: "manager_hidden") %>
-	<%= label_tag("manager_hidden", "Manager") %>
+	<%= check_box_tag('hidden[]', 'purpose', @hidden_cols.include?('purpose'), id: 'purpose_hidden') %>
+	<%= label_tag('purpose_hidden', 'Purpose') %>
+	<%= check_box_tag('hidden[]', 'creation_date', @hidden_cols.include?('creation_date'), id: 'creation_hidden') %>
+	<%= label_tag('creation_hidden', 'Creation date') %>
+	<%= check_box_tag('hidden[]', 'principal', @hidden_cols.include?('principal'), id: 'principal_hidden') %>
+	<%= label_tag('principal_hidden', 'Principal') %>
+	<%= check_box_tag('hidden[]', 'cash', @hidden_cols.include?('cash'), id: 'cash_hidden') %>
+	<%= label_tag('cash_hidden', 'Cash') %>
+	<%= check_box_tag('hidden[]', 'owner_id', @hidden_cols.include?('owner_id'), id: 'owner_hidden') %>
+	<%= label_tag('owner_hidden', 'Owner') %>
+	<%= check_box_tag('hidden[]', 'manager_id', @hidden_cols.include?('manager_id'), id: 'manager_hidden') %>
+	<%= label_tag('manager_hidden', 'Manager') %>
 	<br>
 	<strong>Filters:</strong>
 	<button id="add">+</button>
@@ -47,16 +47,16 @@
 			<% filter[1].each do |f| %>
 				<div class="selection">
 					<select class="col">
-						<option value="cash" <%= if (filter[0] == 'cash') then 'selected' end %>>Cash</option>
-						<option value="principal" <%= if (filter[0] == 'principal') then 'selected' end %>>Principal</option>
+						<option value="cash" <%= if filter[0] == 'cash' then 'selected' end %>>Cash</option>
+						<option value="principal" <%= if filter[0] == 'principal' then 'selected' end %>>Principal</option>
 					</select>
 					<select class="op">
-						<option value="lt" <%= if (f[0] == 'lt') then 'selected' end %>>&lt;</option>
-						<option value="le" <%= if (f[0] == 'le') then 'selected' end %>>&lt;=</option>
-						<option value="eq" <%= if (f[0] == 'eq') then 'selected' end %>>=</option>
-						<option value="ne" <%= if (f[0] == 'ne') then 'selected' end %>>!=</option>
-						<option value="ge" <%= if (f[0] == 'ge') then 'selected' end %>>&gt;=</option>
-						<option value="gt" <%= if (f[0] == 'gt') then 'selected' end %>>&gt;</option>
+						<option value="lt" <%= if f[0] == 'lt' then 'selected' end %>>is less than</option>
+						<option value="le" <%= if f[0] == 'le' then 'selected' end %>>is less than or equal to</option>
+						<option value="eq" <%= if f[0] == 'eq' then 'selected' end %>>is equal to</option>
+						<option value="ne" <%= if f[0] == 'ne' then 'selected' end %>>is not equal to</option>
+						<option value="ge" <%= if f[0] == 'ge' then 'selected' end %>>is greater than or equal to</option>
+						<option value="gt" <%= if f[0] == 'gt' then 'selected' end %>>is greater than</option>
 					</select>
 					<input type="text" value="<%= f[1] %>">
 					<button class="remove">-</button>
@@ -72,7 +72,7 @@
 			<div class="sf">
 				<select name="contains[]" class="stock">
 					<% Stock.all.each do |s| %>
-						<option <%= if (ss == s.symbol) then 'selected' end %>><%= s.symbol %></option>
+						<option <%= if ss == s.symbol then 'selected' end %>><%= s.symbol %></option>
 					<% end %>
 				</select>
 				<button class="remove">-</button>

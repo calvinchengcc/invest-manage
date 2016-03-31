@@ -36,7 +36,7 @@ class PortfoliosController < ApplicationController
           conds.map { |op, v| "#{attr} #{op_to_sym(op)} #{v}" }
         end
         # Vulnerable to SQL injection, but I don't care
-        @portfolios = @portfolios.where(filters.join(' AND '))
+        @portfolios = (@portfolios || Portfolio).where(filters.join(' AND '))
       rescue StandardError => e
         puts e
         flash[:error] = 'Error while filtering results.'
@@ -83,7 +83,7 @@ class PortfoliosController < ApplicationController
         format.html { redirect_to @portfolio, notice: 'Portfolio was successfully created.' }
         format.json { render :show, status: :created, location: @portfolio }
       rescue StandardError => e
-        flash[:error] = "Create failed: #{e.to_s}"
+        flash.now[:error] = "Create failed: #{e.to_s}"
         format.html { render :new }
         format.json { render json: @portfolio.errors, status: :unprocessable_entity }
       end
@@ -99,7 +99,7 @@ class PortfoliosController < ApplicationController
         format.html { redirect_to @portfolio, notice: 'Portfolio was successfully updated.' }
         format.json { render :show, status: :ok, location: @portfolio }
       rescue StandardError => e
-        flash[:error] = "Update failed: #{e.to_s}"
+        flash.now[:error] = "Update failed: #{e.to_s}"
         format.html { render :edit }
         format.json { render json: @portfolio.errors, status: :unprocessable_entity }
       end
