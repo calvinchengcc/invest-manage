@@ -1,33 +1,27 @@
 <h1>Listing Portfolios</h1>
 
 <script type="text/template" id="st">
-  <label>
-    <select class="col">
-      <option value="cash">Cash</option>
-      <option value="principal">Principal</option>
-    </select>
-  </label>
-  <label>
-    <select class="op">
-      <option value="lt">is less than</option>
-      <option value="le">is less than or equal to</option>
-      <option value="eq">is equal to</option>
-      <option value="ne">is not equal to</option>
-      <option value="ge">is greater than or equal to</option>
-      <option value="gt">is greater than</option>
-    </select>
-  </label>
+  <select class="col">
+    <option value="cash">Cash</option>
+    <option value="principal">Principal</option>
+  </select>
+  <select class="op">
+    <option value="lt">is less than</option>
+    <option value="le">is less than or equal to</option>
+    <option value="eq">is equal to</option>
+    <option value="ne">is not equal to</option>
+    <option value="ge">is greater than or equal to</option>
+    <option value="gt">is greater than</option>
+  </select>
   <%= number_field_tag :cash, 0, step: 0.01, min: 0 %>
   <button class="remove">-</button>
 </script>
 <script type="text/template" id="sc">
-  <label>
-    <select name="contains[]" class="stock">
-      <% Stock.all.each do |s| %>
-        <option value="<%= s.symbol %>"><%= s.symbol_and_name %></option>
-      <% end %>
-    </select>
-  </label>
+  <select name="contains[]" class="stock">
+    <% Stock.all.each do |s| %>
+      <option value="<%= s.symbol %>"><%= s.symbol_and_name %></option>
+    <% end %>
+  </select>
   <button class="remove">-</button>
 </script>
 
@@ -53,41 +47,35 @@
       <% params[:filter].each do |filter| %>
         <% filter[1].each do |f| %>
           <div class="selection">
-            <label>
-              <select class="col">
-                <option value="cash" <%= 'selected' if filter[0] == 'cash' %>>
-                  Cash
-                </option>
-                <option value="principal" <%= 'selected' if filter[0] == 'principal' %>>
-                  Principal
-                </option>
-              </select>
-            </label>
-            <label>
-              <select class="op">
-                <option value="lt" <%= 'selected' if f[0] == 'lt' %>>
-                  is less than
-                </option>
-                <option value="le" <%= 'selected' if f[0] == 'le' %>>
-                  is less than or equal to
-                </option>
-                <option value="eq" <%= 'selected' if f[0] == 'eq' %>>
-                  is equal to
-                </option>
-                <option value="ne" <%= 'selected' if f[0] == 'ne' %>>
-                  is not equal to
-                </option>
-                <option value="ge" <%= 'selected' if f[0] == 'ge' %>>
-                  is greater than or equal to
-                </option>
-                <option value="gt" <%= 'selected' if f[0] == 'gt' %>>
-                  is greater than
-                </option>
-              </select>
-            </label>
-            <label>
-              <input type="text" value="<%= f[1] %>">
-            </label>
+            <select class="col">
+              <option value="cash" <%= 'selected' if filter[0] == 'cash' %>>
+                Cash
+              </option>
+              <option value="principal" <%= 'selected' if filter[0] == 'principal' %>>
+                Principal
+              </option>
+            </select>
+            <select class="op">
+              <option value="lt" <%= 'selected' if f[0] == 'lt' %>>
+                is less than
+              </option>
+              <option value="le" <%= 'selected' if f[0] == 'le' %>>
+                is less than or equal to
+              </option>
+              <option value="eq" <%= 'selected' if f[0] == 'eq' %>>
+                is equal to
+              </option>
+              <option value="ne" <%= 'selected' if f[0] == 'ne' %>>
+                is not equal to
+              </option>
+              <option value="ge" <%= 'selected' if f[0] == 'ge' %>>
+                is greater than or equal to
+              </option>
+              <option value="gt" <%= 'selected' if f[0] == 'gt' %>>
+                is greater than
+              </option>
+            </select>
+            <input type="text" value="<%= f[1] %>">
             <button class="remove">-</button>
           </div>
         <% end %>
