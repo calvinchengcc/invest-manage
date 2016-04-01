@@ -10,6 +10,7 @@ gem 'smarter_csv'
 gem 'stock_quote'
 gem 'pg'
 gem 'postgresql-check'
+gem 'activerecord-import'
 
 group :development, :test do
   gem 'byebug'

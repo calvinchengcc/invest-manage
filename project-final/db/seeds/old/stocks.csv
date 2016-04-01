@@ -520,61 +520,61 @@ id,symbol,exchange_id,name
 519,XOMA,4,XOMA Corporation
 520,TQQQ,4,ProShares UltraPro QQQ
 521,SIRI,3,Sirius XM Holdings Inc.
-522,ALTR,3,Altera Corporation
-523,LINE,3,"Linn Energy, LLC"
-524,OZRK,3,Bank of the Ozarks
-525,AMCC,3,Applied Micro Circuits Corporat
-526,Z,3,"Zillow Group, Inc."
-527,FSC,3,Fifth Street Finance Corp.
-528,SHLD,3,Sears Holdings Corporation
-529,CG,3,The Carlyle Group L.P.
-530,SUNE,2,"SunEdison, Inc. Common Stock"
-531,HSBC,2,"HSBC Holdings, plc. Common Stoc"
-532,ALLY,2,Ally Financial Inc. Common Stoc
-533,ABEV,2,Ambev S.A. American Depositary
-534,SSW,2,Seaspan Corporation Seaspan Cor
-535,CAJ,2,"Canon, Inc. American Depositary"
-536,GPN,2,Global Payments Inc. Common Sto
-537,DPZ,2,Domino's Pizza Inc Common Stock
-538,BR,2,"Broadridge Financial Solutions,"
-539,H,2,Hyatt Hotels Corporation Class
-540,SPY,6,SPDR S&P 500
-541,UWTI,6,VelocityShares 3X Long Crude ET
-542,GDX,6,Market Vectors Gold Miners ETF
-543,VXX,6,iPath S&P 500 VIX Short Term Fu
-544,EEM,6,iShares MSCI Emerging Index Fun
-545,XLF,6,SPDR Select Sector Fund - Finan
-546,UGAZ,6,VelocityShares 3X Long Natural
-547,DUST,6,Direxion Daily Gold Miners Inde
-548,EWJ,6,iShares MSCI Japan Index Fund
-549,IWM,6,iShares Russell 2000 ETF
-550,GSAT,1,"Globalstar, Inc. Common Stock"
-551,NGD,1,New Gold Inc.
-552,BTG,1,B2Gold Corp Common shares (Cana
-553,LNG,1,"Cheniere Energy, Inc. Common St"
-554,GSS,1,"Golden Star Resources, Ltd Comm"
-555,SYRG,1,Synergy Resources Corporation C
-556,NG,1,Novagold Resources Inc.
-557,TRXC,1,"TransEnterix, Inc. Common Stock"
-558,LSG,1,Lake Shore Gold Corp Ordinary S
-559,BAA,1,BANRO CORPORATION Ordinary Shar
-560,FNMA,8,FANNIE MAE
-561,FMCC,8,FREDDIE MAC
-562,RICOY,7,RICOH CO LTD SP ADR
-563,TPCA,7,TROPICANA ENTMT INC
-564,AUTCF,7,AUTOCHINA INTL ORD
-565,AHBIF,7,ANHEUSER-BUSCH INBEV
-566,IWSY,7,IMAGEWARE SYS INC
-567,HOFD,7,HOMEFED CORP NEW
-568,GFIG,7,GFI Group Inc
-569,YGYI,7,YOUNGEVITY INTERNATI
-570,INIS,8,INTL ISOTOPES INC
-571,VPIG,8,"VIRTUAL PIGGY, INC."
-572,OTTW,8,OTTAWA SAVING BCP IL
-573,MRIC,8,MRI INTERVENTIONS
-574,SNGX,8,"SOLIGENIX, INC."
-575,ASPU,8,ASPEN GROUP INC
-576,PWDY,8,POWERDYNE
-577,ACTL,8,ARTEC GLOBAL MEDIA
-578,ARTH,8,ARCH THERAPEUTICS
-579,GEQU,8,GLOBAL EQUITY
+523,ALTR,3,Altera Corporation
+524,LINE,3,"Linn Energy, LLC"
+525,OZRK,3,Bank of the Ozarks
+526,AMCC,3,Applied Micro Circuits Corporat
+527,Z,3,"Zillow Group, Inc."
+528,FSC,3,Fifth Street Finance Corp.
+529,SHLD,3,Sears Holdings Corporation
+530,CG,3,The Carlyle Group L.P.
+531,SUNE,2,"SunEdison, Inc. Common Stock"
+532,HSBC,2,"HSBC Holdings, plc. Common Stoc"
+533,ALLY,2,Ally Financial Inc. Common Stoc
+534,ABEV,2,Ambev S.A. American Depositary
+535,SSW,2,Seaspan Corporation Seaspan Cor
+536,CAJ,2,"Canon, Inc. American Depositary"
+537,GPN,2,Global Payments Inc. Common Sto
+538,DPZ,2,Domino's Pizza Inc Common Stock
+539,BR,2,"Broadridge Financial Solutions,"
+540,H,2,Hyatt Hotels Corporation Class
+541,SPY,6,SPDR S&P 500
+542,UWTI,6,VelocityShares 3X Long Crude ET
+543,GDX,6,Market Vectors Gold Miners ETF
+544,VXX,6,iPath S&P 500 VIX Short Term Fu
+545,EEM,6,iShares MSCI Emerging Index Fun
+546,XLF,6,SPDR Select Sector Fund - Finan
+547,UGAZ,6,VelocityShares 3X Long Natural
+548,DUST,6,Direxion Daily Gold Miners Inde
+549,EWJ,6,iShares MSCI Japan Index Fund
+550,IWM,6,iShares Russell 2000 ETF
+551,GSAT,1,"Globalstar, Inc. Common Stock"
+552,NGD,1,New Gold Inc.
+553,BTG,1,B2Gold Corp Common shares (Cana
+554,LNG,1,"Cheniere Energy, Inc. Common St"
+555,GSS,1,"Golden Star Resources, Ltd Comm"
+556,SYRG,1,Synergy Resources Corporation C
+557,NG,1,Novagold Resources Inc.
+558,TRXC,1,"TransEnterix, Inc. Common Stock"
+559,LSG,1,Lake Shore Gold Corp Ordinary S
+560,BAA,1,BANRO CORPORATION Ordinary Shar
+561,FNMA,8,FANNIE MAE
+562,FMCC,8,FREDDIE MAC
+563,RICOY,7,RICOH CO LTD SP ADR
+564,TPCA,7,TROPICANA ENTMT INC
+565,AUTCF,7,AUTOCHINA INTL ORD
+566,AHBIF,7,ANHEUSER-BUSCH INBEV
+567,IWSY,7,IMAGEWARE SYS INC
+568,HOFD,7,HOMEFED CORP NEW
+569,GFIG,7,GFI Group Inc
+570,YGYI,7,YOUNGEVITY INTERNATI
+571,INIS,8,INTL ISOTOPES INC
+572,VPIG,8,"VIRTUAL PIGGY, INC."
+573,OTTW,8,OTTAWA SAVING BCP IL
+574,MRIC,8,MRI INTERVENTIONS
+575,SNGX,8,"SOLIGENIX, INC."
+576,ASPU,8,ASPEN GROUP INC
+577,PWDY,8,POWERDYNE
+578,ACTL,8,ARTEC GLOBAL MEDIA
+579,ARTH,8,ARCH THERAPEUTICS
+580,GEQU,8,GLOBAL EQUITY

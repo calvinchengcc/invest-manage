@@ -8,6 +8,14 @@
 require 'smarter_csv'
 
 def main
+  Holding.delete_all
+  Portfolio.delete_all
+  User.delete_all
+  Address.delete_all
+  Stock.delete_all
+  Exchange.delete_all
+  puts 'All TABLES DELETED'
+
   seed_record('exchanges', Exchange)
   puts 'ADDED STOCK EXCHANGES'
 
@@ -25,6 +33,8 @@ def main
 
   seed_record('holdings', Holding)
   puts 'ADDED HOLDINGS'
+
+  reset_db_sequence
 end
 
 def parse_csv_file(filename)
@@ -32,10 +42,14 @@ def parse_csv_file(filename)
   SmarterCSV.process file
 end
 
-def seed_record(filename, record)
-  data = parse_csv_file(filename)
-  ActiveRecord::Base.transaction do
-    data.each { |row| record.create!(row.except(:id)) }
+def seed_record(filename, record, validate = false)
+  data = parse_csv_file(filename).map { |row| record.new(row) }
+  record.import data, validate: validate
+end
+
+def reset_db_sequence
+  ActiveRecord::Base.connection.tables.each do |t|
+    ActiveRecord::Base.connection.reset_pk_sequence!(t)
   end
 end
 

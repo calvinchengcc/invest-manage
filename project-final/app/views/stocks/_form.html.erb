@@ -13,15 +13,7 @@
 
   <div class="field">
     <%= f.label :symbol %><br>
-    <%= f.text_field :symbol %>
-  </div>
-  <div class="field">
-    <%= f.label :exchange_id %><br>
-    <%= f.text_field :exchange_id %>
-  </div>
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :symbol, required: true %>
   </div>
   <div class="actions">
     <%= f.submit %>

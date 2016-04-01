@@ -21,11 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :principal %><br>
-    <%= f.number_field :principal, step: 0.01, required: true %>
+    $<%= f.number_field :principal, step: 0.01, min: 0, required: true %>
   </div>
   <div class="field">
     <%= f.label :cash %><br>
-    <%= f.number_field :cash, step: 0.01 %>
+    $<%= f.number_field :cash, step: 0.01, min: 0, required: true %>
   </div>
   <div class="field">
     <%= f.label :owner_id %><br>
@@ -33,7 +33,7 @@
   </div>
   <div class="field">
     <%= f.label :manager_id %><br>
-    <%= f.collection_select :owner_id, User.all.order(:name), :id, :name, required: true %>
+    <%= f.collection_select :manager_id, User.all.order(:name), :id, :name, required: true %>
   </div>
   <div class="actions">
     <%= f.submit %>

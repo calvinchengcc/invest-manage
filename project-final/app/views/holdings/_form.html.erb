@@ -13,7 +13,9 @@
 
   <div class="field">
     <%= f.label :portfolio_id %><br>
-    <%= f.collection_select :portfolio_id, Portfolio.all.order(:id), :id, :id, required: true %>
+    <%= f.collection_select :portfolio_id,
+                            Portfolio.all.includes(:owner).order('users.name'),
+                            :id, :to_s, required: true %>
   </div>
   <div class="field">
     <%= f.label :stock %><br>
@@ -21,7 +23,7 @@
   </div>
   <div class="field">
     <%= f.label :num_shares %><br>
-    <%= f.number_field :num_shares, required: true %>
+    <%= f.number_field :num_shares, min: 1, required: true %>
   </div>
   <div class="field">
     <%= f.label :purchase_date %><br>
@@ -29,7 +31,7 @@
   </div>
   <div class="field">
     <%= f.label :price %><br>
-    <%= f.number_field :price, step: 0.01, required: true %>
+    $<%= f.number_field :price, step: 0.01, min: 0, required: true %>
   </div>
   <div class="actions">
     <%= f.submit %>
