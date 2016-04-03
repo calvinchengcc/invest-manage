@@ -13,7 +13,7 @@ function App() {
 App.prototype.get = function () {
 	var self = this;
 	var req = new XMLHttpRequest();
-	req.open("GET", "/users/105.json", false);
+	req.open("GET", "/users/1.json", false);
 	req.onload = function () {
 		var data = JSON.parse(req.responseText);
 		// self.portfolios = data.owned_portfolios.concat(data.managed_portfolios).map(Portfolio.parse);
