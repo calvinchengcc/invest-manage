@@ -1,25 +1,27 @@
-<p>
-  <strong>Purpose:</strong>
-  <%= @portfolio.purpose %>
-</p>
+<h1><%= @portfolio.to_s.titleize %></h1>
 
-<p>
-  <strong>Creation date:</strong>
-  <%= @portfolio.creation_date %>
-</p>
-
-<p>
-  <strong>Owner:</strong>
-  <%= link_to "#{@portfolio.owner.name}", @portfolio.owner %>
-</p>
-
-<p>
-  <strong>Manager:</strong>
-  <%= link_to "#{@portfolio.manager.name}", @portfolio.manager %>
-</p>
+<span class="pagenav">
+  <%= link_to 'Edit', edit_portfolio_path(@portfolio) %> |
+</span>
 
 <p>
   <table>
+    <tr>
+      <td>Owner</td>
+      <td><%= link_to "#{@portfolio.owner.name}", @portfolio.owner %></td>
+    </tr>
+    <tr>
+      <td>Manager</td>
+      <td><%= link_to "#{@portfolio.manager.name}", @portfolio.manager %></td>
+    </tr>
+    <tr>
+      <td>Purpose</td>
+      <td><%= @portfolio.purpose.titleize %></td>
+    </tr>
+    <tr>
+      <td>Creation Date</td>
+      <td><%= @portfolio.creation_date %></td>
+    </tr>
     <tr>
       <td>Principal</td>
       <td>$<%= @portfolio.principal %></td>
@@ -69,6 +71,3 @@
     </tr>
   </table>
 </p>
-
-<%= link_to 'Edit', edit_portfolio_path(@portfolio) %> |
-<%= link_to 'Back', portfolios_path %>

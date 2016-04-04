@@ -1,3 +1,8 @@
+<h1><%= @stock.name %></h1>
+<span class="pagenav">
+  <%= link_to 'Edit', edit_stock_path(@stock) %>
+</span>
+
 <p>
   <strong>Symbol:</strong>
   <%= @stock.symbol %>
@@ -6,11 +11,6 @@
 <p>
   <strong>Exchange:</strong>
   <%= @stock.exchange %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @stock.name %>
 </p>
 
 <p>
@@ -24,7 +24,6 @@
 </p>
 
 <p>
-  <strong>Recent closing prices:</strong>
   <table>
     <% if @stock.historical_price_10d.empty? %>
       No data available.
@@ -39,6 +38,3 @@
     <% end %>
   </table>
 </p>
-
-<%= link_to 'Edit', edit_stock_path(@stock) %> |
-<%= link_to 'Back', stocks_path %>

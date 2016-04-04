@@ -1,4 +1,8 @@
-<h1>Listing Users</h1>
+<h1>Users</h1>
+<span class="pagenav">
+  <%= link_to 'User Stats', stats_users_path %>
+  <%= link_to 'New User', new_user_path %>
+</span>
 
 <table>
   <thead>
@@ -20,16 +24,13 @@
         <td><%= user.role %></td>
         <td><%= user.phone %></td>
         <td><%= link_to user.address.to_s, user.address %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: {
-            confirm: "Are you sure?\n\nNote: If #{user.name} currently owns any portfolios, the deletion will fail." } %></td>
+        <td class="actions">
+          <%= link_to 'Show', user %>
+          <%= link_to 'Edit', edit_user_path(user) %>
+          <%= link_to 'Destroy', user, method: :delete, data: {
+            confirm: "Are you sure?\n\nNote: If #{user.name} currently owns or manages any portfolios, the deletion will fail." } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'User Stats', stats_users_path %> |
-<%= link_to 'New User', new_user_path %>

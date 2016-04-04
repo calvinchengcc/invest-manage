@@ -53,6 +53,19 @@ window.onload = function () {
 		}
 	}
 
+	var f = document.getElementById("showfilter");
+	var fb = document.querySelector(".filterbox");
+	f.onclick = function () {
+		fb.style.display = "initial";
+	}
+	fb.onclick = function (e) {
+		if (e.target == fb)
+			fb.style.display = "none";
+	}
+	fb.querySelector("#cancel").onclick = function () {
+		fb.style.display = "none";
+	}
+
 	add.onclick = addFilter;
 	sadd.onclick = addStockFilter;
 }

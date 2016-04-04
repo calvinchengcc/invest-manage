@@ -1,3 +1,8 @@
+<h1>Address #<%= @address.id %></h1>
+<span class="pagenav">
+  <%= link_to 'Edit', edit_address_path(@address) %>
+</span>
+
 <p>
   <strong>Street Address:</strong>
   <%= @address.street_address %>
@@ -17,6 +22,3 @@
   <strong>Postal code:</strong>
   <%= @address.postal_code %>
 </p>
-
-<%= link_to 'Edit', edit_address_path(@address) %> |
-<%= link_to 'Back', addresses_path %>

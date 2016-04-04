@@ -1,4 +1,7 @@
-<h1>Listing Addresses</h1>
+<h1>Addresses</h1>
+<span class="pagenav">
+  <%= link_to 'New Address', new_address_path %>
+</span>
 
 <table>
   <thead>
@@ -18,14 +21,12 @@
         <td><%= address.city %></td>
         <td><%= address.country %></td>
         <td><%= address.postal_code %></td>
-        <td><%= link_to 'Show', address %></td>
-        <td><%= link_to 'Edit', edit_address_path(address) %></td>
-        <td><%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="actions">
+          <%= link_to 'Show', address %>
+          <%= link_to 'Edit', edit_address_path(address) %>
+          <%= link_to 'Destroy', address, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Address', new_address_path %>

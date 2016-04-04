@@ -1,4 +1,8 @@
-<h1>Listing Portfolios</h1>
+<h1>Portfolios</h1>
+<span class="pagenav">
+  <a href="#" id="showfilter">Filter</a>
+  <%= link_to 'New Portfolio', new_portfolio_path %>
+</span>
 
 <script type="text/template" id="st">
   <select class="col">
@@ -25,85 +29,94 @@
   <button class="remove">-</button>
 </script>
 
-<%= form_tag('', method: 'get', id: 'filter', enforce_utf8: false) do %>
-  <strong>Hidden columns:</strong>
-  <%= check_box_tag('hidden[]', 'purpose', @hidden_cols.include?('purpose'), id: 'purpose_hidden') %>
-  <%= label_tag('purpose_hidden', 'Purpose') %>
-  <%= check_box_tag('hidden[]', 'creation_date', @hidden_cols.include?('creation_date'), id: 'creation_hidden') %>
-  <%= label_tag('creation_hidden', 'Creation date') %>
-  <%= check_box_tag('hidden[]', 'principal', @hidden_cols.include?('principal'), id: 'principal_hidden') %>
-  <%= label_tag('principal_hidden', 'Principal') %>
-  <%= check_box_tag('hidden[]', 'cash', @hidden_cols.include?('cash'), id: 'cash_hidden') %>
-  <%= label_tag('cash_hidden', 'Cash') %>
-  <%= check_box_tag('hidden[]', 'owner_id', @hidden_cols.include?('owner_id'), id: 'owner_hidden') %>
-  <%= label_tag('owner_hidden', 'Owner') %>
-  <%= check_box_tag('hidden[]', 'manager_id', @hidden_cols.include?('manager_id'), id: 'manager_hidden') %>
-  <%= label_tag('manager_hidden', 'Manager') %>
-  <br>
-  <strong>Filters:</strong>
-  <button id="add">+</button>
-  <div class="filters">
-    <% if params[:filter] %>
-      <% params[:filter].each do |filter| %>
-        <% filter[1].each do |f| %>
-          <div class="selection">
-            <select class="col">
-              <option value="cash" <%= 'selected' if filter[0] == 'cash' %>>
-                Cash
-              </option>
-              <option value="principal" <%= 'selected' if filter[0] == 'principal' %>>
-                Principal
-              </option>
-            </select>
-            <select class="op">
-              <option value="lt" <%= 'selected' if f[0] == 'lt' %>>
-                is less than
-              </option>
-              <option value="le" <%= 'selected' if f[0] == 'le' %>>
-                is less than or equal to
-              </option>
-              <option value="eq" <%= 'selected' if f[0] == 'eq' %>>
-                is equal to
-              </option>
-              <option value="ne" <%= 'selected' if f[0] == 'ne' %>>
-                is not equal to
-              </option>
-              <option value="ge" <%= 'selected' if f[0] == 'ge' %>>
-                is greater than or equal to
-              </option>
-              <option value="gt" <%= 'selected' if f[0] == 'gt' %>>
-                is greater than
-              </option>
-            </select>
-            <input type="text" value="<%= f[1] %>">
-            <button class="remove">-</button>
-          </div>
+<div class="filterbox">
+  <%= form_tag('', method: 'get', id: 'filter', enforce_utf8: false) do %>
+    <h1>Filters</h1>
+    <fieldset>
+      <legend>Hidden columns:</legend>
+      <%= check_box_tag('hidden[]', 'purpose', @hidden_cols.include?('purpose'), id: 'purpose_hidden') %>
+      <%= label_tag('purpose_hidden', 'Purpose') %>
+      <%= check_box_tag('hidden[]', 'creation_date', @hidden_cols.include?('creation_date'), id: 'creation_hidden') %>
+      <%= label_tag('creation_hidden', 'Creation date') %>
+      <%= check_box_tag('hidden[]', 'principal', @hidden_cols.include?('principal'), id: 'principal_hidden') %>
+      <%= label_tag('principal_hidden', 'Principal') %>
+      <%= check_box_tag('hidden[]', 'cash', @hidden_cols.include?('cash'), id: 'cash_hidden') %>
+      <%= label_tag('cash_hidden', 'Cash') %>
+      <%= check_box_tag('hidden[]', 'owner_id', @hidden_cols.include?('owner_id'), id: 'owner_hidden') %>
+      <%= label_tag('owner_hidden', 'Owner') %>
+      <%= check_box_tag('hidden[]', 'manager_id', @hidden_cols.include?('manager_id'), id: 'manager_hidden') %>
+      <%= label_tag('manager_hidden', 'Manager') %>
+    </fieldset>
+    <fieldset>
+      <legend>Filter conditions:</legend>
+      <button class="add"id="add">+</button>
+      <div class="filters">
+        <% if params[:filter] %>
+          <% params[:filter].each do |filter| %>
+            <% filter[1].each do |f| %>
+              <div class="selection">
+                <select class="col">
+                  <option value="cash" <%= 'selected' if filter[0] == 'cash' %>>
+                  Cash
+                  </option>
+                  <option value="principal" <%= 'selected' if filter[0] == 'principal' %>>
+                  Principal
+                  </option>
+                </select>
+                <select class="op">
+                  <option value="lt" <%= 'selected' if f[0] == 'lt' %>>
+                  is less than
+                  </option>
+                  <option value="le" <%= 'selected' if f[0] == 'le' %>>
+                  is less than or equal to
+                  </option>
+                  <option value="eq" <%= 'selected' if f[0] == 'eq' %>>
+                  is equal to
+                  </option>
+                  <option value="ne" <%= 'selected' if f[0] == 'ne' %>>
+                  is not equal to
+                  </option>
+                  <option value="ge" <%= 'selected' if f[0] == 'ge' %>>
+                  is greater than or equal to
+                  </option>
+                  <option value="gt" <%= 'selected' if f[0] == 'gt' %>>
+                  is greater than
+                  </option>
+                </select>
+                <input type="text" value="<%= f[1] %>">
+                <button class="remove">-</button>
+              </div>
+            <% end %>
+          <% end %>
         <% end %>
-      <% end %>
-    <% end %>
-  </div>
-  <strong>Stocks:</strong>
-  <button id="sadd">+</button>
-  <div class="stocks">
-    <% if params[:contains] %>
-      <% params[:contains].each do |ss| %>
-        <div class="sf">
-          <label>
-            <select name="contains[]" class="stock">
-              <% Stock.all.each do |s| %>
-                <option value="<%= s.symbol %>"<%= 'selected' if ss == s.symbol %>>
-                  <%= s.symbol_and_name %>
-                </option>
-              <% end %>
-            </select>
-          </label>
-          <button class="remove">-</button>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-  <%= submit_tag 'Filter' %>
-<% end %>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Holdings must contain:</legend>
+      <button class="add" id="sadd">+</button>
+      <div class="stocks">
+        <% if params[:contains] %>
+          <% params[:contains].each do |ss| %>
+            <div class="sf">
+              <label>
+                <select name="contains[]" class="stock">
+                  <% Stock.all.each do |s| %>
+                    <option value="<%= s.symbol %>"<%= 'selected' if ss == s.symbol %>>
+                    <%= s.symbol_and_name %>
+                    </option>
+                  <% end %>
+                </select>
+              </label>
+              <button class="remove">-</button>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </fieldset>
+    <%= submit_tag 'Filter' %>
+    <%= link_to 'Cancel', '#', id: 'cancel' %>
+  <% end %>
+</div>
 
 <table>
   <thead>
@@ -138,7 +151,7 @@
         Manager
       </th>
     <% end %>
-    <th colspan="3"></th>
+    <th></th>
   </tr>
   </thead>
 
@@ -163,15 +176,12 @@
       <% unless @hidden_cols.include?('manager_id') %>
         <td><%= link_to portfolio.manager.name, portfolio.manager %></td>
       <% end %>
-      <td><%= link_to 'Show', portfolio %></td>
-      <td><%= link_to 'Edit', edit_portfolio_path(portfolio) %></td>
-      <td><%= link_to 'Destroy', portfolio, method: :delete,
-                      data: {confirm: "Are you sure?\n\nAll holdings in the portfolio (if any) will be deleted as well!"} %></td>
+      <td class="actions">
+        <%= link_to 'Show', portfolio %>
+        <%= link_to 'Edit', edit_portfolio_path(portfolio) %>
+        <%= link_to 'Destroy', portfolio, method: :delete, data: {confirm: "Are you sure?\n\nAll holdings in the portfolio (if any) will be deleted as well!"} %>
+      </td>
     </tr>
   <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Portfolio', new_portfolio_path %>

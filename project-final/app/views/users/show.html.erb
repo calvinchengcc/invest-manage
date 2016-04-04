@@ -1,7 +1,7 @@
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<h1><%= @user.name %></h1>
+<span class="pagenav">
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+</span>
 
 <p>
   <strong>Email:</strong>
@@ -10,7 +10,7 @@
 
 <p>
   <strong>Role:</strong>
-  <%= @user.role %>
+  <%= @user.role.titleize %>
 </p>
 
 <p>
@@ -57,6 +57,3 @@
     $<%= @total_principal %>
   <% end %>
 </p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

@@ -3,8 +3,51 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .hidden-cols {
-  margin: 2px;
+	margin: 2px;
 }
 .hidden-cols a {
-  font-weight: bold;
+	font-weight: bold;
+}
+
+.filterbox {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,.8);
+
+	form {
+		position: fixed;
+		top: 8em;
+		left: 8em;
+		right: 8em;
+		bottom: 8em;
+		padding: 4em;
+		background: #fff;
+		border-radius: 2px;
+		z-index: 1;
+		overflow: auto;
+
+		h1 {
+			display: block;
+			margin-top: 0;
+		}
+
+		fieldset {
+			border: 1px solid #ddd;
+			border-radius: 2px;
+			padding: 1em;
+			margin: 1em -1em;
+
+			.selection, .sf {
+				margin-top: 1em;
+			}
+		}
+
+		#cancel {
+			margin-left: 1em;
+		}
+	}
 }

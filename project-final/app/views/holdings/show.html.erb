@@ -1,11 +1,17 @@
+<h1>Holding in <%= @holding.portfolio.to_s.titleize %></h1>
+<span class="pagenav">
+  <%= link_to 'Edit', edit_holding_path(@holding) %>
+</span>
+
+
 <p>
-  <strong>Holding:</strong>
+  <strong>Holding ID:</strong>
   <%= @holding.id %>
 </p>
 
 <p>
   <strong>Portfolio:</strong>
-  <%= link_to @holding.portfolio_id, @holding.portfolio %>
+  <%= link_to @holding.portfolio.to_s, @holding.portfolio %>
 </p>
 
 <p>
@@ -25,8 +31,5 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @holding.price %>
+  $<%= @holding.price %>
 </p>
-
-<%= link_to 'Edit', edit_holding_path(@holding) %> |
-<%= link_to 'Back', holdings_path %>

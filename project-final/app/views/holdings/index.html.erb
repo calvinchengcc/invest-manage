@@ -1,4 +1,7 @@
-<h1>Listing Holdings</h1>
+<h1>Holdings</h1>
+<span class="pagenav">
+  <%= link_to 'New Holding', new_holding_path %>
+</span>
 
 <table>
   <thead>
@@ -22,14 +25,12 @@
         <td><%= holding.num_shares %></td>
         <td><%= holding.purchase_date %></td>
         <td>$<%= holding.price %></td>
-        <td><%= link_to 'Show', holding %></td>
-        <td><%= link_to 'Edit', edit_holding_path(holding) %></td>
-        <td><%= link_to 'Destroy', holding, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="actions">
+          <%= link_to 'Show', holding %>
+          <%= link_to 'Edit', edit_holding_path(holding) %>
+          <%= link_to 'Destroy', holding, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Holding', new_holding_path %>

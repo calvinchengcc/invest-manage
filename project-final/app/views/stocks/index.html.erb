@@ -1,4 +1,7 @@
-<h1>Listing Stocks</h1>
+<h1>Stocks</h1>
+<span class="pagenav">
+  <%= link_to 'New Stock', new_stock_path %>
+</span>
 
 <table>
   <thead>
@@ -16,14 +19,12 @@
         <td><%= stock.symbol %></td>
         <td><%= stock.exchange.code %></td>
         <td><%= stock.name %></td>
-        <td><%= link_to 'Show', stock %></td>
-        <td><%= link_to 'Edit', edit_stock_path(stock) %></td>
-        <td><%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="actions">
+          <%= link_to 'Show', stock %>
+          <%= link_to 'Edit', edit_stock_path(stock) %>
+          <%= link_to 'Destroy', stock, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Stock', new_stock_path %>

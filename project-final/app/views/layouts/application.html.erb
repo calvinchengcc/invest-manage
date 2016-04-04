@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>ProjectFinal</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+		<title>InvestManage</title>
+		<link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Source+Sans+Pro:300,400,600,700,400i,700i">
+		<%= stylesheet_link_tag    'application', media: 'all' %>
+		<%= javascript_include_tag 'application' %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+		<div class="nav">
+			<span class="title">IM</span>
+			<a href="/users">Users</a>
+			<a href="/users/stats">Stats</a>
+			<a href="/addresses">Addresses</a>
+			<a href="/portfolios">Portfolios</a>
+			<a href="/holdings">Holdings</a>
+			<a href="/stocks">Stocks</a>
+			<a href="/dashboard/">Dashboard</a>
+		</div>
 
-<% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %>"><%= value %></div>
-<% end %>
+		<% flash.each do |key, value| %>
+			<div class="alert alert-<%= key %>"><%= value %></div>
+		<% end %>
 
-<%= yield %>
+		<%= yield %>
 
-</body>
+	</body>
 </html>

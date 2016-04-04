@@ -108,7 +108,7 @@ class UsersController < ApplicationController
   private
 
   def companies_invested_in(user)
-    Stock.find_by_sql(['SELECT S.id, S.symbol, S.exchange_id, S.name
+    Stock.find_by_sql(['SELECT DISTINCT S.id, S.symbol, S.exchange_id, S.name
                         FROM users U
                         INNER JOIN portfolios P
                           ON U.id = P.owner_id

@@ -8,7 +8,7 @@ class Portfolio < ActiveRecord::Base
   end
 
   def current_value_of_holdings
-    symbols = self.holdings.map(&:stock).map(&:symbol)
+    symbols = holdings.map(&:stock).map(&:symbol)
     return 0 if symbols.empty?
     Array.wrap(StockQuote::Stock.quote(symbols))
         .map(&:last_trade_price_only)
@@ -23,7 +23,8 @@ class Portfolio < ActiveRecord::Base
   end
 
   def annualized_return
-    (((current_value / principal) ** (1 / years_since(creation_date)) - 1) * 100).round(2)
+    age = [years_since(creation_date), 1.0 / (365 * 24 * 24)].max
+    ((((current_value / principal) ** (1 / age)) - 1) * 100).round(2)
   end
 
   def total_return
@@ -31,7 +32,7 @@ class Portfolio < ActiveRecord::Base
   end
 
   def companies_represented
-    holdings.map(&:stock).map(&:name).uniq
+    holdings.map(&:stock).uniq
   end
 
   def to_s
