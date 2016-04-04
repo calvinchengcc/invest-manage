@@ -1,5 +1,5 @@
 class Portfolio < ActiveRecord::Base
-  has_many :holdings
+  has_many :holdings, inverse_of: :portfolio
   belongs_to :owner, class_name: 'User'
   belongs_to :manager, class_name: 'User'
 
