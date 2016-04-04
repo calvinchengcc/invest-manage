@@ -61,7 +61,15 @@ Portfolio.prototype.get = function () {
 	req.open("GET", "/portfolios/" + this.id + ".json", false);
 	req.onload = function () {
 		var data = JSON.parse(req.responseText);
-		self.holdings = data.holdings.map(Holding.parse);
+		var seen = {};
+		var raw = data.holdings;
+
+		self.holdings = [];
+		for (var i in raw) {
+			if (seen[raw[i].stock.symbol]) continue;
+			seen[raw[i].stock.symbol] = true;
+			self.holdings[i] = Holding.parse(raw[i]);
+		}
 	}
 	req.send();
 }
