@@ -1,4 +1,6 @@
-# cs304
+# InvestManage
+
+An app to help manage investment portfolios.
 
 Useful information:
 * [Ruby style guide](https://github.com/bbatsov/ruby-style-guide)
